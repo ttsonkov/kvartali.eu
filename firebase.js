@@ -57,7 +57,18 @@ function initFirebase() {
                 currentUser = result.user;
                 console.log('Auth successful:', currentUser.uid);
                 // After auth, set initial city state, load votes, attach listener
-                applyCitySelection(currentCity);
+                const urlParams = getURLParams();
+                applyCitySelection(urlParams.city);
+                
+                // Apply neighborhood filter if present in URL
+                if (urlParams.neighborhood) {
+                    const filterSelect = document.getElementById('filterNeighborhood');
+                    if (filterSelect) {
+                        filterSelect.value = urlParams.neighborhood;
+                        displayResults(urlParams.city, urlParams.neighborhood);
+                    }
+                }
+                
                 attachRatingsListener();
                 loadUserVotes();
             })

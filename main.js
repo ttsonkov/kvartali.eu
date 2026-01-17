@@ -11,6 +11,24 @@ const getNeighborhoodsForCity = (city) => {
     return cityNeighborhoods[city] || [];
 };
 
+// URL management
+function updateURL(city, neighborhood = '') {
+    const params = new URLSearchParams();
+    if (city) params.set('city', city);
+    if (neighborhood) params.set('neighborhood', neighborhood);
+    
+    const newURL = params.toString() ? `?${params.toString()}` : window.location.pathname;
+    window.history.pushState({ city, neighborhood }, '', newURL);
+}
+
+function getURLParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+        city: params.get('city') || 'София',
+        neighborhood: params.get('neighborhood') || ''
+    };
+}
+
 // Central city selection handler
 function applyCitySelection(city) {
     const newCity = city || 'София';
@@ -29,6 +47,9 @@ function applyCitySelection(city) {
     displayResults(newCity, currentNeighborhoodFilter);
     updateNeighborhoodOptions();
     hideHeaderMenu();
+    
+    // Update URL
+    updateURL(newCity, currentNeighborhoodFilter);
 }
 
 // Initialize star ratings
@@ -69,6 +90,7 @@ function setupEventListeners() {
     document.getElementById('filterNeighborhood').addEventListener('change', (e) => {
         const city = document.getElementById('filterCity').value;
         displayResults(city, e.target.value);
+        updateURL(city, e.target.value);
     });
 
     // Header city link toggles menu
@@ -88,14 +110,44 @@ function setupEventListeners() {
         }
     });
 
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', (e) => {
+        const urlParams = getURLParams();
+        applyCitySelection(urlParams.city);
+        if (urlParams.neighborhood) {
+            const filterSelect = document.getElementById('filterNeighborhood');
+            if (filterSelect) {
+                filterSelect.value = urlParams.neighborhood;
+                displayResults(urlParams.city, urlParams.neighborhood);
+            }
+        }
+    });
+
     // Form submission
     document.getElementById('ratingForm').addEventListener('submit', handleFormSubmit);
 }
 
 // Initialize application
 function initApp() {
+    // Read URL parameters
+    const urlParams = getURLParams();
+    currentCity = urlParams.city;
+    
+    // Set city selector to current city
+    const citySelect = document.getElementById('citySelect');
+    if (citySelect) {
+        citySelect.value = currentCity;
+    }
+    
+    const filterCitySelect = document.getElementById('filterCity');
+    if (filterCitySelect) {
+        filterCitySelect.value = currentCity;
+    }
+    
     initStarRatings();
     buildHeaderCityMenu();
+    populateSelectOptions(currentCity, currentCity);
+    updateHeaderCity(currentCity);
     setupEventListeners();
     
     // Wait for Firebase SDK to load
