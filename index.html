@@ -9,7 +9,11 @@
 <body>
     <div class="container">
         <header>
-            <h1>🏙️ Оценка на кварталите на София</h1>
+            <h1 id="pageTitle">
+                🏙️ Оценка на кварталите:
+                <a href="#citySelect" id="headerCityLink">София</a>
+                <div id="headerCityMenu" class="city-menu hidden"></div>
+            </h1>
             <p>Оценете кварталите по 10 критерия (1-5 звезди) - по един глас на квартал</p>
         </header>
 
@@ -17,6 +21,15 @@
             <div class="form-section">
                 <h2>Добавяне на оценка</h2>
                 <form id="ratingForm">
+                    <div class="form-group">
+                        <label for="citySelect">Град:</label>
+                        <select id="citySelect" required>
+                            <option value="София">София</option>
+                            <option value="Пловдив">Пловдив</option>
+                            <option value="Варна">Варна</option>
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="neighborhood">Квартал:</label>
                         <select id="neighborhood" required>
@@ -79,6 +92,12 @@
             <div class="results-section">
                 <h2>Резултати</h2>
                 <div class="filter-bar">
+                    <select id="filterCity">
+                        <option value="">Всички градове</option>
+                        <option value="София" selected>София</option>
+                        <option value="Пловдив">Пловдив</option>
+                        <option value="Варна">Варна</option>
+                    </select>
                     <select id="filterNeighborhood">
                         <option value="">Всички квартали</option>
                     </select>

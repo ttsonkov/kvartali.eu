@@ -30,6 +30,80 @@ header h1 {
     margin-bottom: 10px;
 }
 
+#pageTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#headerCityLink {
+    color: #fff;
+    background: linear-gradient(135deg, #764ba2, #667eea);
+    padding: 6px 12px;
+    border-radius: 999px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(118, 75, 162, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+#headerCityLink:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(102, 126, 234, 0.35);
+    opacity: 0.95;
+}
+
+.city-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.city-menu.hidden {
+    display: none;
+}
+
+
+.city-menu.show {
+    display: block;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border: 1px solid #e6e6f0;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.14);
+    padding: 8px;
+    z-index: 10;
+    min-width: 170px;
+}
+
+.city-menu button {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, #f7f7ff, #f1f4ff);
+    text-align: left;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #333;
+    font-weight: 600;
+    transition: all 0.15s ease;
+}
+
+.city-menu button:hover {
+    background: linear-gradient(135deg, #ebedff, #e2e8ff);
+    color: #4a55c4;
+    border-color: #d5d8ff;
+    box-shadow: 0 6px 14px rgba(102, 118, 234, 0.18);
+}
+
+.city-menu button:active {
+    transform: translateY(1px);
+}
+
 header p {
     color: #666;
 }
