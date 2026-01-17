@@ -178,13 +178,29 @@ function displayResults(cityFilter = '', neighborhoodFilter = '') {
         const opinions = neighborhoodRatings.filter(r => r.opinion).map(r => r.opinion);
         const card = document.createElement('div');
         card.className = 'neighborhood-card';
+        
+        // Create neighborhood filter for opinions
         let opinionHTML = '';
         if (opinions.length > 0) {
+            const uniqueNeighborhoods = [...new Set(neighborhoodRatings.map(r => r.neighborhood))];
+            let opinionFilterHTML = '';
+            if (uniqueNeighborhoods.length > 1) {
+                opinionFilterHTML = `
+                    <div class="opinion-filter">
+                        <select class="neighborhood-opinion-filter" data-neighborhood="${neighborhood}">
+                            <option value="">Всички мнения</option>
+                            ${uniqueNeighborhoods.map(n => `<option value="${n}">${n}</option>`).join('')}
+                        </select>
+                    </div>
+                `;
+            }
+            
             opinionHTML = `
                 <div class="opinions-section">
                     <h4>Мнения:</h4>
-                    <ul class="opinions-list">
-                        ${opinions.map(op => `<li>"${op}"</li>`).join('')}
+                    ${opinionFilterHTML}
+                    <ul class="opinions-list" data-neighborhood="${neighborhood}">
+                        ${opinions.map((op, idx) => `<li data-neighborhood="${neighborhoodRatings[neighborhoodRatings.findIndex(r => r.opinion === op)]?.neighborhood}">"${op}"</li>`).join('')}
                     </ul>
                 </div>
             `;
@@ -204,5 +220,24 @@ function displayResults(cityFilter = '', neighborhoodFilter = '') {
             ${opinionHTML}
         `;
         container.appendChild(card);
+        
+        // Add event listener for opinion filter
+        if (opinions.length > 0) {
+            const filterSelect = card.querySelector('.neighborhood-opinion-filter');
+            if (filterSelect) {
+                filterSelect.addEventListener('change', (e) => {
+                    const opinionsList = card.querySelector('.opinions-list');
+                    const selectedNeighborhood = e.target.value;
+                    const listItems = opinionsList.querySelectorAll('li');
+                    listItems.forEach(item => {
+                        if (selectedNeighborhood === '' || item.dataset.neighborhood === selectedNeighborhood) {
+                            item.style.display = 'list-item';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            }
+        }
     });
 }
