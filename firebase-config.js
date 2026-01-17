@@ -6,7 +6,6 @@ window.firebaseConfig = {
   projectId: "kvartali-info",
   storageBucket: "kvartali-info.firebasestorage.app",
   messagingSenderId: "672185184917",
-  appId: "1:672185184917:web:386bbcccf9c2f35621219c",
-  measurementId: "G-WSC8ZZ3B70"
+  appId: "1:672185184917:web:386bbcccf9c2f35621219c"
 };
 

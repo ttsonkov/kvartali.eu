@@ -196,10 +196,10 @@ document.getElementById('ratingForm').addEventListener('submit', async (e) => {
         return;
     }
 
-    // Validate all criteria are rated
-    const allRatedOk = Object.values(currentRatings).every(rating => rating > 0);
-    if (!allRatedOk) {
-        showToast('Моля оценете всички критерии!', 'error');
+    // Check if at least something is provided (ratings or opinion)
+    const hasRatings = Object.values(currentRatings).some(rating => rating > 0);
+    if (!hasRatings && !opinion) {
+        showToast('Моля оценете поне един критерий или напишете мнение!', 'error');
         return;
     }
 
@@ -212,7 +212,8 @@ document.getElementById('ratingForm').addEventListener('submit', async (e) => {
     };
 
     // Enforce one vote per user per neighborhood via deterministic doc id
-    const docId = `${neighborhood}__${currentUser.uid}`;
+    // Encode neighborhood name to handle special characters
+    const docId = `${encodeURIComponent(neighborhood)}__${currentUser.uid}`;
 
     try {
         const docRef = db.collection('ratings').doc(docId);
@@ -405,12 +406,20 @@ async function loadUserVotes() {
 // Initialize Firebase and start app
 function initFirebase() {
     try {
+        if (!window.firebaseConfig || !window.firebaseConfig.apiKey) {
+            showToast('Firebase конфигурацията не е заредена', 'error');
+            console.error('Missing firebase config');
+            return;
+        }
+        
         firebaseApp = firebase.initializeApp(window.firebaseConfig);
         db = firebase.firestore();
         auth = firebase.auth();
+        
         auth.signInAnonymously()
             .then((result) => {
                 currentUser = result.user;
+                console.log('Auth successful:', currentUser.uid);
                 // After auth, load user votes, attach results listener, and populate selects
                 populateSelectOptions();
                 attachRatingsListener();
@@ -418,12 +427,20 @@ function initFirebase() {
             })
             .catch((err) => {
                 console.error('Auth error:', err);
-                showToast('Грешка при автентикация', 'error');
+                console.error('Error code:', err.code);
+                console.error('Error message:', err.message);
+                showToast(`Грешка при автентикация: ${err.message}`, 'error');
             });
     } catch (e) {
         console.error('Firebase init error:', e);
-        showToast('Грешка при инициализация на Firebase', 'error');
+        showToast(`Грешка при инициализация на Firebase: ${e.message}`, 'error');
     }
 }
 
-initFirebase();
+// Wait for Firebase SDK to load
+if (typeof firebase !== 'undefined') {
+    initFirebase();
+} else {
+    console.error('Firebase SDK not loaded');
+    showToast('Firebase SDK не е зареден', 'error');
+}
