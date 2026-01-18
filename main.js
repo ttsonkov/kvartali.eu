@@ -172,8 +172,16 @@ function setupEventListeners() {
 
     document.getElementById('filterNeighborhood').addEventListener('change', (e) => {
         const city = document.getElementById('filterCity').value;
-        displayResults(city, e.target.value);
-        updateURL(city, e.target.value);
+        const selectedNeighborhood = e.target.value;
+        
+        // Sync form neighborhood selector
+        const formNeighborhood = document.getElementById('neighborhood');
+        if (formNeighborhood && selectedNeighborhood) {
+            formNeighborhood.value = selectedNeighborhood;
+        }
+        
+        displayResults(city, selectedNeighborhood);
+        updateURL(city, selectedNeighborhood);
     });
 
     // Header city link toggles menu
