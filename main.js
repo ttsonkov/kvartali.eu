@@ -15,6 +15,19 @@ function showToast(message, type = 'success') {
     }, 3000);
 }
 
+// Global error handlers to surface runtime issues
+window.addEventListener('error', (event) => {
+    const msg = event?.error?.message || event?.message || 'Неочаквана грешка в страницата';
+    console.error('Global error:', event.error || event);
+    try { showToast(`Грешка: ${msg}`, 'error'); } catch (_) {}
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+    const msg = event?.reason?.message || 'Неуловено обещание (Promise) - грешка';
+    console.error('Unhandled rejection:', event.reason || event);
+    try { showToast(`Грешка: ${msg}`, 'error'); } catch (_) {}
+});
+
 let currentCity = "София";
 let currentRatings = {};
 let currentLocationType = "neighborhood"; // 'neighborhood' or 'childcare'
