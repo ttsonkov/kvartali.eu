@@ -12,24 +12,9 @@ function updateStars(container, rating) {
     });
 }
 
-// Toast notification
-function showToast(message, type = 'success') {
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = message;
-    if (type === 'error') {
-        toast.style.background = '#dc3545';
-    }
-    document.body.appendChild(toast);
-    
-    setTimeout(() => {
-        toast.remove();
-    }, 3000);
-}
-
 // Update header city text
 function updateHeaderCity(city) {
-    const link = document.getElementById('headerCityLink');
+    const link = Utils.getElement('headerCityLink');
     if (link) {
         link.textContent = city;
     }
@@ -37,14 +22,14 @@ function updateHeaderCity(city) {
 
 // Header city menu functions
 function buildHeaderCityMenu() {
-    const menu = document.getElementById('headerCityMenu');
+    const menu = Utils.getElement('headerCityMenu');
     if (!menu) return;
     
-    // Get cityList from cityNeighborhoods object
-    const cities = Object.keys(cityNeighborhoods || {});
+    // Get cityList from DataService
+    const cities = DataService.getCities();
     
     if (!cities || cities.length === 0) {
-        console.error('No cities found in cityNeighborhoods', cityNeighborhoods);
+        console.error('No cities found');
         return;
     }
     
@@ -55,14 +40,14 @@ function buildHeaderCityMenu() {
         btn.textContent = city;
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            applyCitySelection(city);
+            AppController.selectCity(city);
         });
         menu.appendChild(btn);
     });
 }
 
 function toggleHeaderMenu() {
-    const menu = document.getElementById('headerCityMenu');
+    const menu = Utils.getElement('headerCityMenu');
     if (!menu) return;
     const isShown = menu.classList.contains('show');
     if (isShown) {
@@ -74,7 +59,7 @@ function toggleHeaderMenu() {
 }
 
 function hideHeaderMenu() {
-    const menu = document.getElementById('headerCityMenu');
+    const menu = Utils.getElement('headerCityMenu');
     if (!menu) return;
     menu.classList.remove('show');
     menu.classList.add('hidden');
@@ -82,12 +67,12 @@ function hideHeaderMenu() {
 
 // Update neighborhood select to disable voted ones
 function updateNeighborhoodOptions() {
-    const select = document.getElementById('neighborhood');
-    const city = document.getElementById('citySelect').value || currentCity;
+    const select = Utils.getElement('neighborhood');
+    const city = Utils.getElementValue('citySelect') || AppState.getCity();
     const options = select.querySelectorAll('option');
     options.forEach(option => {
         if (!option.value) return;
-        const key = makeVoteKey(city, option.value, currentLocationType);
+        const key = Utils.makeVoteKey(city, option.value, AppState.getLocationType());
         if (userVotedNeighborhoods.includes(key)) {
             option.disabled = true;
             if (!option.textContent.includes('(Вече сте гласували)')) {
@@ -101,14 +86,13 @@ function updateNeighborhoodOptions() {
 }
 
 // Populate select options dynamically
-function populateSelectOptions(formCity = currentCity, filterCity = document.getElementById('filterCity').value) {
-    const select1 = document.getElementById('neighborhood');
-    const select2 = document.getElementById('filterNeighborhood');
+function populateSelectOptions(formCity = AppState.getCity(), filterCity = Utils.getElementValue('filterCity')) {
+    const select1 = Utils.getElement('neighborhood');
+    const select2 = Utils.getElement('filterNeighborhood');
 
-    // Choose data source based on location type
-    const dataSource = currentLocationType === 'childcare' ? childcareNeighborhoods : cityNeighborhoods;
-    const formNeighborhoods = dataSource[formCity] || [];
-    const filterNeighborhoods = dataSource[filterCity] || [];
+    // Get neighborhoods from DataService based on location type
+    const formNeighborhoods = DataService.getNeighborhoodsForCity(formCity, AppState.getLocationType());
+    const filterNeighborhoods = DataService.getNeighborhoodsForCity(filterCity, AppState.getLocationType());
 
     // Clear existing options (keep the first placeholder option)
     while (select1.options.length > 1) {
@@ -137,13 +121,13 @@ function populateSelectOptions(formCity = currentCity, filterCity = document.get
 
 // Display results
 function displayResults(cityFilter = '', neighborhoodFilter = '') {
-    const container = document.getElementById('resultsContainer');
+    const container = Utils.getElement('resultsContainer');
     
     // Filter ratings
     let filteredRatings = allRatings;
     
     // Filter by location type
-    filteredRatings = filteredRatings.filter(r => (r.locationType || 'neighborhood') === currentLocationType);
+    filteredRatings = filteredRatings.filter(r => (r.locationType || 'neighborhood') === AppState.getLocationType());
     
     if (cityFilter) {
         filteredRatings = filteredRatings.filter(r => (r.city || 'София') === cityFilter);

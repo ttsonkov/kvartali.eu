@@ -204,7 +204,7 @@ function setLocationType(type) {
     
     // Update neighborhood options based on votes
     updateNeighborhoodOptions();
-    
+
     // Update URL with new type
     updateURL(filterCity, '', type);
 }

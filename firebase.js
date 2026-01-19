@@ -15,8 +15,8 @@ function attachRatingsListener() {
     db.collection('ratings').onSnapshot(
         (snapshot) => {
             allRatings = snapshot.docs.map(doc => doc.data());
-            const currentCityFilter = document.getElementById('filterCity').value || currentCity;
-            const currentNeighborhoodFilter = document.getElementById('filterNeighborhood').value || '';
+            const currentCityFilter = Utils.getElementValue('filterCity') || AppState.getCity();
+            const currentNeighborhoodFilter = Utils.getElementValue('filterNeighborhood') || '';
             displayResults(currentCityFilter, currentNeighborhoodFilter);
         },
         (error) => {
@@ -32,7 +32,7 @@ async function loadUserVotes() {
         userVotedNeighborhoods = qs.docs.map(doc => {
             const data = doc.data();
             const locationType = data.locationType || 'neighborhood';
-            return makeVoteKey(data.city || 'София', data.neighborhood, locationType);
+            return Utils.makeVoteKey(data.city || 'София', data.neighborhood, locationType);
         });
         updateNeighborhoodOptions();
     } catch (err) {
@@ -44,7 +44,7 @@ async function loadUserVotes() {
 function initFirebase() {
     try {
         if (!window.firebaseConfig || !window.firebaseConfig.apiKey) {
-            showToast('Firebase конфигурацията не е заредена', 'error');
+            Utils.showToast('Firebase конфигурацията не е заредена', 'error');
             console.error('Missing firebase config');
             return;
         }
@@ -58,12 +58,12 @@ function initFirebase() {
                 currentUser = result.user;
                 console.log('Auth successful:', currentUser.uid);
                 // After auth, set initial city state, load votes, attach listener
-                const urlParams = getURLParams();
-                applyCitySelection(urlParams.city);
+                const urlParams = Utils.getURLParams();
+                AppController.selectCity(urlParams.city);
                 
                 // Apply neighborhood filter if present in URL
                 if (urlParams.neighborhood) {
-                    const filterSelect = document.getElementById('filterNeighborhood');
+                    const filterSelect = Utils.getElement('filterNeighborhood');
                     if (filterSelect) {
                         filterSelect.value = urlParams.neighborhood;
                         displayResults(urlParams.city, urlParams.neighborhood);
@@ -77,11 +77,11 @@ function initFirebase() {
                 console.error('Auth error:', err);
                 console.error('Error code:', err.code);
                 console.error('Error message:', err.message);
-                showToast(`Грешка при автентикация: ${err.message}`, 'error');
+                Utils.showToast(`Грешка при автентикация: ${err.message}`, 'error');
             });
     } catch (e) {
         console.error('Firebase init error:', e);
-        showToast(`Грешка при инициализация на Firebase: ${e.message}`, 'error');
+        Utils.showToast(`Грешка при инициализация на Firebase: ${e.message}`, 'error');
     }
 }
 
@@ -90,52 +90,53 @@ async function handleFormSubmit(e) {
     e.preventDefault();
 
     if (!currentUser) {
-        showToast('Моля изчакайте автентикация...', 'error');
+        Utils.showToast('Моля изчакайте автентикация...', 'error');
         return;
     }
 
-    const city = document.getElementById('citySelect').value || currentCity;
-    currentCity = city;
-    const neighborhood = document.getElementById('neighborhood').value;
-    const opinion = document.getElementById('opinion').value.trim();
+    const city = Utils.getElementValue('citySelect') || AppState.getCity();
+    AppState.setCity(city);
+    const neighborhood = Utils.getElementValue('neighborhood');
+    const opinion = Utils.getElementValue('opinion')?.trim() || '';
 
     // Check if already voted for this neighborhood (server-ground truth)
-    const voteKey = makeVoteKey(city, neighborhood, currentLocationType);
+    const voteKey = Utils.makeVoteKey(city, neighborhood, AppState.getLocationType());
     if (userVotedNeighborhoods.includes(voteKey)) {
-        const message = currentLocationType === 'childcare' 
+        const message = AppState.getLocationType() === 'childcare' 
             ? 'Вече сте гласували за тази детска градина!' 
             : 'Вече сте гласували за този квартал!';
-        showToast(message, 'error');
+        Utils.showToast(message, 'error');
         return;
     }
 
     // Check if at least something is provided (ratings or opinion)
-    const ratingValues = Object.values(currentRatings);
+    const ratings = AppState.getRatings();
+    const ratingValues = Object.values(ratings);
     const ratedCount = ratingValues.filter(rating => rating > 0).length;
     
     // For childcare: need 1 rating (overall), for neighborhoods: need all 10
-    const expectedCriteria = currentLocationType === 'childcare' ? 1 : 10;
+    const expectedCriteria = AppState.getLocationType() === 'childcare' ? 1 : 10;
     const allRated = ratedCount === expectedCriteria;
     const noneRated = ratedCount === 0;
     
     if (!allRated && !noneRated) {
-        const message = currentLocationType === 'childcare'
+        const message = AppState.getLocationType() === 'childcare'
             ? 'Моля оценете или не оценявайте нито едно!'
             : 'Моля оценете всички 10 критерия или не оценявайте нито един!';
-        showToast(message, 'error');
+        Utils.showToast(message, 'error');
         return;
     }
     
     if (noneRated && !opinion) {
-        showToast('Моля оценете критериите или напишете мнение!', 'error');
+        Utils.showToast('Моля оценете критериите или напишете мнение!', 'error');
         return;
     }
 
     const ratingData = {
         city: city,
         neighborhood: neighborhood,
-        locationType: currentLocationType,
-        ratings: { ...currentRatings },
+        locationType: AppState.getLocationType(),
+        ratings: ratings,
         opinion: opinion,
         userId: currentUser.uid,
         timestamp: new Date().toISOString()
@@ -143,13 +144,13 @@ async function handleFormSubmit(e) {
 
     // Enforce one vote per user per neighborhood via deterministic doc id
     // Include locationType in the ID to keep childcare and neighborhood ratings separate
-    const docId = `${encodeURIComponent(currentLocationType)}__${encodeURIComponent(city)}__${encodeURIComponent(neighborhood)}__${currentUser.uid}`;
+    const docId = `${encodeURIComponent(AppState.getLocationType())}__${encodeURIComponent(city)}__${encodeURIComponent(neighborhood)}__${currentUser.uid}`;
 
     try {
         const docRef = db.collection('ratings').doc(docId);
         const existing = await docRef.get();
         if (existing.exists) {
-            showToast('Вече сте гласували за този квартал!', 'error');
+            Utils.showToast('Вече сте гласували за този квартал!', 'error');
             updateNeighborhoodOptions();
             return;
         }
@@ -161,17 +162,27 @@ async function handleFormSubmit(e) {
         updateNeighborhoodOptions();
 
         // Reset form
-        document.getElementById('ratingForm').reset();
-        document.getElementById('opinion').value = '';
-        Object.keys(currentRatings).forEach(key => currentRatings[key] = 0);
-        document.querySelectorAll('.stars').forEach(container => {
-            container.querySelectorAll('.star').forEach(star => star.classList.remove('active'));
-        });
+        UIController.clearForm();
 
-        showToast('Оценката е запазена успешно!');
+        // Preserve selected city in the UI after save
+        UIController.updateCityDisplay(city);
+        // Repopulate options for the preserved city context
+        try {
+            populateSelectOptions(city, city);
+            updateNeighborhoodOptions();
+            // Preserve selected neighborhood in both form and filter
+            UIController.updateNeighborhoodDisplay(neighborhood);
+            // Refresh results and URL
+            displayResults(city, neighborhood || '');
+            Utils.updateURL(city, neighborhood || '', AppState.getLocationType());
+        } catch (e) {
+            console.warn('Post-save UI refresh warning:', e);
+        }
+
+        Utils.showToast('Оценката е запазена успешно!');
         // displayResults() is triggered by the Firestore snapshot listener
     } catch (err) {
         console.error('Error saving rating:', err);
-        showToast('Грешка при запис на оценката', 'error');
+        Utils.showToast('Грешка при запис на оценката', 'error');
     }
 }
