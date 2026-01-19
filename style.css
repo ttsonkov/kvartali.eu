@@ -70,16 +70,17 @@ header h1 {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 8px;
-    position: absolute;
-    top: 0;
+    position: fixed;
+    bottom: auto;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     background: #ffffff;
     border: 1px solid #e6e6f0;
     border-radius: 10px;
     box-shadow: 0 12px 30px rgba(0,0,0,0.14);
     padding: 8px;
-    z-index: 100;
+    z-index: 1000;
     min-width: 600px;
     max-width: 90vw;
     max-height: 70vh;
@@ -92,12 +93,27 @@ header h1 {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         min-width: 0;
         width: 90vw;
+        max-height: 70vh;
     }
 }
 
 @media (max-width: 480px) {
     .city-menu.show {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px;
+        padding: 6px;
+        width: calc(100vw - 20px);
+        max-width: calc(100vw - 20px);
+        max-height: 80vh;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .city-menu button {
+        padding: 8px 8px;
+        font-size: 12px;
+        border-radius: 6px;
     }
 }
 
@@ -417,3 +433,111 @@ h2 {
         opacity: 1;
     }
 }
+/* Mobile Responsive Improvements */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 10px;
+        margin-bottom: 20px;
+    }
+
+    #pageTitle {
+        flex-wrap: wrap;
+        gap: 6px;
+        font-size: 16px;
+    }
+
+    #pageTitle span:first-child {
+        flex: 0 0 100%;
+    }
+
+    #headerCityLink {
+        padding: 8px 12px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .location-type-toggle {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        padding: 6px;
+        width: 100%;
+        margin-top: 6px;
+    }
+
+    .toggle-btn {
+        padding: 8px 6px;
+        font-size: 12px;
+        border-radius: 5px;
+    }
+
+    #headerSubtitle {
+        font-size: 13px;
+        margin: 8px 0 0 0;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    header {
+        padding: 10px 8px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+
+    header h1 {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    #pageTitle {
+        display: block;
+        gap: 0;
+    }
+
+    #pageTitle span:first-child {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    #pageTitle span:nth-child(2) {
+        display: block;
+        width: 100%;
+    }
+
+    #headerCityLink {
+        display: inline-block;
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .location-type-toggle {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+        padding: 4px;
+        width: 100%;
+        margin-top: 4px;
+    }
+
+    .toggle-btn {
+        padding: 6px 4px;
+        font-size: 11px;
+        border-radius: 4px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    #headerSubtitle {
+        font-size: 12px;
+        margin: 6px 0 0 0;
+        padding: 0 4px;
+    }
