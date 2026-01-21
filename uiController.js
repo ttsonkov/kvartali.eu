@@ -103,8 +103,12 @@ const UIController = {
         // Toggle criteria sections
         const neighborhoodCriteria = Utils.getElement('neighborhoodCriteria');
         const childcareCriteria = Utils.getElement('childcareCriteria');
-        if (neighborhoodCriteria) neighborhoodCriteria.style.display = (isChildcare || isDoctors || isDentists) ? 'none' : 'grid';
-        if (childcareCriteria) childcareCriteria.style.display = (isChildcare || isDoctors || isDentists) ? 'grid' : 'none';
+        if (neighborhoodCriteria) {
+            neighborhoodCriteria.style.display = (isChildcare || isDoctors || isDentists) ? 'none' : 'grid';
+        }
+        if (childcareCriteria) {
+            childcareCriteria.style.display = (isChildcare || isDoctors || isDentists) ? 'grid' : 'none';
+        }
         
         // Populate specialty dropdown if doctors mode
         if (isDoctors) {

@@ -177,8 +177,8 @@ function displayResults(cityFilter = '', neighborhoodFilter = '') {
             specialty = match ? match[1] : '';
         }
         
-        if (locationType === 'childcare' || locationType === 'doctors') {
-            // For childcare and doctors: only 'overall' rating
+        if (locationType === 'childcare' || locationType === 'doctors' || locationType === 'dentists') {
+            // For childcare, doctors and dentists: only 'overall' rating
             const sum = neighborhoodRatings.reduce((acc, r) => acc + (r.ratings.overall || 0), 0);
             avgRatings.overall = (sum / neighborhoodRatings.length).toFixed(1);
             const totalAvg = parseFloat(avgRatings.overall);
@@ -238,8 +238,8 @@ function displayResults(cityFilter = '', neighborhoodFilter = '') {
         
         // Build rating grid based on type
         let ratingGridHTML = '';
-        if (locationType === 'childcare' || locationType === 'doctors') {
-            // For childcare and doctors: show only overall rating
+        if (locationType === 'childcare' || locationType === 'doctors' || locationType === 'dentists') {
+            // For childcare, doctors and dentists: show only overall rating
             ratingGridHTML = `
                 <div class="rating-item">
                     <span>Оценка:</span>

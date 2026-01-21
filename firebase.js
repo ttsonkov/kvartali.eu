@@ -145,7 +145,13 @@ async function handleFormSubmit(e) {
     }
 
     // Check if at least something is provided (ratings or opinion)
-    const ratings = AppState.getRatings();
+    let ratings = AppState.getRatings();
+    
+    // For dentists/doctors/childcare, keep only 'overall' rating
+    if (locationType === 'childcare' || locationType === 'doctors' || locationType === 'dentists') {
+        ratings = { overall: ratings.overall || 0 };
+    }
+    
     const ratingValues = Object.values(ratings);
     const ratedCount = ratingValues.filter(rating => rating > 0).length;
     

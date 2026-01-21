@@ -2,9 +2,6 @@
 const AppController = {
     // Initialize application
     init() {
-        console.log('AppController.init() called');
-        console.log('UIController available:', typeof UIController);
-        
         // Initialize services
         DataService.init();
         
@@ -34,7 +31,6 @@ const AppController = {
         
         // Set location type BEFORE any UI initialization
         AppState.setLocationType(locationType);
-        console.log('Initial location type set to:', AppState.getLocationType());
         
         // Initialize UI
         UIController.updateCityDisplay(AppState.getCity());
@@ -110,9 +106,7 @@ const AppController = {
     
     // Location type change handler
     setLocationType(type) {
-        console.log('setLocationType called with:', type);
         AppState.setLocationType(type);
-        console.log('currentLocationType is now:', AppState.getLocationType());
         
         UIController.updateLocationTypeUI(type);
         
