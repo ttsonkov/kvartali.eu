@@ -33,23 +33,17 @@ const Utils = {
     
     getURLParams() {
         const params = new URLSearchParams(window.location.search);
-        const hostname = window.location.hostname.toLowerCase();
-        const isKindergartenDomain = hostname === 'gradini.kvartali.eu' || hostname === 'www.gradini.kvartali.eu' ||
-                                     hostname === 'gradini.localhost' || hostname === 'www.gradini.localhost';
-        const isDoctorsDomain = hostname === 'lekari.kvartali.eu' || hostname === 'www.lekari.kvartali.eu' ||
-                                hostname === 'lekari.localhost' || hostname === 'www.lekari.localhost';
-        const isDentistsDomain = hostname === 'zabolekari.kvartali.eu' || hostname === 'www.zabolekari.kvartali.eu' ||
-                                 hostname === 'zabolekari.localhost' || hostname === 'www.zabolekari.localhost';
+        const hash = window.location.hash.toLowerCase();
         
         let type = params.get('type') || 'neighborhood';
         
-        // Override type based on subdomain
-        if (isKindergartenDomain) {
+        // Override type based on URL hash (check zabolekari before lekari!)
+        if (hash.includes('detskigradini')) {
             type = 'childcare';
-        } else if (isDoctorsDomain) {
-            type = 'doctors';
-        } else if (isDentistsDomain) {
+        } else if (hash.includes('zabolekari')) {
             type = 'dentists';
+        } else if (hash.includes('lekari')) {
+            type = 'doctors';
         }
         
         return {

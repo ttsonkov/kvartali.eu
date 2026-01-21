@@ -32,27 +32,6 @@ let currentCity = "София";
 let currentRatings = {};
 let currentLocationType = "neighborhood"; // 'neighborhood' or 'childcare'
 
-// Detect if running on kindergarten subdomain
-function isKindergartenDomain() {
-    const hostname = window.location.hostname.toLowerCase();
-    return hostname === 'gradini.kvartali.eu' || hostname === 'www.gradini.kvartali.eu' ||
-           hostname === 'gradini.localhost' || hostname === 'www.gradini.localhost';
-}
-
-// Detect if running on lekari subdomain
-function isDoctorsDomain() {
-    const hostname = window.location.hostname.toLowerCase();
-    return hostname === 'lekari.kvartali.eu' || hostname === 'www.lekari.kvartali.eu' ||
-           hostname === 'lekari.localhost' || hostname === 'www.lekari.localhost';
-}
-
-// Detect if running on zabolekari subdomain
-function isDentistsDomain() {
-    const hostname = window.location.hostname.toLowerCase();
-    return hostname === 'zabolekari.kvartali.eu' || hostname === 'www.zabolekari.kvartali.eu' ||
-           hostname === 'zabolekari.localhost' || hostname === 'www.zabolekari.localhost';
-}
-
 // Vote key includes location type to distinguish childcare from neighborhoods
 const makeVoteKey = (city, neighborhood, type = "neighborhood") => `${type}::${city || 'София'}::${neighborhood}`;
 
@@ -136,15 +115,16 @@ function updateURL(city, neighborhood = '', type = 'neighborhood') {
 
 function getURLParams() {
     const params = new URLSearchParams(window.location.search);
+    const hash = window.location.hash.toLowerCase();
     let type = params.get('type') || 'neighborhood';
     
-    // Override type based on subdomain
-    if (isKindergartenDomain()) {
+    // Override type based on URL hash (check zabolekari before lekari!)
+    if (hash.includes('detskigradini')) {
         type = 'childcare';
-    } else if (isDoctorsDomain()) {
-        type = 'doctors';
-    } else if (isDentistsDomain()) {
+    } else if (hash.includes('zabolekari')) {
         type = 'dentists';
+    } else if (hash.includes('lekari')) {
+        type = 'doctors';
     }
     
     return {

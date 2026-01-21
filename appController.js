@@ -1,26 +1,5 @@
 ﻿// Application Controller (Orchestrates everything - Facade Pattern)
 const AppController = {
-    // Detect if running on gradini subdomain
-    isKindergartenDomain() {
-        const hostname = window.location.hostname.toLowerCase();
-        return hostname === 'gradini.kvartali.eu' || hostname === 'www.gradini.kvartali.eu' ||
-               hostname === 'gradini.localhost' || hostname === 'www.gradini.localhost';
-    },
-    
-    // Detect if running on lekari subdomain
-    isDoctorsDomain() {
-        const hostname = window.location.hostname.toLowerCase();
-        return hostname === 'lekari.kvartali.eu' || hostname === 'www.lekari.kvartali.eu' ||
-               hostname === 'lekari.localhost' || hostname === 'www.lekari.localhost';
-    },
-    
-    // Detect if running on zabolekari subdomain
-    isDentistsDomain() {
-        const hostname = window.location.hostname.toLowerCase();
-        return hostname === 'zabolekari.kvartali.eu' || hostname === 'www.zabolekari.kvartali.eu' ||
-               hostname === 'zabolekari.localhost' || hostname === 'www.zabolekari.localhost';
-    },
-    
     // Initialize application
     init() {
         console.log('AppController.init() called');
@@ -40,14 +19,15 @@ const AppController = {
         const urlParams = Utils.getURLParams();
         AppState.setCity(urlParams.city);
         
-        // Determine location type: prioritize subdomain, then URL param
+        // Determine location type based on URL hash
         let locationType = 'neighborhood';
-        if (this.isKindergartenDomain()) {
+        const hash = window.location.hash.toLowerCase();
+        if (hash.includes('detskigradini')) {
             locationType = 'childcare';
-        } else if (this.isDoctorsDomain()) {
-            locationType = 'doctors';
-        } else if (this.isDentistsDomain()) {
+        } else if (hash.includes('zabolekari')) {
             locationType = 'dentists';
+        } else if (hash.includes('lekari')) {
+            locationType = 'doctors';
         } else if (urlParams.type && urlParams.type !== 'neighborhood') {
             locationType = urlParams.type;
         }
@@ -68,28 +48,28 @@ const AppController = {
         // Update UI for the current location type
         UIController.updateLocationTypeUI(locationType);
         
-        // Update page branding based on subdomain
-        if (this.isKindergartenDomain()) {
+        // Update page branding based on path
+        if (locationType === 'childcare') {
             const pageTitle = document.getElementById('pageTitle');
             if (pageTitle) {
                 const titleSpan = pageTitle.querySelector('span:first-child');
                 if (titleSpan) titleSpan.textContent = '🏫 Детски градини:';
             }
-            document.title = 'Детски градини на България - Оценки и мнения | GradiniEU';
-        } else if (this.isDoctorsDomain()) {
+            document.title = 'Детски градини на България - Оценки и мнения | KvartaliEU';
+        } else if (locationType === 'doctors') {
             const pageTitle = document.getElementById('pageTitle');
             if (pageTitle) {
                 const titleSpan = pageTitle.querySelector('span:first-child');
                 if (titleSpan) titleSpan.textContent = '⚕️ Лекари:';
             }
-            document.title = 'Лекари на България - Оценки и мнения | DoctorsEU';
-        } else if (this.isDentistsDomain()) {
+            document.title = 'Лекари на България - Оценки и мнения | KvartaliEU';
+        } else if (locationType === 'dentists') {
             const pageTitle = document.getElementById('pageTitle');
             if (pageTitle) {
                 const titleSpan = pageTitle.querySelector('span:first-child');
                 if (titleSpan) titleSpan.textContent = '🦷 Зъболекари:';
             }
-            document.title = 'Зъболекари на България - Оценки и мнения | ZabolekariEU';
+            document.title = 'Зъболекари на България - Оценки и мнения | KvartaliEU';
         }
         
         // Setup event listeners
