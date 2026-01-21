@@ -23,6 +23,9 @@ const AppController = {
     
     // Initialize application
     init() {
+        console.log('AppController.init() called');
+        console.log('UIController available:', typeof UIController);
+        
         // Initialize services
         DataService.init();
         

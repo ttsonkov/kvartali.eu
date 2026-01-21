@@ -60,12 +60,13 @@ const UIController = {
         if (specialtyField) specialtyField.required = isDoctors;
         
         // Update doctor name field label and placeholder based on type
-        const doctorNameLabel = doctorNameGroup?.querySelector('label');
+        const doctorNameLabel = doctorNameGroup?.querySelector('label[for="doctorName"]');
         if (doctorNameLabel) {
             doctorNameLabel.textContent = isDentists ? 'Име на зъболекар:' : 'Име на лекар:';
         }
-        if (doctorNameField) {
-            doctorNameField.placeholder = isDentists ? 'Въведете име на зъболекар...' : 'Въведете име на лекар...';
+        const doctorName = Utils.getElement('doctorName');
+        if (doctorName) {
+            doctorName.placeholder = isDentists ? 'Въведете име на зъболекар...' : 'Въведете име на лекар...';
         }
         
         // Update labels and placeholders
