@@ -17,61 +17,41 @@ const EventHandlers = {
         
         if (btnNeighborhoods) {
             btnNeighborhoods.addEventListener('click', () => {
-                const hash = window.location.hash.split('?')[0];
                 const city = AppState.getCity();
                 const params = new URLSearchParams();
                 if (city && city !== 'София') params.set('city', city);
-                
-                if (hash && hash !== '#/' && hash !== '') {
-                    window.location.href = `/${params.toString() ? '?' + params.toString() : ''}`;
-                } else {
-                    AppController.setLocationType('neighborhood');
-                }
+                const queryString = params.toString() ? `?${params.toString()}` : '';
+                window.location.href = `/${queryString}`;
             });
         }
         
         if (btnChildcare) {
             btnChildcare.addEventListener('click', () => {
-                const hash = window.location.hash.split('?')[0];
                 const city = AppState.getCity();
                 const params = new URLSearchParams();
                 if (city && city !== 'София') params.set('city', city);
-                
-                if (hash !== '#/detskigradini') {
-                    window.location.href = `/#/detskigradini${params.toString() ? '?' + params.toString() : ''}`;
-                } else {
-                    AppController.setLocationType('childcare');
-                }
+                const queryString = params.toString() ? `?${params.toString()}` : '';
+                window.location.href = `/${queryString}#/detskigradini`;
             });
         }
         
         if (btnDoctors) {
             btnDoctors.addEventListener('click', () => {
-                const hash = window.location.hash.split('?')[0];
                 const city = AppState.getCity();
                 const params = new URLSearchParams();
                 if (city && city !== 'София') params.set('city', city);
-                
-                if (hash !== '#/lekari') {
-                    window.location.href = `/#/lekari${params.toString() ? '?' + params.toString() : ''}`;
-                } else {
-                    AppController.setLocationType('doctors');
-                }
+                const queryString = params.toString() ? `?${params.toString()}` : '';
+                window.location.href = `/${queryString}#/lekari`;
             });
         }
         
         if (btnDentists) {
             btnDentists.addEventListener('click', () => {
-                const hash = window.location.hash.split('?')[0];
                 const city = AppState.getCity();
                 const params = new URLSearchParams();
                 if (city && city !== 'София') params.set('city', city);
-                
-                if (hash !== '#/zabolekari') {
-                    window.location.href = `/#/zabolekari${params.toString() ? '?' + params.toString() : ''}`;
-                } else {
-                    AppController.setLocationType('dentists');
-                }
+                const queryString = params.toString() ? `?${params.toString()}` : '';
+                window.location.href = `/${queryString}#/zabolekari`;
             });
         }
     },
