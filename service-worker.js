@@ -1,5 +1,5 @@
 // Service Worker for PWA and Offline Support
-const CACHE_NAME = 'kvartali-v1';
+const CACHE_NAME = 'kvartali-v2';
 const RUNTIME_CACHE = 'kvartali-runtime';
 
 // Assets to cache on install
@@ -16,7 +16,11 @@ const STATIC_ASSETS = [
     '/firebase.js',
     '/appController.js',
     '/data.js',
-    '/firebase-config.js'
+    '/firebase-config.js',
+    '/mobile-enhancements.js',
+    '/seo-enhancements.js',
+    '/social-sharing.js',
+    '/dark-mode.js'
 ];
 
 // Install event - cache static assets
