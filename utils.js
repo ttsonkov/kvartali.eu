@@ -67,6 +67,31 @@ const Utils = {
         document.body.appendChild(toast);
         
         setTimeout(() => toast.remove(), 3000);
+    },
+    
+    // Debounce function for performance optimization
+    debounce(func, wait = 300) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    },
+    
+    // Throttle function for scroll/resize events
+    throttle(func, limit = 100) {
+        let inThrottle;
+        return function(...args) {
+            if (!inThrottle) {
+                func.apply(this, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
     }
 };
 

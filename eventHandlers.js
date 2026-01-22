@@ -72,13 +72,16 @@ const EventHandlers = {
         
         const filterNeighborhood = Utils.getElement('filterNeighborhood');
         if (filterNeighborhood) {
-            filterNeighborhood.addEventListener('change', (e) => {
+            // Debounced filter for better performance
+            const debouncedFilter = Utils.debounce((selectedNeighborhood) => {
                 const city = AppState.getCity();
-                const selectedNeighborhood = e.target.value;
-                
                 Utils.setElementValue('neighborhood', selectedNeighborhood);
                 displayResults(city, selectedNeighborhood);
                 Utils.updateURL(city, selectedNeighborhood);
+            }, 300);
+            
+            filterNeighborhood.addEventListener('change', (e) => {
+                debouncedFilter(e.target.value);
             });
         }
     },

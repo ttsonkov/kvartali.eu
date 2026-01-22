@@ -202,9 +202,60 @@ function displayResults(cityFilter = '', neighborhoodFilter = '') {
         return b.totalAvg - a.totalAvg;
     });
 
-    // Build HTML
+    // Lazy loading implementation with Intersection Observer
     container.innerHTML = '';
-    sortedEntries.forEach(({ neighborhood, city, neighborhoodRatings, avgRatings, totalAvg, locationType }) => {
+    
+    // Create placeholder for all items
+    const itemsPerPage = 10;
+    const totalPages = Math.ceil(sortedEntries.length / itemsPerPage);
+    
+    // Render first batch immediately
+    renderResultBatch(sortedEntries.slice(0, itemsPerPage), container);
+    
+    // Setup lazy loading for remaining items
+    if (sortedEntries.length > itemsPerPage) {
+        let currentPage = 1;
+        
+        // Create sentinel element for intersection observer
+        const sentinel = document.createElement('div');
+        sentinel.className = 'lazy-load-sentinel';
+        sentinel.style.height = '20px';
+        container.appendChild(sentinel);
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && currentPage < totalPages) {
+                    const start = currentPage * itemsPerPage;
+                    const end = start + itemsPerPage;
+                    const batch = sortedEntries.slice(start, end);
+                    
+                    // Remove sentinel temporarily
+                    sentinel.remove();
+                    
+                    // Render next batch
+                    renderResultBatch(batch, container);
+                    
+                    // Re-add sentinel if more items exist
+                    if (end < sortedEntries.length) {
+                        container.appendChild(sentinel);
+                    } else {
+                        observer.disconnect();
+                    }
+                    
+                    currentPage++;
+                }
+            });
+        }, {
+            rootMargin: '100px'
+        });
+        
+        observer.observe(sentinel);
+    }
+}
+
+// Helper function to render a batch of results
+function renderResultBatch(entries, container) {
+    entries.forEach(({ neighborhood, city, neighborhoodRatings, avgRatings, totalAvg, locationType }) => {
         const opinions = neighborhoodRatings.filter(r => r.opinion).map(r => r.opinion);
         const card = document.createElement('div');
         card.className = 'neighborhood-card';

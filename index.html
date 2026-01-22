@@ -20,6 +20,10 @@
     <meta name="google-adsense-account" content="ca-pub-5413114692875335">
     <title>KvartaliEU — Оценка на квартали, детски градини, лекари и зъболекари | София, Пловдив, Варна</title>
     <link rel="stylesheet" href="style.css?v=2">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="KvartaliEU">
     
     <!-- Google Analytics (Replace with your GA ID) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
@@ -204,6 +208,21 @@
         "worstRating": "1",
         "ratingCount": "1000"
     }
+    </script>
+    
+    <!-- Service Worker Registration for PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
     </script>
 </body>
 </html>
