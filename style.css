@@ -23,6 +23,15 @@ header {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     margin-bottom: 30px;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    padding: 15px 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
 header h1 {
@@ -574,3 +583,81 @@ h2 {
     font-size: 16px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
+/* PWA Install Button */
+.pwa-install-button {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    z-index: 999;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: slideInUp 0.5s ease;
+}
+
+.pwa-install-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+}
+
+.pwa-install-button:active {
+    transform: translateY(-1px);
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Swipe indicator for mobile */
+@media (max-width: 768px) {
+    .container {
+        position: relative;
+    }
+    
+    .swipe-hint {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        pointer-events: none;
+        opacity: 0;
+        animation: fadeInOut 3s ease-in-out;
+        z-index: 50;
+    }
+    
+    @keyframes fadeInOut {
+        0% { opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+    
+    .pwa-install-button {
+        bottom: 10px;
+        right: 10px;
+        padding: 12px 20px;
+        font-size: 12px;
+    }
+}
+
