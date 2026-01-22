@@ -336,6 +336,11 @@ function renderResultBatch(entries, container) {
         `;
         container.appendChild(card);
         
+        // Add chart toggle button (only for neighborhoods with 10 criteria)
+        if (typeof Charts !== 'undefined') {
+            Charts.addChartToggle(card, { neighborhood, avgRatings, locationType });
+        }
+        
         // Add event listener for opinion filter
         if (opinions.length > 0) {
             const filterSelect = card.querySelector('.neighborhood-opinion-filter');

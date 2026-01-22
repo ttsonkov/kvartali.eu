@@ -25,6 +25,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="KvartaliEU">
     
+    <!-- Chart.js for data visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WSC8ZZ3B70"></script>
     <script>
@@ -168,6 +171,24 @@
             <section class="results-section" aria-labelledby="results-heading">
                 <h2 id="results-heading">Резултати и мнения</h2>
                 
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-box">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="Търси по име на квартал, градина, лекар..." autocomplete="off">
+                        <button type="button" id="clearSearch" class="clear-search" style="display: none;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="searchSuggestions" class="search-suggestions" style="display: none;"></div>
+                </div>
+                
                 <!-- Advanced Filtering and Sorting Controls -->
                 <div class="controls-container">
                     <div class="filter-sort-group">
@@ -251,6 +272,10 @@
     <script src="social-sharing.js?v=20260122"></script>
     <!-- Dark mode -->
     <script src="dark-mode.js?v=20260122"></script>
+    <!-- Search functionality -->
+    <script src="search.js?v=20260122"></script>
+    <!-- Charts and visualizations -->
+    <script src="charts.js?v=20260122"></script>
     
     <!-- SEO Schema for rating application -->
     <script type="application/ld+json">
