@@ -59,12 +59,18 @@ const Utils = {
         const toast = document.createElement('div');
         toast.className = 'toast';
         toast.textContent = message;
+        toast.setAttribute('role', 'alert');
+        toast.setAttribute('aria-live', 'polite');
         if (type === 'error') {
             toast.style.background = '#dc3545';
+        } else if (type === 'warning') {
+            toast.style.background = '#ffc107';
+            toast.style.color = '#000';
         }
         document.body.appendChild(toast);
         
-        setTimeout(() => toast.remove(), 3000);
+        const duration = type === 'error' ? (CONFIG?.TOAST_ERROR_DURATION || 5000) : (CONFIG?.TOAST_DURATION || 3000);
+        setTimeout(() => toast.remove(), duration);
     },
     
     // Debounce function for performance optimization
@@ -90,6 +96,17 @@ const Utils = {
                 setTimeout(() => inThrottle = false, limit);
             }
         };
+    },
+    
+    // Safe async wrapper with error handling
+    async safeAsync(asyncFn, fallback = null, errorMsg = 'Възникна грешка') {
+        try {
+            return await asyncFn();
+        } catch (error) {
+            console.error(errorMsg, error);
+            this.showToast(errorMsg, 'error');
+            return fallback;
+        }
     }
 };
 

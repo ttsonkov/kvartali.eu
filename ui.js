@@ -1,5 +1,12 @@
 // UI Helper functions
 
+// Debounced ad refresh function
+const debouncedRefreshAds = Utils?.debounce(() => {
+    if (typeof AdSenseManager !== 'undefined') {
+        AdSenseManager.refreshAds();
+    }
+}, CONFIG?.AD_REFRESH_DEBOUNCE || 1000);
+
 // Update star display
 function updateStars(container, rating) {
     const stars = container.querySelectorAll('.star');
@@ -125,8 +132,19 @@ function populateSelectOptions(formCity = AppState.getCity(), filterCity = Utils
 }
 
 // Display results with sorting and advanced filtering
+let lazyLoadObserver = null; // Store observer to prevent memory leaks
+
 function displayResults(cityFilter = '', neighborhoodFilter = '', sortBy = 'rating-desc', minVotes = 0, minRating = 0) {
     const container = Utils.getElement('resultsContainer');
+    
+    // Cleanup old observer to prevent memory leaks
+    if (lazyLoadObserver) {
+        lazyLoadObserver.disconnect();
+        lazyLoadObserver = null;
+    }
+    
+    // Show loading state
+    container.innerHTML = '<div class="loading-state"><div class="spinner-large"></div><p>Зареждане на резултати...</p></div>';
     
     // Filter ratings
     let filteredRatings = allRatings;
@@ -240,7 +258,7 @@ function displayResults(cityFilter = '', neighborhoodFilter = '', sortBy = 'rati
         sentinel.style.height = '20px';
         container.appendChild(sentinel);
         
-        const observer = new IntersectionObserver((entries) => {
+        lazyLoadObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && currentPage < totalPages) {
                     const start = currentPage * itemsPerPage;
@@ -257,7 +275,9 @@ function displayResults(cityFilter = '', neighborhoodFilter = '', sortBy = 'rati
                     if (end < displayedEntries.length) {
                         container.appendChild(sentinel);
                     } else {
-                        observer.disconnect();
+                        if (lazyLoadObserver) {
+                            lazyLoadObserver.disconnect();
+                        }
                     }
                     
                     currentPage++;
@@ -267,7 +287,12 @@ function displayResults(cityFilter = '', neighborhoodFilter = '', sortBy = 'rati
             rootMargin: '100px'
         });
         
-        observer.observe(sentinel);
+        lazyLoadObserver.observe(sentinel);
+    }
+    
+    // Refresh ads with debounce
+    if (typeof AdSenseManager !== 'undefined' && typeof debouncedRefreshAds !== 'undefined') {
+        debouncedRefreshAds();
     }
 }
 

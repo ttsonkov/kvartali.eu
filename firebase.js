@@ -9,6 +9,7 @@ let currentUser = null;
 // Cloud-backed data caches
 let allRatings = [];
 let userVotedNeighborhoods = [];
+let votesLoaded = false; // Track if votes are loaded to prevent race conditions
 
 // Firestore live updates for results
 function attachRatingsListener() {
@@ -34,9 +35,13 @@ async function loadUserVotes() {
             const locationType = data.locationType || 'neighborhood';
             return Utils.makeVoteKey(data.city || 'София', data.neighborhood, locationType);
         });
+        votesLoaded = true;
         updateNeighborhoodOptions();
+        return true;
     } catch (err) {
         console.error('Error loading user votes:', err);
+        Utils.showToast('Грешка при зареждане на гласовете', 'error');
+        return false;
     }
 }
 
@@ -91,6 +96,12 @@ async function handleFormSubmit(e) {
 
     if (!currentUser) {
         Utils.showToast('Моля изчакайте автентикация...', 'error');
+        return;
+    }
+    
+    // Check if votes are loaded (prevent race condition)
+    if (!votesLoaded) {
+        Utils.showToast('Моля изчакайте зареждането на данните...', 'warning');
         return;
     }
 
@@ -206,6 +217,20 @@ async function handleFormSubmit(e) {
         }
 
         await docRef.set(ratingData);
+
+        // Track successful rating submission in Google Analytics
+        if (typeof gtag !== 'undefined') {
+            const avgRating = Object.values(ratings).reduce((a, b) => a + b, 0) / Object.keys(ratings).length;
+            gtag('event', 'submit_rating', {
+                'event_category': 'engagement',
+                'event_label': locationType,
+                'location_type': locationType,
+                'city': city,
+                'neighborhood': neighborhood,
+                'rating_value': avgRating.toFixed(2),
+                'has_opinion': opinion ? 'yes' : 'no'
+            });
+        }
 
         // Update local cache of voted neighborhoods for this user
         userVotedNeighborhoods.push(voteKey);
