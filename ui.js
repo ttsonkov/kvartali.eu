@@ -314,6 +314,7 @@ function renderResultBatch(entries, container) {
             </div>
             <div class="average-score">Среден рейтинг: ${totalAvg.toFixed(1)} / 5.0 ★</div>
             ${opinionHTML}
+            ${SocialSharing.createShareButtons(neighborhood, totalAvg.toFixed(1), city)}
         `;
         container.appendChild(card);
         

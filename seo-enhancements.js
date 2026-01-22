@@ -34,11 +34,16 @@ const SEOEnhancements = {
         const description = `Оценяване и преглед на ${typeName.toLowerCase()} в ${city}. Виж рейтинги, отзиви и мнения от местната общност.`;
         this.updateMetaTag('description', description);
         
-        // Update OG tags
+        // Update OG tags for better social sharing
         this.updateMetaTag('og:title', title, 'property');
         this.updateMetaTag('og:description', description, 'property');
+        this.updateMetaTag('og:url', window.location.href, 'property');
+        this.updateMetaTag('og:type', 'website', 'property');
+        
+        // Update Twitter tags
         this.updateMetaTag('twitter:title', title);
         this.updateMetaTag('twitter:description', description);
+        this.updateMetaTag('twitter:card', 'summary_large_image');
     },
     
     updateMetaTag(name, content, attribute = 'name') {
