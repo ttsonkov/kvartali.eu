@@ -13,19 +13,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu#/detskigradini</loc>
+    <loc>https://kvartali.eu?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu#/lekari</loc>
+    <loc>https://kvartali.eu?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu#/zabolekari</loc>
+    <loc>https://kvartali.eu?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -37,19 +37,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -61,19 +61,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%92%D0%B0%D1%80%D0%BD%D0%B0#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%92%D0%B0%D1%80%D0%BD%D0%B0?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%92%D0%B0%D1%80%D0%BD%D0%B0#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%92%D0%B0%D1%80%D0%BD%D0%B0?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%92%D0%B0%D1%80%D0%BD%D0%B0#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%92%D0%B0%D1%80%D0%BD%D0%B0?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -85,19 +85,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%91%D1%83%D1%80%D0%B3%D0%B0%D1%81#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%91%D1%83%D1%80%D0%B3%D0%B0%D1%81?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%91%D1%83%D1%80%D0%B3%D0%B0%D1%81#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%91%D1%83%D1%80%D0%B3%D0%B0%D1%81?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%91%D1%83%D1%80%D0%B3%D0%B0%D1%81#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%91%D1%83%D1%80%D0%B3%D0%B0%D1%81?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -109,19 +109,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B5%D0%B2%D0%B3%D1%80%D0%B0%D0%B4#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B5%D0%B2%D0%B3%D1%80%D0%B0%D0%B4?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B5%D0%B2%D0%B3%D1%80%D0%B0%D0%B4#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B5%D0%B2%D0%B3%D1%80%D0%B0%D0%B4?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B5%D0%B2%D0%B3%D1%80%D0%B0%D0%B4#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B5%D0%B2%D0%B3%D1%80%D0%B0%D0%B4?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -133,19 +133,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%20%D0%A2%D1%8A%D1%80%D0%BD%D0%BE%D0%B2%D0%BE#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%20%D0%A2%D1%8A%D1%80%D0%BD%D0%BE%D0%B2%D0%BE?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%20%D0%A2%D1%8A%D1%80%D0%BD%D0%BE%D0%B2%D0%BE#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%20%D0%A2%D1%8A%D1%80%D0%BD%D0%BE%D0%B2%D0%BE?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%20%D0%A2%D1%8A%D1%80%D0%BD%D0%BE%D0%B2%D0%BE#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%20%D0%A2%D1%8A%D1%80%D0%BD%D0%BE%D0%B2%D0%BE?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -157,19 +157,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%92%D0%B8%D0%B4%D0%B8%D0%BD#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%92%D0%B8%D0%B4%D0%B8%D0%BD?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%92%D0%B8%D0%B4%D0%B8%D0%BD#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%92%D0%B8%D0%B4%D0%B8%D0%BD?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%92%D0%B8%D0%B4%D0%B8%D0%BD#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%92%D0%B8%D0%B4%D0%B8%D0%BD?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -181,19 +181,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%92%D1%80%D0%B0%D1%86%D0%B0#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%92%D1%80%D0%B0%D1%86%D0%B0?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%92%D1%80%D0%B0%D1%86%D0%B0#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%92%D1%80%D0%B0%D1%86%D0%B0?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%92%D1%80%D0%B0%D1%86%D0%B0#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%92%D1%80%D0%B0%D1%86%D0%B0?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -205,19 +205,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%93%D0%B0%D0%B1%D1%80%D0%BE%D0%B2%D0%BE#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%93%D0%B0%D0%B1%D1%80%D0%BE%D0%B2%D0%BE?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%93%D0%B0%D0%B1%D1%80%D0%BE%D0%B2%D0%BE#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%93%D0%B0%D0%B1%D1%80%D0%BE%D0%B2%D0%BE?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%93%D0%B0%D0%B1%D1%80%D0%BE%D0%B2%D0%BE#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%93%D0%B0%D0%B1%D1%80%D0%BE%D0%B2%D0%BE?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -229,19 +229,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%94%D0%BE%D0%B1%D1%80%D0%B8%D1%87#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%94%D0%BE%D0%B1%D1%80%D0%B8%D1%87?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%94%D0%BE%D0%B1%D1%80%D0%B8%D1%87#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%94%D0%BE%D0%B1%D1%80%D0%B8%D1%87?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%94%D0%BE%D0%B1%D1%80%D0%B8%D1%87#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%94%D0%BE%D0%B1%D1%80%D0%B8%D1%87?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -253,19 +253,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9A%D1%8A%D1%80%D0%B4%D0%B6%D0%B0%D0%BB%D0%B8#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%9A%D1%8A%D1%80%D0%B4%D0%B6%D0%B0%D0%BB%D0%B8?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9A%D1%8A%D1%80%D0%B4%D0%B6%D0%B0%D0%BB%D0%B8#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9A%D1%8A%D1%80%D0%B4%D0%B6%D0%B0%D0%BB%D0%B8?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9A%D1%8A%D1%80%D0%B4%D0%B6%D0%B0%D0%BB%D0%B8#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9A%D1%8A%D1%80%D0%B4%D0%B6%D0%B0%D0%BB%D0%B8?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -277,19 +277,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9A%D1%8E%D1%81%D1%82%D0%B5%D0%BD%D0%B4%D0%B8%D0%BB#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%9A%D1%8E%D1%81%D1%82%D0%B5%D0%BD%D0%B4%D0%B8%D0%BB?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9A%D1%8E%D1%81%D1%82%D0%B5%D0%BD%D0%B4%D0%B8%D0%BB#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9A%D1%8E%D1%81%D1%82%D0%B5%D0%BD%D0%B4%D0%B8%D0%BB?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9A%D1%8E%D1%81%D1%82%D0%B5%D0%BD%D0%B4%D0%B8%D0%BB#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9A%D1%8E%D1%81%D1%82%D0%B5%D0%BD%D0%B4%D0%B8%D0%BB?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -301,19 +301,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9B%D0%BE%D0%B2%D0%B5%D1%87#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%9B%D0%BE%D0%B2%D0%B5%D1%87?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9B%D0%BE%D0%B2%D0%B5%D1%87#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9B%D0%BE%D0%B2%D0%B5%D1%87?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9B%D0%BE%D0%B2%D0%B5%D1%87#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9B%D0%BE%D0%B2%D0%B5%D1%87?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -325,19 +325,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9C%D0%BE%D0%BD%D1%82%D0%B0%D0%BD%D0%B0#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%9C%D0%BE%D0%BD%D1%82%D0%B0%D0%BD%D0%B0?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9C%D0%BE%D0%BD%D1%82%D0%B0%D0%BD%D0%B0#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9C%D0%BE%D0%BD%D1%82%D0%B0%D0%BD%D0%B0?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9C%D0%BE%D0%BD%D1%82%D0%B0%D0%BD%D0%B0#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9C%D0%BE%D0%BD%D1%82%D0%B0%D0%BD%D0%B0?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -349,19 +349,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9F%D0%B0%D0%B7%D0%B0%D1%80%D0%B4%D0%B6%D0%B8%D0%BA#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%9F%D0%B0%D0%B7%D0%B0%D1%80%D0%B4%D0%B6%D0%B8%D0%BA?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9F%D0%B0%D0%B7%D0%B0%D1%80%D0%B4%D0%B6%D0%B8%D0%BA#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9F%D0%B0%D0%B7%D0%B0%D1%80%D0%B4%D0%B6%D0%B8%D0%BA?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9F%D0%B0%D0%B7%D0%B0%D1%80%D0%B4%D0%B6%D0%B8%D0%BA#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9F%D0%B0%D0%B7%D0%B0%D1%80%D0%B4%D0%B6%D0%B8%D0%BA?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -373,19 +373,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9F%D0%B5%D1%80%D0%BD%D0%B8%D0%BA#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%9F%D0%B5%D1%80%D0%BD%D0%B8%D0%BA?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9F%D0%B5%D1%80%D0%BD%D0%B8%D0%BA#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9F%D0%B5%D1%80%D0%BD%D0%B8%D0%BA?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9F%D0%B5%D1%80%D0%BD%D0%B8%D0%BA#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9F%D0%B5%D1%80%D0%BD%D0%B8%D0%BA?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -397,19 +397,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9F%D0%BB%D0%B5%D0%B2%D0%B5%D0%BD#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%9F%D0%BB%D0%B5%D0%B2%D0%B5%D0%BD?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9F%D0%BB%D0%B5%D0%B2%D0%B5%D0%BD#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9F%D0%BB%D0%B5%D0%B2%D0%B5%D0%BD?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%9F%D0%BB%D0%B5%D0%B2%D0%B5%D0%BD#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%9F%D0%BB%D0%B5%D0%B2%D0%B5%D0%BD?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -421,19 +421,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A0%D0%B0%D0%B7%D0%B3%D1%80%D0%B0%D0%B4#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%A0%D0%B0%D0%B7%D0%B3%D1%80%D0%B0%D0%B4?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A0%D0%B0%D0%B7%D0%B3%D1%80%D0%B0%D0%B4#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A0%D0%B0%D0%B7%D0%B3%D1%80%D0%B0%D0%B4?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A0%D0%B0%D0%B7%D0%B3%D1%80%D0%B0%D0%B4#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A0%D0%B0%D0%B7%D0%B3%D1%80%D0%B0%D0%B4?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -445,19 +445,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A0%D1%83%D1%81%D0%B5#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%A0%D1%83%D1%81%D0%B5?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A0%D1%83%D1%81%D0%B5#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A0%D1%83%D1%81%D0%B5?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A0%D1%83%D1%81%D0%B5#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A0%D1%83%D1%81%D0%B5?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -469,19 +469,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A1%D0%B8%D0%BB%D0%B8%D1%81%D1%82%D1%80%D0%B0#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%A1%D0%B8%D0%BB%D0%B8%D1%81%D1%82%D1%80%D0%B0?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A1%D0%B8%D0%BB%D0%B8%D1%81%D1%82%D1%80%D0%B0#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A1%D0%B8%D0%BB%D0%B8%D1%81%D1%82%D1%80%D0%B0?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A1%D0%B8%D0%BB%D0%B8%D1%81%D1%82%D1%80%D0%B0#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A1%D0%B8%D0%BB%D0%B8%D1%81%D1%82%D1%80%D0%B0?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -493,19 +493,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A1%D0%BB%D0%B8%D0%B2%D0%B5%D0%BD#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%A1%D0%BB%D0%B8%D0%B2%D0%B5%D0%BD?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A1%D0%BB%D0%B8%D0%B2%D0%B5%D0%BD#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A1%D0%BB%D0%B8%D0%B2%D0%B5%D0%BD?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A1%D0%BB%D0%B8%D0%B2%D0%B5%D0%BD#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A1%D0%BB%D0%B8%D0%B2%D0%B5%D0%BD?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -517,19 +517,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A1%D0%BC%D0%BE%D0%BB%D1%8F%D0%BD#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%A1%D0%BC%D0%BE%D0%BB%D1%8F%D0%BD?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A1%D0%BC%D0%BE%D0%BB%D1%8F%D0%BD#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A1%D0%BC%D0%BE%D0%BB%D1%8F%D0%BD?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A1%D0%BC%D0%BE%D0%BB%D1%8F%D0%BD#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A1%D0%BC%D0%BE%D0%BB%D1%8F%D0%BD?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -541,19 +541,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A1%D1%82%D0%B0%D1%80%D0%B0%20%D0%97%D0%B0%D0%B3%D0%BE%D1%80%D0%B0#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%A1%D1%82%D0%B0%D1%80%D0%B0%20%D0%97%D0%B0%D0%B3%D0%BE%D1%80%D0%B0?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A1%D1%82%D0%B0%D1%80%D0%B0%20%D0%97%D0%B0%D0%B3%D0%BE%D1%80%D0%B0#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A1%D1%82%D0%B0%D1%80%D0%B0%20%D0%97%D0%B0%D0%B3%D0%BE%D1%80%D0%B0?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A1%D1%82%D0%B0%D1%80%D0%B0%20%D0%97%D0%B0%D0%B3%D0%BE%D1%80%D0%B0#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A1%D1%82%D0%B0%D1%80%D0%B0%20%D0%97%D0%B0%D0%B3%D0%BE%D1%80%D0%B0?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -565,19 +565,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A2%D1%8A%D1%80%D0%B3%D0%BE%D0%B2%D0%B8%D1%89%D0%B5#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%A2%D1%8A%D1%80%D0%B3%D0%BE%D0%B2%D0%B8%D1%89%D0%B5?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A2%D1%8A%D1%80%D0%B3%D0%BE%D0%B2%D0%B8%D1%89%D0%B5#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A2%D1%8A%D1%80%D0%B3%D0%BE%D0%B2%D0%B8%D1%89%D0%B5?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A2%D1%8A%D1%80%D0%B3%D0%BE%D0%B2%D0%B8%D1%89%D0%B5#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A2%D1%8A%D1%80%D0%B3%D0%BE%D0%B2%D0%B8%D1%89%D0%B5?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -589,19 +589,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A5%D0%B0%D1%81%D0%BA%D0%BE%D0%B2%D0%BE#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%A5%D0%B0%D1%81%D0%BA%D0%BE%D0%B2%D0%BE?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A5%D0%B0%D1%81%D0%BA%D0%BE%D0%B2%D0%BE#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A5%D0%B0%D1%81%D0%BA%D0%BE%D0%B2%D0%BE?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A5%D0%B0%D1%81%D0%BA%D0%BE%D0%B2%D0%BE#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A5%D0%B0%D1%81%D0%BA%D0%BE%D0%B2%D0%BE?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -613,19 +613,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A8%D1%83%D0%BC%D0%B5%D0%BD#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%A8%D1%83%D0%BC%D0%B5%D0%BD?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A8%D1%83%D0%BC%D0%B5%D0%BD#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A8%D1%83%D0%BC%D0%B5%D0%BD?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%A8%D1%83%D0%BC%D0%B5%D0%BD#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%A8%D1%83%D0%BC%D0%B5%D0%BD?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -637,19 +637,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%AF%D0%BC%D0%B1%D0%BE%D0%BB#/detskigradini</loc>
+    <loc>https://kvartali.eu?city=%D0%AF%D0%BC%D0%B1%D0%BE%D0%BB?type=childcare</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%AF%D0%BC%D0%B1%D0%BE%D0%BB#/lekari</loc>
+    <loc>https://kvartali.eu?city=%D0%AF%D0%BC%D0%B1%D0%BE%D0%BB?type=doctors</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kvartali.eu?city=%D0%AF%D0%BC%D0%B1%D0%BE%D0%BB#/zabolekari</loc>
+    <loc>https://kvartali.eu?city=%D0%AF%D0%BC%D0%B1%D0%BE%D0%BB?type=dentists</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

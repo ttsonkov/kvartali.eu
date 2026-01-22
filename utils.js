@@ -27,10 +27,8 @@ const Utils = {
         if (neighborhood) params.set('neighborhood', neighborhood);
         if (type && type !== 'neighborhood') params.set('type', type);
         
-        // Preserve current hash - query params BEFORE hash
-        const currentHash = window.location.hash || '';
         const queryString = params.toString() ? `?${params.toString()}` : '';
-        const newURL = `${window.location.pathname}${queryString}${currentHash}`;
+        const newURL = `${window.location.pathname}${queryString}`;
         window.history.pushState({ city, neighborhood, type }, '', newURL);
     },
     

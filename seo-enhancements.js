@@ -68,16 +68,12 @@ const SEOEnhancements = {
             params.set('city', city);
         }
         
-        const hashMap = {
-            'neighborhood': '',
-            'childcare': '#/detskigradini',
-            'doctors': '#/lekari',
-            'dentists': '#/zabolekari'
-        };
+        if (locationType && locationType !== 'neighborhood') {
+            params.set('type', locationType);
+        }
         
         const queryString = params.toString() ? `?${params.toString()}` : '';
-        const hash = hashMap[locationType] || '';
-        const canonicalURL = `${baseURL}${queryString}${hash}`;
+        const canonicalURL = `${baseURL}${queryString}`;
         
         let link = document.querySelector('link[rel="canonical"]');
         if (!link) {

@@ -9,9 +9,9 @@ const cities = [
 
 const locationTypes = [
     { path: '', name: 'Квартали' },
-    { path: '#/detskigradini', name: 'Детски градини' },
-    { path: '#/lekari', name: 'Лекари' },
-    { path: '#/zabolekari', name: 'Зъболекари' }
+    { path: '?type=childcare', name: 'Детски градини' },
+    { path: '?type=doctors', name: 'Лекари' },
+    { path: '?type=dentists', name: 'Зъболекари' }
 ];
 
 function generateSitemap() {

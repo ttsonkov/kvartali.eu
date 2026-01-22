@@ -31,8 +31,9 @@ const EventHandlers = {
                 const city = AppState.getCity();
                 const params = new URLSearchParams();
                 if (city && city !== 'София') params.set('city', city);
+                params.set('type', 'childcare');
                 const queryString = params.toString() ? `?${params.toString()}` : '';
-                window.location.href = `/${queryString}#/detskigradini`;
+                window.location.href = `/${queryString}`;
             });
         }
         
@@ -41,8 +42,9 @@ const EventHandlers = {
                 const city = AppState.getCity();
                 const params = new URLSearchParams();
                 if (city && city !== 'София') params.set('city', city);
+                params.set('type', 'doctors');
                 const queryString = params.toString() ? `?${params.toString()}` : '';
-                window.location.href = `/${queryString}#/lekari`;
+                window.location.href = `/${queryString}`;
             });
         }
         
@@ -51,8 +53,9 @@ const EventHandlers = {
                 const city = AppState.getCity();
                 const params = new URLSearchParams();
                 if (city && city !== 'София') params.set('city', city);
+                params.set('type', 'dentists');
                 const queryString = params.toString() ? `?${params.toString()}` : '';
-                window.location.href = `/${queryString}#/zabolekari`;
+                window.location.href = `/${queryString}`;
             });
         }
     },

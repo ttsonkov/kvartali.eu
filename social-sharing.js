@@ -18,18 +18,13 @@ const SocialSharing = {
         if (neighborhood) {
             params.set('location', neighborhood);
         }
-        
-        const hashMap = {
-            'neighborhood': '',
-            'childcare': '#/detskigradini',
-            'doctors': '#/lekari',
-            'dentists': '#/zabolekari'
-        };
+        if (locationType && locationType !== 'neighborhood') {
+            params.set('type', locationType);
+        }
         
         const queryString = params.toString() ? `?${params.toString()}` : '';
-        const hash = hashMap[locationType] || '';
         
-        return `${baseURL}${queryString}${hash}`;
+        return `${baseURL}${queryString}`;
     },
     
     // Generate share text
