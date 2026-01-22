@@ -1,5 +1,5 @@
 // Service Worker for PWA and Offline Support
-const CACHE_NAME = 'kvartali-v3';
+const CACHE_NAME = 'kvartali-v4';
 const RUNTIME_CACHE = 'kvartali-runtime';
 
 // Assets to cache on install
@@ -22,7 +22,8 @@ const STATIC_ASSETS = [
     '/social-sharing.js',
     '/dark-mode.js',
     '/search.js',
-    '/charts.js'
+    '/charts.js',
+    '/comparison.js'
 ];
 
 // Install event - cache static assets

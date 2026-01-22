@@ -341,6 +341,11 @@ function renderResultBatch(entries, container) {
             Charts.addChartToggle(card, { neighborhood, avgRatings, locationType });
         }
         
+        // Add comparison checkbox (only for neighborhoods)
+        if (typeof Comparison !== 'undefined') {
+            Comparison.addCompareCheckbox(card, { neighborhood, city, avgRatings, totalAvg, neighborhoodRatings, locationType });
+        }
+        
         // Add event listener for opinion filter
         if (opinions.length > 0) {
             const filterSelect = card.querySelector('.neighborhood-opinion-filter');

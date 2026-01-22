@@ -236,11 +236,50 @@
                     <div class="control-actions">
                         <span id="resultsCount" class="results-count">0 резултата</span>
                         <button type="button" id="resetFilters" class="btn-reset">Нулирай филтрите</button>
+                        <button type="button" id="compareButton" class="btn-compare">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            Сравни (0)
+                        </button>
                     </div>
                 </div>
                 
                 <div id="resultsContainer" role="region" aria-label="Контейнер за резултати"></div>
             </section>
+            
+            <!-- Comparison Modal -->
+            <div id="comparisonModal" class="modal" style="display: none;">
+                <div class="modal-overlay"></div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Сравнение на квартали</h2>
+                        <button type="button" id="closeComparison" class="btn-close-modal">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="comparisonContent">
+                        <!-- Comparison content will be inserted here -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="shareComparison" class="btn-share-comparison">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                            Сподели сравнението
+                        </button>
+                        <button type="button" id="clearComparison" class="btn-reset">Изчисти</button>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
@@ -276,6 +315,8 @@
     <script src="search.js?v=20260122"></script>
     <!-- Charts and visualizations -->
     <script src="charts.js?v=20260122"></script>
+    <!-- Comparison tool -->
+    <script src="comparison.js?v=20260122"></script>
     
     <!-- SEO Schema for rating application -->
     <script type="application/ld+json">
