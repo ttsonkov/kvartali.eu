@@ -132,6 +132,12 @@ const UIController = {
             shopsCriteria.style.display = isShops ? 'grid' : 'none';
         }
         
+        // Hide neighborhood filter for shops (they are independent from neighborhoods)
+        const filterNeighborhoodContainer = Utils.getElement('filterNeighborhoodContainer');
+        if (filterNeighborhoodContainer) {
+            filterNeighborhoodContainer.style.display = isShops ? 'none' : 'block';
+        }
+        
         // Populate specialty dropdown if doctors mode
         if (isDoctors) {
             const specialtySelect = Utils.getElement('specialty');
