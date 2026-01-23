@@ -992,9 +992,59 @@ const childcareNeighborhoods = {
     ]
 };
 
+// Shop chains by category
+const shopChains = {
+    supermarkets: [
+        "Kaufland", "Lidl", "Billa", "Fantastico", "Carrefour", 
+        "T-Market", "Metro", "Penny Market", "CBA", "Pyramida",
+        "Family Market", "Kamenitza", "Mladost", "Пазар Фантастико"
+    ],
+    pharmacies: [
+        "Sopharmacy", "Remedia", "Subra", "Benu", "Аптека Марешки",
+        "Lilly", "SOpharmacy 24", "Vita Herb", "Sanita", "Phoenix",
+        "Dr. Max", "Bella", "Аптека Фрамар"
+    ],
+    fitness: [
+        "Pulse Fitness & Spa", "Iron Gym", "Gym Nation", "World Class",
+        "FitMax", "Gold's Gym", "Body Line", "Fitness Academy",
+        "Orange Fitness", "Pulse Go", "Skyline Fitness", "Sportlife",
+        "Motion Fitness", "Sport Complex Champion"
+    ],
+    homeStores: [
+        "Praktiker", "Mr. Bricolage", "Jumbo", "IKEA", "Baumax",
+        "Technomarket", "Technopolis", "JYSK", "Leroy Merlin",
+        "XXXLutz", "Mondo", "Domko", "МаксМебел"
+    ],
+    clothing: [
+        "H&M", "Zara", "LC Waikiki", "New Yorker", "Reserved",
+        "C&A", "Terranova", "Bershka", "Pull&Bear", "Stradivarius",
+        "Mango", "Massimo Dutti", "Springfield", "Colin's"
+    ],
+    foodShops: [
+        "Bio Shop", "City Grill", "Mes Market", "Фамилна месарница",
+        "Здравословен рай", "Organic Shop", "Зеленчукова борса",
+        "Пекарна Каравела", "Добруджа", "Българска млечна компания",
+        "Дунав", "Мандра", "Rodopski Produkti"
+    ]
+};
+
+// Shop categories display names (Bulgarian)
+const shopCategoryNames = {
+    supermarkets: "Супермаркети",
+    pharmacies: "Аптеки",
+    fitness: "Фитнес центрове",
+    homeStores: "Магазини за дома",
+    clothing: "Магазини за дрехи",
+    foodShops: "Хранителни магазини"
+};
+
 // Derived data
 const cityList = Object.keys(cityNeighborhoods);
 const allNeighborhoods = Object.values(cityNeighborhoods).flat();
+
+// Make shop data globally accessible
+window.shopChains = shopChains;
+window.shopCategoryNames = shopCategoryNames;
 
 
 

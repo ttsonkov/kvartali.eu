@@ -152,9 +152,12 @@ function displayResults(cityFilter = '', neighborhoodFilter = '', sortBy = 'rati
     // Filter by location type
     filteredRatings = filteredRatings.filter(r => (r.locationType || 'neighborhood') === AppState.getLocationType());
     
-    // Always filter by current city
-    const city = cityFilter || AppState.getCity();
-    filteredRatings = filteredRatings.filter(r => (r.city || 'София') === city);
+    // Filter by city (but not for shops - they are independent)
+    const isShopsMode = AppState.getLocationType() === 'shops';
+    if (!isShopsMode) {
+        const city = cityFilter || AppState.getCity();
+        filteredRatings = filteredRatings.filter(r => (r.city || 'София') === city);
+    }
     
     // For doctors mode, filter by specialty if specified
     if (AppState.getLocationType() === 'doctors' && neighborhoodFilter) {
@@ -195,8 +198,8 @@ function displayResults(cityFilter = '', neighborhoodFilter = '', sortBy = 'rati
             specialty = match ? match[1] : '';
         }
         
-        if (locationType === 'childcare' || locationType === 'doctors' || locationType === 'dentists') {
-            // For childcare, doctors and dentists: only 'overall' rating
+        if (locationType === 'childcare' || locationType === 'doctors' || locationType === 'dentists' || locationType === 'shops') {
+            // For childcare, doctors, dentists and shops: only 'overall' rating
             const sum = neighborhoodRatings.reduce((acc, r) => acc + (r.ratings.overall || 0), 0);
             avgRatings.overall = (sum / neighborhoodRatings.length).toFixed(1);
             const totalAvg = parseFloat(avgRatings.overall);
@@ -332,8 +335,8 @@ function renderResultBatch(entries, container) {
         
         // Build rating grid based on type
         let ratingGridHTML = '';
-        if (locationType === 'childcare' || locationType === 'doctors' || locationType === 'dentists') {
-            // For childcare, doctors and dentists: show only overall rating
+        if (locationType === 'childcare' || locationType === 'doctors' || locationType === 'dentists' || locationType === 'shops') {
+            // For childcare, doctors, dentists and shops: show only overall rating
             ratingGridHTML = `
                 <div class="rating-item">
                     <span>Оценка:</span>

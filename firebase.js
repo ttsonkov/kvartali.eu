@@ -128,6 +128,24 @@ async function handleFormSubmit(e) {
             return;
         }
         neighborhood = doctorName;
+    } else if (locationType === 'shops') {
+        const shopCategory = Utils.getElementValue('shopCategory');
+        const shopName = Utils.getElementValue('shopName');
+        console.log('Shop data:', { shopCategory, shopName });
+        if (!shopCategory || !shopName) {
+            Utils.showToast('Моля изберете категория и магазин!', 'error');
+            return;
+        }
+        // Include category emoji in the neighborhood field for display
+        const categoryEmoji = {
+            'supermarkets': '🛒',
+            'pharmacies': '💊',
+            'fitness': '💪',
+            'homeStores': '🏪',
+            'clothing': '👕',
+            'foodShops': '🍞'
+        };
+        neighborhood = `${categoryEmoji[shopCategory] || ''} ${shopName} (${shopCategoryNames[shopCategory] || shopCategory})`;
     } else {
         neighborhood = Utils.getElementValue('neighborhood');
         if (!neighborhood) {
@@ -158,8 +176,8 @@ async function handleFormSubmit(e) {
     // Check if at least something is provided (ratings or opinion)
     let ratings = AppState.getRatings();
     
-    // For dentists/doctors/childcare, keep only 'overall' rating
-    if (locationType === 'childcare' || locationType === 'doctors' || locationType === 'dentists') {
+    // For dentists/doctors/childcare/shops, keep only 'overall' rating
+    if (locationType === 'childcare' || locationType === 'doctors' || locationType === 'dentists' || locationType === 'shops') {
         ratings = { overall: ratings.overall || 0 };
     }
     
@@ -168,13 +186,13 @@ async function handleFormSubmit(e) {
     
     console.log('Submitting rating:', { locationType, ratings, ratingValues, ratedCount });
     
-    // For childcare, doctors and dentists: need 1 rating (overall), for neighborhoods: need all 10
-    const expectedCriteria = (locationType === 'childcare' || locationType === 'doctors' || locationType === 'dentists') ? 1 : 10;
+    // For childcare, doctors, dentists and shops: need 1 rating (overall), for neighborhoods: need all 10
+    const expectedCriteria = (locationType === 'childcare' || locationType === 'doctors' || locationType === 'dentists' || locationType === 'shops') ? 1 : 10;
     const allRated = ratedCount === expectedCriteria;
     const noneRated = ratedCount === 0;
     
     if (!allRated && !noneRated) {
-        const message = (locationType === 'childcare' || locationType === 'doctors' || locationType === 'dentists')
+        const message = (locationType === 'childcare' || locationType === 'doctors' || locationType === 'dentists' || locationType === 'shops')
             ? 'Моля оценете или не оценявайте нито едно!'
             : 'Моля оценете всички 10 критерия или не оценявайте нито един!';
         Utils.showToast(message, 'error');

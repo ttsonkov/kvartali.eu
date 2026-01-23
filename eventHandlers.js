@@ -15,6 +15,7 @@ const EventHandlers = {
         const btnChildcare = Utils.getElement('btnChildcare');
         const btnDoctors = Utils.getElement('btnDoctors');
         const btnDentists = Utils.getElement('btnDentists');
+        const btnShops = Utils.getElement('btnShops');
         
         if (btnNeighborhoods) {
             btnNeighborhoods.addEventListener('click', () => {
@@ -56,6 +57,50 @@ const EventHandlers = {
                 params.set('type', 'dentists');
                 const queryString = params.toString() ? `?${params.toString()}` : '';
                 window.location.href = `/${queryString}`;
+            });
+        }
+        
+        if (btnShops) {
+            btnShops.addEventListener('click', () => {
+                const city = AppState.getCity();
+                const params = new URLSearchParams();
+                if (city && city !== 'София') params.set('city', city);
+                params.set('type', 'shops');
+                const queryString = params.toString() ? `?${params.toString()}` : '';
+                window.location.href = `/${queryString}`;
+            });
+        }
+        
+        // Shop category change handler
+        const shopCategory = Utils.getElement('shopCategory');
+        if (shopCategory) {
+            shopCategory.addEventListener('change', (e) => {
+                const category = e.target.value;
+                currentShopCategory = category;
+                
+                // Update shop name dropdown based on category
+                const shopNameSelect = Utils.getElement('shopName');
+                if (shopNameSelect && category) {
+                    const chains = shopChains[category] || [];
+                    shopNameSelect.innerHTML = '<option value="">Изберете магазин...</option>' +
+                        chains.map(chain => `<option value="${chain}">${chain}</option>`).join('');
+                    
+                    // Show shop name group
+                    const shopNameGroup = Utils.getElement('shopNameGroup');
+                    if (shopNameGroup) shopNameGroup.style.display = 'block';
+                } else if (shopNameSelect) {
+                    shopNameSelect.innerHTML = '<option value="">Изберете магазин...</option>';
+                    const shopNameGroup = Utils.getElement('shopNameGroup');
+                    if (shopNameGroup) shopNameGroup.style.display = 'none';
+                }
+            });
+        }
+        
+        // Shop name change handler
+        const shopName = Utils.getElement('shopName');
+        if (shopName) {
+            shopName.addEventListener('change', (e) => {
+                currentShopName = e.target.value;
             });
         }
     },

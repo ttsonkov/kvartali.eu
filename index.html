@@ -81,6 +81,7 @@
                     <button type="button" id="btnChildcare" class="toggle-btn" role="tab" aria-selected="false" aria-label="Оценка на детски градини">Детски градини</button>
                     <button type="button" id="btnDoctors" class="toggle-btn" role="tab" aria-selected="false" aria-label="Оценка на лекари">Лекари</button>
                     <button type="button" id="btnDentists" class="toggle-btn" role="tab" aria-selected="false" aria-label="Оценка на зъболекари">Зъболекари</button>
+                    <button type="button" id="btnShops" class="toggle-btn" role="tab" aria-selected="false" aria-label="Оценка на магазини">Магазини</button>
                 </div>
             </div>
             <p id="headerSubtitle">Оценете кварталите на всички областни градове по 10 критерия (1-5 звезди) - по един глас на квартал</p>
@@ -109,6 +110,28 @@
                         <label for="specialty">Специалност:</label>
                         <select id="specialty" aria-label="Медицинска специалност">
                             <option value="">Изберете специалност...</option>
+                        </select>
+                    </div>
+
+                    <!-- Shop category selector (for shops mode) -->
+                    <div class="form-group" id="shopCategoryGroup" style="display: none;">
+                        <label for="shopCategory">Категория магазин:</label>
+                        <select id="shopCategory" aria-label="Категория магазин">
+                            <option value="">Изберете категория...</option>
+                            <option value="supermarkets">🛒 Супермаркети</option>
+                            <option value="pharmacies">💊 Аптеки</option>
+                            <option value="fitness">💪 Фитнес центрове</option>
+                            <option value="homeStores">🏪 Магазини за дома</option>
+                            <option value="clothing">👕 Магазини за дрехи</option>
+                            <option value="foodShops">🍞 Хранителни магазини</option>
+                        </select>
+                    </div>
+
+                    <!-- Shop chain/name selector (for shops mode) -->
+                    <div class="form-group" id="shopNameGroup" style="display: none;">
+                        <label for="shopName">Верига/Магазин:</label>
+                        <select id="shopName" aria-label="Верига или магазин">
+                            <option value="">Изберете магазин...</option>
                         </select>
                     </div>
 
@@ -158,6 +181,14 @@
 
                     <!-- Single rating for childcare facilities -->
                     <div class="criteria-grid" id="childcareCriteria" style="display: none;">
+                        <div class="criterion">
+                            <label>Оценка:</label>
+                            <div class="stars" data-criterion="overall"></div>
+                        </div>
+                    </div>
+
+                    <!-- Single rating for shops -->
+                    <div class="criteria-grid" id="shopsCriteria" style="display: none;">
                         <div class="criterion">
                             <label>Оценка:</label>
                             <div class="stars" data-criterion="overall"></div>

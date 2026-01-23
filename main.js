@@ -30,9 +30,11 @@ window.addEventListener('unhandledrejection', (event) => {
 
 let currentCity = "София";
 let currentRatings = {};
-let currentLocationType = "neighborhood"; // 'neighborhood' or 'childcare'
+let currentLocationType = "neighborhood"; // 'neighborhood', 'childcare', 'doctors', 'dentists', 'shops'
+let currentShopCategory = ""; // for shops mode
+let currentShopName = ""; // for shops mode
 
-// Vote key includes location type to distinguish childcare from neighborhoods
+// Vote key includes location type to distinguish different types
 const makeVoteKey = (city, neighborhood, type = "neighborhood") => `${type}::${city || 'София'}::${neighborhood}`;
 
 // Fallback data in case data.js fails to load
