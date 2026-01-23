@@ -66,6 +66,13 @@ const AppController = {
                 if (titleSpan) titleSpan.textContent = '🦷 Зъболекари:';
             }
             document.title = 'Зъболекари на България - Оценки и мнения | KvartaliEU';
+        } else if (locationType === 'shops') {
+            const pageTitle = document.getElementById('pageTitle');
+            if (pageTitle) {
+                const titleSpan = pageTitle.querySelector('span:first-child');
+                if (titleSpan) titleSpan.textContent = '🛒 Магазини:';
+            }
+            document.title = 'Магазини на България - Оценки и мнения | KvartaliEU';
         }
         
         // Setup event listeners
