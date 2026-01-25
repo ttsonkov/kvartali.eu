@@ -24,10 +24,12 @@ const AdSenseManager = {
     insertNativeAds(position = 5) {
         const resultsContainer = document.getElementById('resultsContainer');
         if (!resultsContainer) return;
-        
-        const resultCards = resultsContainer.querySelectorAll('.result-card');
-        
-        // Insert ads every 5 items
+        // Defensive: do not insert ads if container is not visible or has no width
+        if (resultsContainer.offsetWidth === 0) {
+            console.warn('AdSenseManager: resultsContainer has width 0, skipping ad insertion');
+            return;
+        }
+        const resultCards = resultsContainer.querySelectorAll('.result-card, .neighborhood-card');
         let adsInserted = 0;
         resultCards.forEach((card, index) => {
             if ((index + 1) % position === 0 && index > 0) {
@@ -35,7 +37,6 @@ const AdSenseManager = {
                 const adContainer = document.createElement('div');
                 adContainer.className = 'native-ad-container';
                 adContainer.style.cssText = 'margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;';
-                
                 const adUnit = document.createElement('ins');
                 adUnit.className = 'adsbygoogle';
                 adUnit.style.display = 'block';
@@ -43,22 +44,22 @@ const AdSenseManager = {
                 adUnit.setAttribute('data-ad-layout-key', '-6t+ed+2i-1n-4w');
                 adUnit.setAttribute('data-ad-client', this.publisherId);
                 adUnit.setAttribute('data-ad-slot', this.nativeAdSlot);
-                
                 adContainer.appendChild(adUnit);
-                
                 // Insert after current card
                 card.parentNode.insertBefore(adContainer, card.nextSibling);
-                
-                // Push ad to AdSense
-                try {
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                    adsInserted++;
-                } catch (e) {
-                    console.error('AdSense push error:', e);
+                // Push ad to AdSense only if container is visible
+                if (adContainer.offsetWidth > 0) {
+                    try {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        adsInserted++;
+                    } catch (e) {
+                        console.error('AdSense push error:', e);
+                    }
+                } else {
+                    console.warn('AdSenseManager: adContainer has width 0, skipping adsbygoogle.push');
                 }
             }
         });
-        
         console.log(`Inserted ${adsInserted} native ads`);
     },
     
