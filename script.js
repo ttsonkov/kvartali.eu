@@ -187,12 +187,6 @@ const getNeighborhoodsForCity = (city) => {
     return cityNeighborhoods[city] || [];
 };
 
-function updateHeaderCity(city) {
-    const link = document.getElementById('headerCityLink');
-    if (link) {
-        link.textContent = city;
-    }
-}
 
 function applyCitySelection(city) {
     const newCity = city || 'София';

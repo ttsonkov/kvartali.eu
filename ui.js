@@ -26,6 +26,7 @@ function updateHeaderCity(city) {
         link.textContent = city;
     }
 }
+window.updateHeaderCity = updateHeaderCity;
 
 // Header city menu functions
 function buildHeaderCityMenu() {
@@ -241,59 +242,83 @@ function displayResults(cityFilter = '', neighborhoodFilter = '', sortBy = 'rati
         return;
     }
     
-    // Lazy loading implementation with Intersection Observer
+    // Special split layout for childcare (CSS only, keep DOM structure)
+    if (AppState.getLocationType() === 'childcare') {
+        // Add split layout class to parent container
+        const mainContent = document.getElementById('main-content');
+        if (mainContent && !mainContent.classList.contains('childcare-split-layout')) {
+            mainContent.classList.add('childcare-split-layout');
+        }
+    } else {
+        // Remove split layout class if not childcare
+        const mainContent = document.getElementById('main-content');
+        if (mainContent && mainContent.classList.contains('childcare-split-layout')) {
+            mainContent.classList.remove('childcare-split-layout');
+        }
+    }
+    // Default: original layout, but for childcare the CSS will split visually
     container.innerHTML = '';
-    
-    // Create placeholder for all items
     const itemsPerPage = 10;
     const totalPages = Math.ceil(displayedEntries.length / itemsPerPage);
-    
-    // Render first batch immediately
     renderResultBatch(displayedEntries.slice(0, itemsPerPage), container);
-    
-    // Setup lazy loading for remaining items
     if (displayedEntries.length > itemsPerPage) {
         let currentPage = 1;
-        
-        // Create sentinel element for intersection observer
         const sentinel = document.createElement('div');
         sentinel.className = 'lazy-load-sentinel';
         sentinel.style.height = '20px';
         container.appendChild(sentinel);
-        
         lazyLoadObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && currentPage < totalPages) {
                     const start = currentPage * itemsPerPage;
                     const end = start + itemsPerPage;
                     const batch = displayedEntries.slice(start, end);
-                    
-                    // Remove sentinel temporarily
                     sentinel.remove();
-                    
-                    // Render next batch
                     renderResultBatch(batch, container);
-                    
-                    // Re-add sentinel if more items exist
                     if (end < displayedEntries.length) {
                         container.appendChild(sentinel);
                     } else {
-                        if (lazyLoadObserver) {
-                            lazyLoadObserver.disconnect();
-                        }
+                        if (lazyLoadObserver) lazyLoadObserver.disconnect();
                     }
-                    
                     currentPage++;
                 }
             });
-        }, {
-            rootMargin: '100px'
-        });
-        
+        }, { rootMargin: '100px' });
         lazyLoadObserver.observe(sentinel);
     }
-    
-    // Refresh ads with debounce
+    if (typeof AdSenseManager !== 'undefined' && typeof debouncedRefreshAds !== 'undefined') {
+        debouncedRefreshAds();
+    }
+    // Default: original layout
+    container.innerHTML = '';
+    const itemsPerPage = 10;
+    const totalPages = Math.ceil(displayedEntries.length / itemsPerPage);
+    renderResultBatch(displayedEntries.slice(0, itemsPerPage), container);
+    if (displayedEntries.length > itemsPerPage) {
+        let currentPage = 1;
+        const sentinel = document.createElement('div');
+        sentinel.className = 'lazy-load-sentinel';
+        sentinel.style.height = '20px';
+        container.appendChild(sentinel);
+        lazyLoadObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && currentPage < totalPages) {
+                    const start = currentPage * itemsPerPage;
+                    const end = start + itemsPerPage;
+                    const batch = displayedEntries.slice(start, end);
+                    sentinel.remove();
+                    renderResultBatch(batch, container);
+                    if (end < displayedEntries.length) {
+                        container.appendChild(sentinel);
+                    } else {
+                        if (lazyLoadObserver) lazyLoadObserver.disconnect();
+                    }
+                    currentPage++;
+                }
+            });
+        }, { rootMargin: '100px' });
+        lazyLoadObserver.observe(sentinel);
+    }
     if (typeof AdSenseManager !== 'undefined' && typeof debouncedRefreshAds !== 'undefined') {
         debouncedRefreshAds();
     }

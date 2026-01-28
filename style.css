@@ -1,4 +1,40 @@
-﻿:root {
+﻿/* Childcare split layout (CSS only, no DOM move) */
+.childcare-split-layout {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    margin-top: 24px;
+}
+.childcare-split-layout .results-section {
+    flex: 2 1 0;
+    min-width: 0;
+}
+.childcare-split-layout .form-section {
+    flex: 1 1 320px;
+    min-width: 320px;
+    max-width: 420px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px var(--shadow-color);
+    padding: 24px 20px;
+    position: sticky;
+    top: 32px;
+    height: fit-content;
+}
+@media (max-width: 900px) {
+    .childcare-split-layout {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .childcare-split-layout .form-section {
+        position: static;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 16px 8px;
+    }
+}
+:root {
     /* Light mode colors */
     --bg-gradient-start: #667eea;
     --bg-gradient-end: #764ba2;

@@ -24,9 +24,19 @@ const AdSenseManager = {
     insertNativeAds(position = 5) {
         const resultsContainer = document.getElementById('resultsContainer');
         if (!resultsContainer) return;
-        // Defensive: do not insert ads if container is not visible or has no width
-        if (resultsContainer.offsetWidth === 0) {
-            console.warn('AdSenseManager: resultsContainer has width 0, skipping ad insertion');
+        // Defensive: do not insert ads if container or any parent is not visible or has no width
+        // Check both offsetWidth and getBoundingClientRect().width for all parents
+        function isVisibleAndHasWidth(el) {
+            while (el) {
+                if (el.offsetWidth === 0 || el.getBoundingClientRect().width === 0) {
+                    return false;
+                }
+                el = el.parentElement;
+            }
+            return true;
+        }
+        if (!isVisibleAndHasWidth(resultsContainer)) {
+            console.warn('AdSenseManager: resultsContainer or parent has zero width, skipping ad insertion');
             return;
         }
         const resultCards = resultsContainer.querySelectorAll('.result-card, .neighborhood-card');
@@ -47,8 +57,8 @@ const AdSenseManager = {
                 adContainer.appendChild(adUnit);
                 // Insert after current card
                 card.parentNode.insertBefore(adContainer, card.nextSibling);
-                // Push ad to AdSense only if container is visible
-                if (adContainer.offsetWidth > 0) {
+                // Push ad to AdSense only if container and all parents are visible
+                if (isVisibleAndHasWidth(adContainer)) {
                     try {
                         (adsbygoogle = window.adsbygoogle || []).push({});
                         adsInserted++;
@@ -56,7 +66,7 @@ const AdSenseManager = {
                         console.error('AdSense push error:', e);
                     }
                 } else {
-                    console.warn('AdSenseManager: adContainer has width 0, skipping adsbygoogle.push');
+                    console.warn('AdSenseManager: adContainer or parent has zero width, skipping adsbygoogle.push');
                 }
             }
         });
