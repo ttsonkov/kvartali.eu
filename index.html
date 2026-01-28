@@ -291,7 +291,14 @@
                          data-ad-format="auto"
                          data-full-width-responsive="true"></ins>
                     <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
+                        (function() {
+                            var ad = document.querySelector('.ad-container .adsbygoogle');
+                            if (ad && ad.offsetWidth > 0 && ad.getBoundingClientRect().width > 0) {
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            } else {
+                                console.warn('AdSense: Not pushing ad because container is not visible or has zero width');
+                            }
+                        })();
                     </script>
                 </div>
                 
