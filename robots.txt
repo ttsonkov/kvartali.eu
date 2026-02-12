@@ -1,0 +1,65 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /about.html
+Allow: /privacy.html
+Allow: /terms.html
+Allow: /sofia.html
+Allow: /plovdiv.html
+Allow: /varna.html
+Allow: /burgas.html
+Allow: /blog.html
+Allow: /style.css
+
+# Allow crawling of URL parameters for different pages
+Allow: /?city=*
+Allow: /?type=*
+Allow: /?city=*&type=*
+
+# Disallow non-essential files for crawlers
+Disallow: /build/
+Disallow: /firebase-config.js
+Disallow: /service-worker.js
+Disallow: /*.map$
+
+# Specific bot rules for better crawling
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# AdSense bot - allow full access
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemaps
+Sitemap: https://kvartali.eu/sitemap.xml
+
+# Host preference
+Host: https://kvartali.eu

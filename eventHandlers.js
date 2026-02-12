@@ -1,0 +1,278 @@
+﻿// Event Handlers (Single Responsibility - User Interactions)
+const EventHandlers = {
+    // Setup all event listeners
+    setupAll() {
+        this.setupLocationTypeButtons();
+        this.setupNeighborhoodSelectors();
+        this.setupSortingAndFiltering();
+        this.setupHeaderMenu();
+        this.setupBrowserNavigation();
+        this.setupFormSubmission();
+    },
+    
+    setupLocationTypeButtons() {
+        const btnNeighborhoods = Utils.getElement('btnNeighborhoods');
+        const btnChildcare = Utils.getElement('btnChildcare');
+        const btnSchools = Utils.getElement('btnSchools');
+        const btnDoctors = Utils.getElement('btnDoctors');
+        const btnServices = Utils.getElement('btnServices');
+        const btnShops = Utils.getElement('btnShops');
+        
+        if (btnNeighborhoods) {
+            btnNeighborhoods.addEventListener('click', () => {
+                const city = AppState.getCity();
+                const params = new URLSearchParams();
+                if (city && city !== 'София') params.set('city', city);
+                const queryString = params.toString() ? `?${params.toString()}` : '';
+                window.location.href = `/${queryString}`;
+            });
+        }
+        
+        if (btnChildcare) {
+            btnChildcare.addEventListener('click', () => {
+                const city = AppState.getCity();
+                const params = new URLSearchParams();
+                if (city && city !== 'София') params.set('city', city);
+                params.set('type', 'childcare');
+                const queryString = params.toString() ? `?${params.toString()}` : '';
+                window.location.href = `/${queryString}`;
+            });
+        }
+        
+        if (btnSchools) {
+            btnSchools.addEventListener('click', () => {
+                const city = AppState.getCity();
+                const params = new URLSearchParams();
+                if (city && city !== 'София') params.set('city', city);
+                params.set('type', 'schools');
+                const queryString = params.toString() ? `?${params.toString()}` : '';
+                window.location.href = `/${queryString}`;
+            });
+        }
+        
+        if (btnDoctors) {
+            btnDoctors.addEventListener('click', () => {
+                const city = AppState.getCity();
+                const params = new URLSearchParams();
+                if (city && city !== 'София') params.set('city', city);
+                params.set('type', 'doctors');
+                const queryString = params.toString() ? `?${params.toString()}` : '';
+                window.location.href = `/${queryString}`;
+            });
+        }
+        
+        if (btnServices) {
+            btnServices.addEventListener('click', () => {
+                const city = AppState.getCity();
+                const params = new URLSearchParams();
+                if (city && city !== 'София') params.set('city', city);
+                params.set('type', 'services');
+                const queryString = params.toString() ? `?${params.toString()}` : '';
+                window.location.href = `/${queryString}`;
+            });
+        }
+        
+        if (btnShops) {
+            btnShops.addEventListener('click', () => {
+                const city = AppState.getCity();
+                const params = new URLSearchParams();
+                if (city && city !== 'София') params.set('city', city);
+                params.set('type', 'shops');
+                const queryString = params.toString() ? `?${params.toString()}` : '';
+                window.location.href = `/${queryString}`;
+            });
+        }
+        
+        // Shop category change handler
+        const shopCategory = Utils.getElement('shopCategory');
+        if (shopCategory) {
+            shopCategory.addEventListener('change', (e) => {
+                const category = e.target.value;
+                currentShopCategory = category;
+                
+                // Update shop name dropdown based on category
+                const shopNameSelect = Utils.getElement('shopName');
+                if (shopNameSelect && category) {
+                    const chains = shopChains[category] || [];
+                    // Sort chains alphabetically using Bulgarian locale
+                    const sortedChains = chains.slice().sort((a, b) => a.localeCompare(b, 'bg'));
+                    shopNameSelect.innerHTML = '<option value="">Изберете магазин...</option>' +
+                        sortedChains.map(chain => `<option value="${chain}">${chain}</option>`).join('');
+                    
+                    // Show shop name group
+                    const shopNameGroup = Utils.getElement('shopNameGroup');
+                    if (shopNameGroup) shopNameGroup.style.display = 'block';
+                } else if (shopNameSelect) {
+                    shopNameSelect.innerHTML = '<option value="">Изберете магазин...</option>';
+                    const shopNameGroup = Utils.getElement('shopNameGroup');
+                    if (shopNameGroup) shopNameGroup.style.display = 'none';
+                }
+            });
+        }
+        
+        // Shop name change handler
+        const shopName = Utils.getElement('shopName');
+        if (shopName) {
+            shopName.addEventListener('change', (e) => {
+                currentShopName = e.target.value;
+            });
+        }
+        
+        // Note: Service city is now auto-populated from AppState.getCity() in uiController.js
+        // No need for manual city selection handler
+    },
+    
+    
+    setupNeighborhoodSelectors() {
+        const neighborhood = Utils.getElement('neighborhood');
+        if (neighborhood) {
+            neighborhood.addEventListener('change', (e) => {
+                const selectedNeighborhood = e.target.value;
+                
+                Utils.setElementValue('filterNeighborhood', selectedNeighborhood);
+                triggerFilteredDisplay();
+            });
+        }
+        
+        const filterNeighborhood = Utils.getElement('filterNeighborhood');
+        if (filterNeighborhood) {
+            // Debounced filter for better performance
+            const debouncedFilter = Utils.debounce(() => {
+                triggerFilteredDisplay();
+            }, 300);
+            
+            filterNeighborhood.addEventListener('change', () => {
+                debouncedFilter();
+            });
+        }
+    },
+    
+    setupSortingAndFiltering() {
+        // Sort by dropdown
+        const sortBy = Utils.getElement('sortBy');
+        if (sortBy) {
+            sortBy.addEventListener('change', () => {
+                triggerFilteredDisplay();
+                
+                // Track sorting in analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'sort_change', {
+                        event_category: 'filtering',
+                        event_label: sortBy.value
+                    });
+                }
+            });
+        }
+        
+        // Min votes slider
+        const minVotes = Utils.getElement('minVotes');
+        const minVotesValue = Utils.getElement('minVotesValue');
+        if (minVotes && minVotesValue) {
+            minVotes.addEventListener('input', (e) => {
+                minVotesValue.textContent = e.target.value;
+            });
+            
+            minVotes.addEventListener('change', () => {
+                triggerFilteredDisplay();
+                
+                // Track filtering in analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'filter_votes', {
+                        event_category: 'filtering',
+                        value: parseInt(minVotes.value)
+                    });
+                }
+            });
+        }
+        
+        // Min rating slider
+        const minRating = Utils.getElement('minRating');
+        const minRatingValue = Utils.getElement('minRatingValue');
+        if (minRating && minRatingValue) {
+            minRating.addEventListener('input', (e) => {
+                minRatingValue.textContent = parseFloat(e.target.value).toFixed(1);
+            });
+            
+            minRating.addEventListener('change', () => {
+                triggerFilteredDisplay();
+                
+                // Track filtering in analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'filter_rating', {
+                        event_category: 'filtering',
+                        value: parseFloat(minRating.value)
+                    });
+                }
+            });
+        }
+        
+        // Reset filters button
+        const resetFilters = Utils.getElement('resetFilters');
+        if (resetFilters) {
+            resetFilters.addEventListener('click', () => {
+                // Reset all filter controls
+                Utils.setElementValue('filterNeighborhood', '');
+                Utils.setElementValue('sortBy', 'rating-desc');
+                Utils.setElementValue('minVotes', '0');
+                Utils.setElementValue('minRating', '0');
+                
+                if (minVotesValue) minVotesValue.textContent = '0';
+                if (minRatingValue) minRatingValue.textContent = '0.0';
+                
+                // Trigger display refresh
+                triggerFilteredDisplay();
+                
+                // Track reset in analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'reset_filters', {
+                        event_category: 'filtering'
+                    });
+                }
+            });
+        }
+    },
+    
+    setupHeaderMenu() {
+        const headerCityLink = Utils.getElement('headerCityLink');
+        if (headerCityLink) {
+            headerCityLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleHeaderMenu();
+            });
+        }
+        
+        document.addEventListener('click', (e) => {
+            const menu = Utils.getElement('headerCityMenu');
+            const link = Utils.getElement('headerCityLink');
+            if (!menu || !link) return;
+            if (!menu.contains(e.target) && !link.contains(e.target)) {
+                hideHeaderMenu();
+            }
+        });
+    },
+    
+    setupBrowserNavigation() {
+        window.addEventListener('popstate', () => {
+            const urlParams = Utils.getURLParams();
+            if (urlParams.type && urlParams.type !== AppState.getLocationType()) {
+                AppController.setLocationType(urlParams.type);
+            }
+            AppController.selectCity(urlParams.city);
+            if (urlParams.neighborhood) {
+                Utils.setElementValue('filterNeighborhood', urlParams.neighborhood);
+                displayResults(urlParams.city, urlParams.neighborhood);
+            }
+        });
+    },
+    
+    setupFormSubmission() {
+        const form = Utils.getElement('ratingForm');
+        if (form) {
+            form.addEventListener('submit', handleFormSubmit);
+        }
+    }
+};
+
+// Expose globally
+window.EventHandlers = EventHandlers;

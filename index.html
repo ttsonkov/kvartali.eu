@@ -1,0 +1,889 @@
+﻿<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KvartaliEU е водещата българска платформа за оценяване на квартали, детски градини, училища, лекари, услуги и магазини. ★ Рейтинги от реални жители ★ 28 областни града ★ 10 критерия за оценка ★ Безплатно и анонимно. Открийте най-добрите квартали в София, Пловдив, Варна и цяла България!">
+    <meta name="keywords" content="оценка квартали, квартали София, детски градини България, лекари отзиви, магазини рейтинг, най-добри квартали, Пловдив квартали, Варна квартали, рейтинг детски градини, общностни мнения, услуги, майстори, електричари, ВИК, къде да живея, безопасни квартали, детски ясли, семейни квартали, жилищни райони">
+    <meta name="author" content="KvartaliEU">
+    <meta name="publisher" content="KvartaliEU">
+    <meta name="copyright" content="2026 KvartaliEU. Всички права запазени.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="Bulgarian">
+    <meta name="revisit-after" content="3 days">
+    <meta name="rating" content="general">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="KvartaliEU — Оценка на квартали, детски градини, училища, лекари, услуги и магазини">
+    <meta property="og:description" content="Платформа за оценяване на квартали, детски градини, училища, лекари, услуги и магазини в България. Рейтинги от реални потребители за София, Пловдив, Варна и всички областни градове.">
+    <meta property="og:site_name" content="KvartaliEU">
+    <meta property="og:image" content="https://kvartali.eu/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="KvartaliEU - Рейтинги на квартали в България">
+    <meta property="og:locale" content="bg_BG">
+    <meta property="og:url" content="https://kvartali.eu">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KvartaliEU — Оценка на квартали, детски градини, училища, лекари, услуги и магазини">
+    <meta name="twitter:description" content="Платформа за оценяване на квартали, детски градини, лекари и магазини в България">
+    <meta name="twitter:image" content="https://kvartali.eu/og-image.png">
+    <meta name="twitter:image:alt" content="KvartaliEU - Рейтинги на квартали">
+    <meta name="twitter:site" content="@kvartali_eu">
+    <meta name="twitter:creator" content="@kvartali_eu">
+    <link rel="canonical" href="https://kvartali.eu">
+    <!-- Hreflang tags for international SEO -->
+    <link rel="alternate" hreflang="bg" href="https://kvartali.eu">
+    <link rel="alternate" hreflang="x-default" href="https://kvartali.eu">
+    <!-- Geo tags for local SEO -->
+    <meta name="geo.region" content="BG">
+    <meta name="geo.placename" content="Bulgaria">
+    <meta name="geo.position" content="42.6977;23.3219">
+    <meta name="ICBM" content="42.6977, 23.3219">
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-TileColor" content="#667eea">
+    <meta name="google-adsense-account" content="ca-pub-5413114692875335">
+    <!-- Google Search Console verification - Replace YOUR_VERIFICATION_CODE with actual code from GSC -->
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE">
+    <!-- Additional SEO meta tags -->
+    <meta name="classification" content="Rating, Reviews, Local Business, Community">
+    <meta name="category" content="Neighborhood Ratings, Reviews">
+    <meta name="coverage" content="Bulgaria">
+    <meta name="distribution" content="global">
+    <meta name="target" content="all">
+    <meta http-equiv="content-language" content="bg">
+    <!-- Google AdSense Auto Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5413114692875335" crossorigin="anonymous"></script>
+    <title>KvartaliEU — Оценка на квартали, детски градини, училища, лекари, услуги и магазини | България</title>
+    <link rel="stylesheet" href="style.css?v=20260211a">
+    <!-- <link rel="manifest" href="manifest.json"> -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="KvartaliEU">
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
+    
+    <!-- Chart.js for data visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WSC8ZZ3B70"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WSC8ZZ3B70', {
+        'page_title': document.title,
+        'page_path': window.location.pathname
+      });
+    </script>
+    
+    <!-- Preconnect to Firebase -->
+    <link rel="preconnect" href="https://www.gstatic.com">
+    <link rel="dns-prefetch" href="https://firebaseapp.com">
+    <!-- Primary JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "KvartaliEU",
+        "description": "Платформа за оценяване на квартали, детски градини, лекари и магазини в България с рейтинги от реални потребители",
+        "url": "https://kvartali.eu",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "inLanguage": "bg-BG",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BGN"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "KvartaliEU",
+            "url": "https://kvartali.eu"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "KvartaliEU",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://kvartali.eu/logo.png"
+            }
+        }
+    }
+    </script>
+    
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "KvartaliEU",
+        "url": "https://kvartali.eu",
+        "logo": "https://kvartali.eu/logo.png",
+        "description": "Платформа за общностни рейтинги на квартали и услуги в България",
+        "sameAs": [],
+        "areaServed": {
+            "@type": "Country",
+            "name": "България"
+        },
+        "knowsAbout": ["Квартали в България", "Детски градини", "Лекари", "Магазини", "Рейтинги"]
+    }
+    </script>
+    
+    <!-- WebSite Schema with SearchAction for Google Sitelinks Search Box -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "KvartaliEU",
+        "alternateName": ["Квартали БГ", "Kvartali Bulgaria"],
+        "url": "https://kvartali.eu",
+        "description": "Платформа за оценяване на квартали, детски градини, училища, лекари и услуги в България",
+        "inLanguage": "bg-BG",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://kvartali.eu/?search={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <!-- SiteNavigationElement Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SiteNavigationElement",
+        "name": "Главна навигация",
+        "hasPart": [
+            {
+                "@type": "SiteNavigationElement",
+                "name": "Квартали",
+                "url": "https://kvartali.eu/?type=neighborhood"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "name": "Детски градини",
+                "url": "https://kvartali.eu/?type=childcare"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "name": "Училища",
+                "url": "https://kvartali.eu/?type=schools"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "name": "Лекари",
+                "url": "https://kvartali.eu/?type=doctors"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "name": "Услуги",
+                "url": "https://kvartali.eu/?type=services"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "name": "Магазини",
+                "url": "https://kvartali.eu/?type=shops"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- HowTo Schema for Rating Process -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "Как да оцените квартал в KvartaliEU",
+        "description": "Ръководство стъпка по стъпка за оценяване на квартали, детски градини, лекари и услуги в България",
+        "totalTime": "PT2M",
+        "step": [
+            {
+                "@type": "HowToStep",
+                "position": 1,
+                "name": "Изберете град",
+                "text": "Кликнете върху името на града в заглавието и изберете вашия град от списъка с 28 областни града."
+            },
+            {
+                "@type": "HowToStep",
+                "position": 2,
+                "name": "Изберете категория",
+                "text": "Изберете какво искате да оцените: Квартали, Детски градини, Училища, Лекари, Услуги или Магазини."
+            },
+            {
+                "@type": "HowToStep",
+                "position": 3,
+                "name": "Намерете обекта",
+                "text": "Използвайте търсачката или прелистете списъка, за да намерите конкретния квартал, детска градина или друг обект."
+            },
+            {
+                "@type": "HowToStep",
+                "position": 4,
+                "name": "Дайте оценка",
+                "text": "Оценете по всички критерии от 1 до 5 звезди. Можете да добавите и текстово мнение за по-подробна обратна връзка."
+            },
+            {
+                "@type": "HowToStep",
+                "position": 5,
+                "name": "Запазете оценката",
+                "text": "Натиснете бутона за запазване. Вашата оценка ще бъде добавена към общия рейтинг анонимно."
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Speakable Schema for Voice Search -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": ["#seoHeroTitle", "#seoHeroDescription", ".seo-feature"]
+        },
+        "url": "https://kvartali.eu"
+    }
+    </script>
+    
+    <!-- FAQ Schema for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Как да оценя квартал в KvartaliEU?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Изберете град и квартал от менюто, след което оценете по 10 критерия от 1 до 5 звезди. Можете да добавите и текстово мнение."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Какви критерии се използват за оценка на квартали?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Кварталите се оценяват по: Локация, Чистота, Транспорт, Сграден фонд, Сигурност, Инфраструктура, Училища и ДГ, Здравеопазване, Магазини и Забавления."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Мога ли да сравнявам квартали?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Да, можете да изберете до 3 квартала и да ги сравните визуално с диаграми и таблици по всички критерии."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Кои градове са включени в платформата?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Включени са всички 28 областни града в България: София, Пловдив, Варна, Бургас, Русе и други."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Начало",
+                "item": "https://kvartali.eu"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Квартали",
+                "item": "https://kvartali.eu/#kvartali"
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip to main content for keyboard navigation -->
+    <a href="#main-content" class="skip-to-content">Към основното съдържание</a>
+    
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Върни се нагоре" title="Върни се нагоре">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+    
+    <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumbs" aria-label="Навигация" id="breadcrumbs">
+            <a href="/">🏠 Начало</a>
+            <span class="separator">›</span>
+            <span class="current" id="breadcrumbCurrent">Квартали</span>
+        </nav>
+        
+        <header role="banner">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                <h1 id="pageTitle" style="margin: 0;">
+                    <span>🏙️ KvartaliEU:</span>
+                    <span style="position: relative; display: inline-block;">
+                        <a href="#citySelect" id="headerCityLink" aria-label="Избран град">София</a>
+                        <div id="headerCityMenu" class="city-menu hidden" role="menu" aria-label="Меню за избор на град"></div>
+                    </span>
+                </h1>
+                <div class="location-type-toggle" role="tablist" aria-label="Тип локация">
+                    <button type="button" id="btnNeighborhoods" class="toggle-btn active" role="tab" aria-selected="true" aria-label="Оценка на квартали">Квартали</button>
+                    <button type="button" id="btnChildcare" class="toggle-btn" role="tab" aria-selected="false" aria-label="Оценка на детски градини">Детски градини</button>
+                    <button type="button" id="btnSchools" class="toggle-btn" role="tab" aria-selected="false" aria-label="Оценка на училища">Училища</button>
+                    <button type="button" id="btnDoctors" class="toggle-btn" role="tab" aria-selected="false" aria-label="Оценка на лекари">Лекари</button>
+                    <button type="button" id="btnServices" class="toggle-btn" role="tab" aria-selected="false" aria-label="Оценка на услуги">Услуги</button>
+                    <button type="button" id="btnShops" class="toggle-btn" role="tab" aria-selected="false" aria-label="Оценка на магазини">Магазини</button>
+                </div>
+            </div>
+            <p id="headerSubtitle">Оценете кварталите на всички областни градове по 10 критерия (1-5 звезди) - по един глас на квартал</p>
+        </header>
+
+        <!-- SEO Content Section - Hero -->
+        <section class="seo-hero-section" aria-label="Въведение">
+            <div class="seo-hero-content">
+                <h2 id="seoHeroTitle">🏆 Открийте най-добрите квартали в България</h2>
+                <p id="seoHeroDescription">KvartaliEU е <strong>първата българска платформа за общностни оценки</strong>, където реални жители споделят опита си за квартали, детски градини, училища, лекари и услуги. Нашата мисия е да помогнем на всяко семейство да вземе информирано решение при избор на дом.</p>
+                <div class="seo-features" id="seoFeatures">
+                    <div class="seo-feature">
+                        <span class="seo-icon">📊</span>
+                        <span>10 критерия за оценка</span>
+                    </div>
+                    <div class="seo-feature">
+                        <span class="seo-icon">🏙️</span>
+                        <span>28 областни града</span>
+                    </div>
+                    <div class="seo-feature">
+                        <span class="seo-icon">👥</span>
+                        <span>Реални мнения</span>
+                    </div>
+                    <div class="seo-feature">
+                        <span class="seo-icon">🔒</span>
+                        <span>Анонимно и безплатно</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main role="main" aria-label="Основно съдържание" id="main-content">
+            <section class="form-section" aria-labelledby="form-heading">
+                <h2 id="form-heading">Добавяне на оценка</h2>
+                <form id="ratingForm" aria-label="Формуляр за добавяне на оценка">
+
+                    <div class="form-group">
+                        <label for="neighborhood" id="neighborhoodLabel">Квартал:</label>
+                        <select id="neighborhood" required aria-required="true" aria-label="Изберете квартал">
+                            <option value="" id="neighborhoodPlaceholder">Изберете квартал...</option>
+                        </select>
+                    </div>
+
+                    <!-- Doctor name field (for doctors mode) -->
+                    <div class="form-group" id="doctorNameGroup" style="display: none;">
+                        <label for="doctorName">Име на лекар:</label>
+                        <textarea id="doctorName" rows="1" placeholder="Въведете име на лекар..." aria-label="Име на лекар"></textarea>
+                    </div>
+
+                    <!-- Medical specialty selector (for doctors mode) -->
+                    <div class="form-group" id="specialtyGroup" style="display: none;">
+                        <label for="specialty">Специалност:</label>
+                        <select id="specialty" aria-label="Медицинска специалност">
+                            <option value="">Изберете специалност...</option>
+                        </select>
+                    </div>
+
+                    <!-- Shop category selector (for shops mode) -->
+                    <div class="form-group" id="shopCategoryGroup" style="display: none;">
+                        <label for="shopCategory">Категория магазин:</label>
+                        <select id="shopCategory" aria-label="Категория магазин">
+                            <option value="">Изберете категория...</option>
+                            <option value="supermarkets">🛒 Супермаркети</option>
+                            <option value="pharmacies">💊 Аптеки</option>
+                            <option value="fitness">💪 Фитнес центрове</option>
+                            <option value="homeStores">🏪 Магазини за дома</option>
+                            <option value="clothing">👕 Магазини за дрехи</option>
+                            <option value="foodShops">🍞 Хранителни магазини</option>
+                        </select>
+                    </div>
+
+                    <!-- Shop chain/name selector (for shops mode) -->
+                    <div class="form-group" id="shopNameGroup" style="display: none;">
+                        <label for="shopName">Верига/Магазин:</label>
+                        <select id="shopName" aria-label="Верига или магазин">
+                            <option value="">Изберете магазин...</option>
+                        </select>
+                    </div>
+
+                    <!-- Service category selector (for services mode) -->
+                    <div class="form-group" id="serviceCategoryGroup" style="display: none;">
+                        <label for="serviceCategory">Категория услуга:</label>
+                        <select id="serviceCategory" aria-label="Категория услуга">
+                            <option value="">Изберете категория...</option>
+                            <option value="teachers">📚 Преподаватели</option>
+                            <option value="babysitters">👶 Детегледачки</option>
+                            <option value="beauty">💇 Здраве и красота</option>
+                            <option value="electricians">⚡ Електричари</option>
+                            <option value="plumbing">🔧 ВИК</option>
+                            <option value="painting">🎨 Шпакловка/Боядисване</option>
+                            <option value="craftsmen">🔨 Майстори</option>
+                            <option value="lawyers">⚖️ Адвокати</option>
+                            <option value="cleaning">🧹 Почистване</option>
+                        </select>
+                    </div>
+
+                    <!-- Service provider name (for services mode) -->
+                    <div class="form-group" id="serviceNameGroup" style="display: none;">
+                        <label for="serviceName">Име на изпълнител:</label>
+                        <textarea id="serviceName" rows="1" placeholder="Въведете име на изпълнителя..." aria-label="Име на изпълнител"></textarea>
+                    </div>
+
+                    <!-- Service city selector (for services mode) -->
+                    <div class="form-group" id="serviceCityGroup" style="display: none;">
+                        <label for="serviceCity">Град:</label>
+                        <select id="serviceCity" aria-label="Град на услугата">
+                            <option value="">Изберете град...</option>
+                        </select>
+                    </div>
+
+                    <!-- Service neighborhood selector (for services mode) -->
+                    <div class="form-group" id="serviceNeighborhoodGroup" style="display: none;">
+                        <label for="serviceNeighborhood">Квартал:</label>
+                        <select id="serviceNeighborhood" aria-label="Квартал на услугата">
+                            <option value="">Изберете квартал...</option>
+                        </select>
+                    </div>
+
+                    <!-- Criteria for neighborhoods (10 criteria) -->
+                    <div class="criteria-grid" id="neighborhoodCriteria">
+                        <div class="criterion">
+                            <div class="tooltip-container">
+                                <label>Локация:</label>
+                                <span class="tooltip-trigger" aria-label="Информация за локация">?</span>
+                                <div class="tooltip-content">Оценете достъпността до центъра, основни булеварди и ключови точки на града.</div>
+                            </div>
+                            <div class="stars" data-criterion="location" role="group" aria-label="Оценка за локация от 1 до 5 звезди"></div>
+                        </div>
+                        <div class="criterion">
+                            <div class="tooltip-container">
+                                <label>Чистота:</label>
+                                <span class="tooltip-trigger" aria-label="Информация за чистота">?</span>
+                                <div class="tooltip-content">Оценете общата чистота на улиците, междублоковите пространства и парковете.</div>
+                            </div>
+                            <div class="stars" data-criterion="cleanliness" role="group" aria-label="Оценка за чистота от 1 до 5 звезди"></div>
+                        </div>
+                        <div class="criterion">
+                            <div class="tooltip-container">
+                                <label>Транспорт:</label>
+                                <span class="tooltip-trigger" aria-label="Информация за транспорт">?</span>
+                                <div class="tooltip-content">Оценете достъпността на градски транспорт - метро, автобуси, трамваи.</div>
+                            </div>
+                            <div class="stars" data-criterion="transport"></div>
+                        </div>
+                        <div class="criterion">
+                            <div class="tooltip-container">
+                                <label>Сграден фонд:</label>
+                                <span class="tooltip-trigger" aria-label="Информация за сграден фонд">?</span>
+                                <div class="tooltip-content">Оценете състоянието на сградите, ново/старо строителство, поддръжка.</div>
+                            </div>
+                            <div class="stars" data-criterion="buildings"></div>
+                        </div>
+                        <div class="criterion">
+                            <div class="tooltip-container">
+                                <label>Сигурност:</label>
+                                <span class="tooltip-trigger" aria-label="Информация за сигурност">?</span>
+                                <div class="tooltip-content">Оценете нивото на безопасност, осветление, полицейско присъствие.</div>
+                            </div>
+                            <div class="stars" data-criterion="security"></div>
+                        </div>
+                        <div class="criterion">
+                            <div class="tooltip-container">
+                                <label>Инфраструктура:</label>
+                                <span class="tooltip-trigger" aria-label="Информация за инфраструктура">?</span>
+                                <div class="tooltip-content">Оценете състоянието на улиците, тротоарите, осветлението, паркинги.</div>
+                            </div>
+                            <div class="stars" data-criterion="infrastructure"></div>
+                        </div>
+                        <div class="criterion">
+                            <div class="tooltip-container">
+                                <label>Училища и ДГ:</label>
+                                <span class="tooltip-trigger" aria-label="Информация за училища">?</span>
+                                <div class="tooltip-content">Оценете наличието и качеството на учебни заведения в района.</div>
+                            </div>
+                            <div class="stars" data-criterion="education"></div>
+                        </div>
+                        <div class="criterion">
+                            <div class="tooltip-container">
+                                <label>Здравеопазване:</label>
+                                <span class="tooltip-trigger" aria-label="Информация за здравеопазване">?</span>
+                                <div class="tooltip-content">Оценете близостта до болници, поликлиники, аптеки и лекарски кабинети.</div>
+                            </div>
+                            <div class="stars" data-criterion="healthcare"></div>
+                        </div>
+                        <div class="criterion">
+                            <div class="tooltip-container">
+                                <label>Магазини:</label>
+                                <span class="tooltip-trigger" aria-label="Информация за магазини">?</span>
+                                <div class="tooltip-content">Оценете наличието на супермаркети, магазини и търговски обекти.</div>
+                            </div>
+                            <div class="stars" data-criterion="shopping"></div>
+                        </div>
+                        <div class="criterion">
+                            <div class="tooltip-container">
+                                <label>Забавления:</label>
+                                <span class="tooltip-trigger" aria-label="Информация за забавления">?</span>
+                                <div class="tooltip-content">Оценете наличието на ресторанти, кафенета, паркове, кина и зони за отдих.</div>
+                            </div>
+                            <div class="stars" data-criterion="entertainment"></div>
+                        </div>
+                    </div>
+
+                    <!-- Single rating for childcare facilities -->
+                    <div class="criteria-grid" id="childcareCriteria" style="display: none;">
+                        <div class="criterion">
+                            <label>Оценка:</label>
+                            <div class="stars" data-criterion="overall"></div>
+                        </div>
+                    </div>
+
+                    <!-- Single rating for schools -->
+                    <div class="criteria-grid" id="schoolsCriteria" style="display: none;">
+                        <div class="criterion">
+                            <label>Оценка:</label>
+                            <div class="stars" data-criterion="overall"></div>
+                        </div>
+                    </div>
+
+                    <!-- Single rating for shops -->
+                    <div class="criteria-grid" id="shopsCriteria" style="display: none;">
+                        <div class="criterion">
+                            <label>Оценка:</label>
+                            <div class="stars" data-criterion="overall"></div>
+                        </div>
+                    </div>
+
+                    <!-- Single rating for services -->
+                    <div class="criteria-grid" id="servicesCriteria" style="display: none;">
+                        <div class="criterion">
+                            <label>Оценка:</label>
+                            <div class="stars" data-criterion="overall"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="opinion" id="opinionLabel">Мнение (опционално):</label>
+                        <textarea id="opinion" placeholder="Напишете вашето мнение за квартала..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Запази оценката</button>
+                </form>
+                
+                <!-- Filtering and Sorting Controls (moved below ratings) -->
+                <div class="controls-container" style="margin-top: 20px;">
+                    <div class="filter-sort-group">
+                        <!-- Sort options -->
+                        <div class="control-item">
+                            <label for="sortBy">Подреди по:</label>
+                            <select id="sortBy">
+                                <option value="rating-desc">Рейтинг (най-висок)</option>
+                                <option value="rating-asc">Рейтинг (най-нисък)</option>
+                                <option value="votes-desc">Брой гласове (най-много)</option>
+                                <option value="votes-asc">Брой гласове (най-малко)</option>
+                                <option value="name-asc">Име (А-Я)</option>
+                                <option value="name-desc">Име (Я-А)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-advanced-group">
+                        <!-- Minimum votes filter -->
+                        <div class="control-item range-control">
+                            <label for="minVotes">
+                                Минимум гласове: <span id="minVotesValue">0</span>
+                            </label>
+                            <input type="range" id="minVotes" min="0" max="20" value="0" step="1">
+                        </div>
+                        
+                        <!-- Minimum rating filter -->
+                        <div class="control-item range-control">
+                            <label for="minRating">
+                                Минимум рейтинг: <span id="minRatingValue">0.0</span>
+                            </label>
+                            <input type="range" id="minRating" min="0" max="5" value="0" step="0.1">
+                        </div>
+                    </div>
+                    
+                    <!-- Results count and reset -->
+                    <div class="control-actions">
+                        <span id="resultsCount" class="results-count">0 резултата</span>
+                        <button type="button" id="resetFilters" class="btn-reset">Нулирай филтрите</button>
+                        <button type="button" id="compareButton" class="btn-compare">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            Сравни (0)
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="results-section" aria-labelledby="results-heading">
+                <h2 id="results-heading">Резултати и мнения</h2>
+                
+                <!-- Google AdSense Display Ad (Sidebar) -->
+                <div class="ad-container" style="margin: 20px 0; text-align: center;">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5413114692875335"
+                         data-ad-slot="2535827986"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                        (function() {
+                            var ad = document.querySelector('.ad-container .adsbygoogle');
+                            if (ad && !ad.dataset.adsenseLoaded && ad.offsetWidth > 0) {
+                                try {
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                    ad.dataset.adsenseLoaded = 'true';
+                                } catch (e) { /* AdSense error handled silently */ }
+                            }
+                        })();
+                    </script>
+                </div>
+                
+                <div id="resultsContainer" role="region" aria-label="Контейнер за резултати"></div>
+            </section>
+            
+            <!-- Comparison Modal -->
+            <div id="comparisonModal" class="modal" style="display: none;">
+                <div class="modal-overlay"></div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Сравнение на квартали</h2>
+                        <button type="button" id="closeComparison" class="btn-close-modal">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="comparisonContent">
+                        <!-- Comparison content will be inserted here -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="shareComparison" class="btn-share-comparison">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                            Сподели сравнението
+                        </button>
+                        <button type="button" id="clearComparison" class="btn-reset">Изчисти</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- SEO Information Section -->
+        <section class="seo-info-section" aria-label="Информация за платформата">
+            <h2>📚 Как работи KvartaliEU?</h2>
+            <div class="seo-info-grid">
+                <article class="seo-info-card">
+                    <h3>🏘️ Оценка на квартали</h3>
+                    <p>Оценете вашия квартал по 10 ключови критерия: локация, чистота, транспорт, сграден фонд, сигурност, инфраструктура, училища и детски градини, здравеопазване, магазини и забавления. Всяка оценка е от 1 до 5 звезди, което дава пълна картина за качеството на живот.</p>
+                </article>
+                <article class="seo-info-card">
+                    <h3>👶 Детски градини и училища</h3>
+                    <p>Търсите най-добрата детска градина или училище за детето си? Вижте рейтинги и мнения от други родители. Оценките включват качество на образованието, условия, персонал и общо впечатление.</p>
+                </article>
+                <article class="seo-info-card">
+                    <h3>⚕️ Лекари и специалисти</h3>
+                    <p>Намерете надежден лекар с помощта на оценки от реални пациенти. Покриваме всички медицински специалности - от общопрактикуващи лекари до тесни специалисти.</p>
+                </article>
+                <article class="seo-info-card">
+                    <h3>🔧 Услуги и майстори</h3>
+                    <p>Електричари, ВИК майстори, бояджии, адвокати и други специалисти - вижте кои са препоръчани от други клиенти. Избягвайте некачествени услуги благодарение на общностните оценки.</p>
+                </article>
+            </div>
+        </section>
+        
+        <!-- Google AdSense Footer Display Ad -->
+        <div class="ad-container-footer" style="margin: 40px auto; padding: 20px 0; text-align: center; max-width: 970px;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5413114692875335"
+                 data-ad-slot="3082524839"
+                 data-ad-format="horizontal"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (function() {
+                    var ad = document.querySelector('.ad-container-footer .adsbygoogle');
+                    function loadAd() {
+                        if (ad && !ad.dataset.adsenseLoaded && ad.offsetWidth > 0) {
+                            try {
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                ad.dataset.adsenseLoaded = 'true';
+                            } catch (e) { /* AdSense error handled silently */ }
+                        }
+                    }
+                    loadAd();
+                    // Retry once after delay if not loaded initially
+                    if (ad && !ad.dataset.adsenseLoaded) {
+                        setTimeout(loadAd, 1000);
+                    }
+                })();
+            </script>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="site-footer" role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-section footer-about">
+                    <h3>🏙️ KvartaliEU</h3>
+                    <p>Платформа за общностни оценки на квартали, детски градини, училища, лекари и услуги в България. Създадена от хора, за хора.</p>
+                    <p class="footer-copyright">© 2026 KvartaliEU. Всички права запазени.</p>
+                </div>
+                <div class="footer-section footer-links">
+                    <h4>Полезни връзки</h4>
+                    <ul>
+                        <li><a href="/about.html">За нас</a></li>
+                        <li><a href="/privacy.html">Политика за поверителност</a></li>
+                        <li><a href="/terms.html">Общи условия</a></li>
+                        <li><a href="mailto:contact@kvartali.eu">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section footer-categories">
+                    <h4>Категории</h4>
+                    <ul>
+                        <li><a href="/?type=neighborhood">🏘️ Квартали</a></li>
+                        <li><a href="/?type=childcare">👶 Детски градини</a></li>
+                        <li><a href="/?type=schools">🎓 Училища</a></li>
+                        <li><a href="/?type=doctors">⚕️ Лекари</a></li>
+                        <li><a href="/?type=services">🔧 Услуги</a></li>
+                        <li><a href="/?type=shops">🛒 Магазини</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section footer-cities">
+                    <h4>Топ градове</h4>
+                    <ul>
+                        <li><a href="/sofia.html">София</a></li>
+                        <li><a href="/plovdiv.html">Пловдив</a></li>
+                        <li><a href="/varna.html">Варна</a></li>
+                        <li><a href="/burgas.html">Бургас</a></li>
+                        <li><a href="/?city=Русе">Русе</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section footer-blog">
+                    <h4>📝 Блог</h4>
+                    <ul>
+                        <li><a href="/blog.html">Всички статии</a></li>
+                        <li><a href="/blog.html#kak-da-izberem-kvartal">Как да изберем квартал</a></li>
+                        <li><a href="/blog.html#kvartali-sofia-deca">Квартали за семейства</a></li>
+                        <li><a href="/blog.html#izbor-detska-gradina">Избор на детска градина</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>KvartaliEU използва бисквитки за подобряване на потребителското изживяване. С използването на сайта вие приемате нашата <a href="/privacy.html">Политика за поверителност</a>.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Firebase SDKs (compat for simple browser usage) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <!-- Project config: fill with your Firebase keys -->
+    <script src="firebase-config.js"></script>
+    <!-- Configuration -->
+    <script src="config.js?v=20260122b"></script>
+    <!-- Data -->
+    <script src="data.js?v=20260210a"></script>
+    <!-- AdSense Manager -->
+    <script src="adsense-manager.js?v=20260211a"></script>
+    <!-- Core modules (SOLID architecture) -->
+    <script src="utils.js?v=20260210a"></script>
+    <script src="state.js?v=20260210a"></script>
+    <script src="dataService.js?v=20260210a"></script>
+    <script src="uiController.js?v=20260210a"></script>
+    <script src="eventHandlers.js?v=20260210a"></script>
+    <!-- UI -->
+    <script src="ui.js?v=20260210a"></script>
+    <!-- Firebase logic -->
+    <script src="firebase.js?v=20260211a"></script>
+    <!-- Main app controller -->
+    <script src="appController.js?v=20260210a"></script>
+    <!-- Non-critical enhancements (deferred) -->
+    <script defer src="mobile-enhancements.js?v=20260210a"></script>
+    <script defer src="seo-enhancements.js?v=20260210a"></script>
+    <script defer src="social-sharing.js?v=20260210a"></script>
+    <script defer src="dark-mode.js?v=20260202b"></script>
+    <script defer src="search.js?v=20260210a"></script>
+    <!-- Charts and visualizations -->
+    <script defer src="charts.js?v=20260202b"></script>
+    <!-- Comparison tool -->
+    <script defer src="comparison.js?v=20260122b"></script>
+    <!-- Keyboard shortcuts -->
+    <script defer src="keyboard-shortcuts.js?v=20260211a"></script>
+    <!-- Favorites / Bookmarks -->
+    <script defer src="favorites.js?v=20260208"></script>
+    
+    <!-- SEO Schema for rating application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AggregateRating",
+        "ratingValue": "4.5",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "1000"
+    }
+    </script>
+    
+    <!-- Service Worker Registration for PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+        
+        // Sticky header on scroll
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (header) {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

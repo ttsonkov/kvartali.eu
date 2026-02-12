@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="За KvartaliEU - българската платформа за общностни оценки на квартали, детски градини, училища, лекари и услуги. Научете повече за нашата мисия, екип и как помагаме на хиляди българи да вземат информирано решение.">
+    <meta name="keywords" content="KvartaliEU, за нас, мисия, екип, рейтинги квартали, българска платформа, общностни оценки">
+    <meta name="author" content="KvartaliEU">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="За нас | KvartaliEU - Общностни рейтинги на квартали в България">
+    <meta property="og:description" content="Научете повече за KvartaliEU - платформата за честни оценки на квартали, детски градини, лекари и услуги в България. Нашата мисия е да помогнем на всеки да намери идеалното място за живот.">
+    <meta property="og:url" content="https://kvartali.eu/about.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://kvartali.eu/og-image.png">
+    <meta property="og:locale" content="bg_BG">
+    <meta property="og:site_name" content="KvartaliEU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="За нас | KvartaliEU">
+    <meta name="twitter:description" content="Научете повече за KvartaliEU - платформата за честни оценки на квартали в България">
+    <meta name="twitter:image" content="https://kvartali.eu/og-image.png">
+    <link rel="canonical" href="https://kvartali.eu/about.html">
+    <link rel="alternate" hreflang="bg" href="https://kvartali.eu/about.html">
+    <link rel="alternate" hreflang="x-default" href="https://kvartali.eu/about.html">
+    <title>За нас | KvartaliEU - Общностни рейтинги на квартали в България</title>
+    <link rel="stylesheet" href="style.css?v=20260205">
+    
+    <!-- AboutPage Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "За нас - KvartaliEU",
+        "description": "Информация за KvartaliEU - българската платформа за общностни оценки",
+        "url": "https://kvartali.eu/about.html",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "KvartaliEU",
+            "url": "https://kvartali.eu",
+            "logo": "https://kvartali.eu/logo.png",
+            "foundingDate": "2024",
+            "areaServed": {
+                "@type": "Country",
+                "name": "България"
+            },
+            "slogan": "Общността оценява, вие решавате",
+            "knowsAbout": ["Квартали в България", "Детски градини", "Училища", "Лекари", "Услуги", "Магазини"]
+        }
+    }
+    </script>
+    
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Начало",
+                "item": "https://kvartali.eu"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "За нас",
+                "item": "https://kvartali.eu/about.html"
+            }
+        ]
+    }
+    </script>
+    <style>
+        .about-page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .about-page h1 {
+            color: var(--primary-color, #667eea);
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        .about-page .tagline {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--text-secondary, #666);
+            margin-bottom: 40px;
+        }
+        .about-section {
+            margin-bottom: 50px;
+        }
+        .about-section h2 {
+            color: var(--text-color, #333);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .about-section p {
+            color: var(--text-secondary, #555);
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .feature-card {
+            background: var(--bg-light, #f8f9fa);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .feature-card .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .feature-card h3 {
+            color: var(--text-color, #333);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        .feature-card p {
+            color: var(--text-secondary, #666);
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color, #667eea) 0%, var(--secondary-color, #764ba2) 100%);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .stat-item {
+            padding: 20px;
+        }
+        .stat-item .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .stat-item .label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .team-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .mission-box {
+            background: var(--bg-light, #f8f9fa);
+            border-left: 5px solid var(--primary-color, #667eea);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .mission-box p {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin: 0;
+        }
+        .cities-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .city-tag {
+            background: var(--primary-color, #667eea);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .cta-section {
+            background: var(--bg-light, #f8f9fa);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .cta-section h2 {
+            margin-bottom: 20px;
+        }
+        .cta-section p {
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color, #667eea) 0%, var(--secondary-color, #764ba2) 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color, #667eea);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .criteria-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .criteria-item {
+            background: var(--bg-light, #f8f9fa);
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .criteria-item .emoji {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="about-page">
+        <a href="/" class="back-link">← Обратно към началото</a>
+        
+        <h1>🏙️ KvartaliEU</h1>
+        <p class="tagline">Платформата за честни общностни оценки в България</p>
+
+        <div class="about-section">
+            <h2>📖 Какво е KvartaliEU?</h2>
+            <p>KvartaliEU е първата българска платформа, създадена от и за хората, които търсят честни и непредубедени оценки на квартали, детски градини, училища, лекари и услуги в цяла България.</p>
+            <p>Ние вярваме, че всеки заслужава достъп до реална информация, базирана на опита на реални хора, а не на рекламни обещания. Затова създадохме място, където общността споделя мнения и помага на другите да вземат информирани решения.</p>
+            
+            <div class="mission-box">
+                <p>"Нашата мисия е да помогнем на всеки българин да намери перфектния квартал, най-добрата детска градина за децата си и надеждни специалисти за ежедневните си нужди - чрез силата на общностните оценки."</p>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h2>📊 KvartaliEU в цифри</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="number">28</div>
+                    <div class="label">областни града</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">500+</div>
+                    <div class="label">квартала</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">1000+</div>
+                    <div class="label">детски градини</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">10</div>
+                    <div class="label">критерия за оценка</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2>⭐ Какво можете да оценявате?</h2>
+            <p>KvartaliEU предлага шест основни категории за оценка, всяка от които е проектирана да предоставя максимално полезна информация:</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">🏘️</div>
+                    <h3>Квартали</h3>
+                    <p>Оценете квартала си по 10 критерия: локация, чистота, транспорт, сигурност, инфраструктура и други.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">👶</div>
+                    <h3>Детски градини</h3>
+                    <p>Помогнете на други родители да изберат най-добрата детска градина за децата си.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎓</div>
+                    <h3>Училища</h3>
+                    <p>Споделете опита си с училища и помогнете на семействата да направят правилния избор.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⚕️</div>
+                    <h3>Лекари</h3>
+                    <p>Оценете лекари и специалисти, за да помогнете на други пациенти.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔧</div>
+                    <h3>Услуги</h3>
+                    <p>Електричари, ВИК майстори, бояджии и други специалисти - споделете опита си.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🛒</div>
+                    <h3>Магазини</h3>
+                    <p>Оценете супермаркети, аптеки, фитнес центрове и други търговски обекти.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2>📋 10 критерия за оценка на квартали</h2>
+            <p>Нашата система за оценка на квартали включва 10 внимателно подбрани критерия, които покриват всички важни аспекти на живота в даден район:</p>
+            
+            <div class="criteria-list">
+                <div class="criteria-item"><span class="emoji">📍</span> Локация</div>
+                <div class="criteria-item"><span class="emoji">🧹</span> Чистота</div>
+                <div class="criteria-item"><span class="emoji">🚌</span> Транспорт</div>
+                <div class="criteria-item"><span class="emoji">🏗️</span> Сграден фонд</div>
+                <div class="criteria-item"><span class="emoji">🛡️</span> Сигурност</div>
+                <div class="criteria-item"><span class="emoji">🛣️</span> Инфраструктура</div>
+                <div class="criteria-item"><span class="emoji">🎒</span> Училища и ДГ</div>
+                <div class="criteria-item"><span class="emoji">🏥</span> Здравеопазване</div>
+                <div class="criteria-item"><span class="emoji">🛍️</span> Магазини</div>
+                <div class="criteria-item"><span class="emoji">🎭</span> Забавления</div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2>🌍 Покритие в цяла България</h2>
+            <p>KvartaliEU покрива всички 28 областни града в България, като предоставя локализирана информация за всеки от тях:</p>
+            
+            <div class="cities-list">
+                <span class="city-tag">София</span>
+                <span class="city-tag">Пловдив</span>
+                <span class="city-tag">Варна</span>
+                <span class="city-tag">Бургас</span>
+                <span class="city-tag">Русе</span>
+                <span class="city-tag">Стара Загора</span>
+                <span class="city-tag">Плевен</span>
+                <span class="city-tag">Велико Търново</span>
+                <span class="city-tag">Благоевград</span>
+                <span class="city-tag">Видин</span>
+                <span class="city-tag">Враца</span>
+                <span class="city-tag">Габрово</span>
+                <span class="city-tag">Добрич</span>
+                <span class="city-tag">Кюстендил</span>
+                <span class="city-tag">Ловеч</span>
+                <span class="city-tag">Монтана</span>
+                <span class="city-tag">Пазарджик</span>
+                <span class="city-tag">Перник</span>
+                <span class="city-tag">Разград</span>
+                <span class="city-tag">Силистра</span>
+                <span class="city-tag">Сливен</span>
+                <span class="city-tag">Смолян</span>
+                <span class="city-tag">Търговище</span>
+                <span class="city-tag">Хасково</span>
+                <span class="city-tag">Шумен</span>
+                <span class="city-tag">Ямбол</span>
+                <span class="city-tag">Кърджали</span>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2>🔒 Как гарантираме качество?</h2>
+            <ul>
+                <li><strong>Един глас на потребител:</strong> Всеки потребител може да гласува само веднъж за даден квартал или обект, което предотвратява манипулации.</li>
+                <li><strong>Анонимност:</strong> Оценките са анонимни, което насърчава честни и открити мнения.</li>
+                <li><strong>Многокритериална оценка:</strong> 10 критерия за квартали дават пълна картина, а не само обща оценка.</li>
+                <li><strong>Текстови мнения:</strong> Освен звезди, потребителите могат да споделят подробни мнения.</li>
+                <li><strong>Прозрачност:</strong> Показваме броя гласове за всеки обект.</li>
+            </ul>
+        </div>
+
+        <div class="cta-section">
+            <h2>🚀 Готови ли сте да споделите мнението си?</h2>
+            <p>Вашият глас има значение! Помогнете на други хора да вземат информирани решения, като споделите опита си с кварталите и услугите, които познавате.</p>
+            <a href="/" class="btn-primary">Започнете да оценявате</a>
+        </div>
+
+        <div class="about-section" style="margin-top: 50px; text-align: center;">
+            <h2>📧 Свържете се с нас</h2>
+            <p>Имате въпроси, предложения или обратна връзка? Ще се радваме да чуем от вас!</p>
+            <p><strong>Имейл:</strong> <a href="mailto:contact@kvartali.eu">contact@kvartali.eu</a></p>
+        </div>
+    </div>
+
+    <script src="dark-mode.js?v=20260205" defer></script>
+</body>
+</html>
