@@ -3,6 +3,7 @@ node_modules/
 
 # Firebase credentials - NEVER commit these!
 serviceAccountKey.json
+firebase-config.js
 *.pem
 *.key
 
