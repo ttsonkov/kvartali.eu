@@ -1609,11 +1609,15 @@ body.dark-mode .sun-icon {
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    min-height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 100px;
+    display: block;
     transition: all 0.3s ease;
+}
+
+.ad-container .adsbygoogle {
+    display: block;
+    width: 100%;
+    min-height: 90px;
 }
 
 body.dark-mode .ad-container {
@@ -1628,10 +1632,14 @@ body.dark-mode .ad-container {
     max-width: 970px;
     background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
     border-radius: 12px;
+    min-height: 100px;
+    display: block;
+}
+
+.ad-container-footer .adsbygoogle {
+    display: block;
+    width: 100%;
     min-height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 body.dark-mode .ad-container-footer {
@@ -1647,6 +1655,14 @@ body.dark-mode .ad-container-footer {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
+    min-height: 90px;
+}
+
+.native-ad-container .adsbygoogle,
+.in-feed-ad-container .adsbygoogle {
+    display: block;
+    width: 100%;
+    min-height: 90px;
 }
 
 body.dark-mode .native-ad-container,
