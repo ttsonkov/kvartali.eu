@@ -646,7 +646,7 @@
                 <h2 id="results-heading">Резултати и мнения</h2>
                 
                 <!-- Google AdSense Display Ad (Sidebar) -->
-                <div class="ad-container" style="margin: 20px 0; text-align: center;">
+                <div class="ad-container ad-results" style="margin: 20px 0; text-align: center;">
                     <ins class="adsbygoogle"
                          style="display:block"
                          data-ad-client="ca-pub-5413114692875335"
@@ -655,12 +655,29 @@
                          data-full-width-responsive="true"></ins>
                     <script>
                         (function() {
-                            var ad = document.querySelector('.ad-container .adsbygoogle');
-                            if (ad && !ad.dataset.adsenseLoaded && ad.offsetWidth > 0) {
-                                try {
-                                    (adsbygoogle = window.adsbygoogle || []).push({});
-                                    ad.dataset.adsenseLoaded = 'true';
-                                } catch (e) { /* AdSense error handled silently */ }
+                            // Initialize ad after DOM is ready
+                            function initResultsAd() {
+                                var container = document.querySelector('.ad-results');
+                                var ad = container ? container.querySelector('.adsbygoogle') : null;
+                                if (ad && !ad.dataset.adsenseLoaded) {
+                                    try {
+                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                        ad.dataset.adsenseLoaded = 'true';
+                                        // Hide container if ad is unfilled after 3 seconds
+                                        setTimeout(function() {
+                                            if (ad.dataset.adStatus === 'unfilled' || ad.innerHTML.trim() === '') {
+                                                container.style.display = 'none';
+                                            }
+                                        }, 3000);
+                                    } catch (e) { 
+                                        container.style.display = 'none';
+                                    }
+                                }
+                            }
+                            if (document.readyState === 'complete') {
+                                initResultsAd();
+                            } else {
+                                window.addEventListener('load', initResultsAd);
                             }
                         })();
                     </script>
@@ -726,7 +743,7 @@
         </section>
         
         <!-- Google AdSense Footer Display Ad -->
-        <div class="ad-container-footer" style="margin: 40px auto; padding: 20px 0; text-align: center; max-width: 970px;">
+        <div class="ad-container-footer ad-footer" style="margin: 40px auto; padding: 20px 0; text-align: center; max-width: 970px;">
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-5413114692875335"
@@ -735,19 +752,28 @@
                  data-full-width-responsive="true"></ins>
             <script>
                 (function() {
-                    var ad = document.querySelector('.ad-container-footer .adsbygoogle');
-                    function loadAd() {
-                        if (ad && !ad.dataset.adsenseLoaded && ad.offsetWidth > 0) {
+                    function initFooterAd() {
+                        var container = document.querySelector('.ad-footer');
+                        var ad = container ? container.querySelector('.adsbygoogle') : null;
+                        if (ad && !ad.dataset.adsenseLoaded) {
                             try {
                                 (adsbygoogle = window.adsbygoogle || []).push({});
                                 ad.dataset.adsenseLoaded = 'true';
-                            } catch (e) { /* AdSense error handled silently */ }
+                                // Hide container if ad is unfilled after 3 seconds
+                                setTimeout(function() {
+                                    if (ad.dataset.adStatus === 'unfilled' || ad.innerHTML.trim() === '') {
+                                        container.style.display = 'none';
+                                    }
+                                }, 3000);
+                            } catch (e) { 
+                                container.style.display = 'none';
+                            }
                         }
                     }
-                    loadAd();
-                    // Retry once after delay if not loaded initially
-                    if (ad && !ad.dataset.adsenseLoaded) {
-                        setTimeout(loadAd, 1000);
+                    if (document.readyState === 'complete') {
+                        initFooterAd();
+                    } else {
+                        window.addEventListener('load', initFooterAd);
                     }
                 })();
             </script>
