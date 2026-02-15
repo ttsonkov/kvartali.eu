@@ -224,7 +224,7 @@
                 "@type": "HowToStep",
                 "position": 4,
                 "name": "Дайте оценка",
-                "text": "Оценете по всички критерии от 1 до 5 звезди. Можете да добавите и текстово мнение за по-подробна обратна връзка."
+                "text": "Оценете по всички критерия от 1 до 5 звезди. Можете да добавите и текстово мнение за по-подробна обратна връзка."
             },
             {
                 "@type": "HowToStep",
@@ -276,7 +276,7 @@
                 "name": "Мога ли да сравнявам квартали?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Да, можете да изберете до 3 квартала и да ги сравните визуално с диаграми и таблици по всички критерии."
+                    "text": "Да, можете да изберете до 3 квартала и да ги сравните визуално с диаграми и таблици по всички критерия."
                 }
             },
             {
@@ -589,10 +589,22 @@
 
                     <button type="submit" class="btn-submit">Запази оценката</button>
                 </form>
+            </section>
+
+            <section class="results-section" aria-labelledby="results-heading">
+                <h2 id="results-heading">Резултати и мнения</h2>
                 
-                <!-- Filtering and Sorting Controls (moved below ratings) -->
-                <div class="controls-container" style="margin-top: 20px;">
+                <!-- Filtering and Sorting Controls -->
+                <div class="controls-container">
                     <div class="filter-sort-group">
+                        <!-- Text search filter -->
+                        <div class="control-item search-filter-item">
+                            <label for="nameFilter" id="nameFilterLabel">Търсене по квартал:</label>
+                            <div class="search-input-wrapper">
+                                <input type="text" id="nameFilter" placeholder="Въведете име..." aria-label="Филтриране по име">
+                                <button type="button" id="clearNameFilter" class="clear-filter-btn" style="display: none;" aria-label="Изчисти филтъра">×</button>
+                            </div>
+                        </div>
                         <!-- Sort options -->
                         <div class="control-item">
                             <label for="sortBy">Подреди по:</label>
@@ -624,24 +636,7 @@
                             <input type="range" id="minRating" min="0" max="5" value="0" step="0.1">
                         </div>
                     </div>
-                    
-                    <!-- Results count and reset -->
-                    <div class="control-actions">
-                        <span id="resultsCount" class="results-count">0 резултата</span>
-                        <button type="button" id="resetFilters" class="btn-reset">Нулирай филтрите</button>
-                        <button type="button" id="compareButton" class="btn-compare">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
-                            Сравни (0)
-                        </button>
-                    </div>
                 </div>
-            </section>
-
-            <section class="results-section" aria-labelledby="results-heading">
-                <h2 id="results-heading">Резултати и мнения</h2>
                 
                 <!-- Google AdSense Display Ad -->
                 <div class="ad-container ad-results" style="margin: 20px 0; text-align: center; min-height: 100px; min-width: 300px;">

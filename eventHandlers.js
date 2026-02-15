@@ -206,6 +206,45 @@ const EventHandlers = {
             });
         }
         
+        // Name filter input
+        const nameFilter = Utils.getElement('nameFilter');
+        const clearNameFilter = Utils.getElement('clearNameFilter');
+        if (nameFilter) {
+            // Debounced filter for better performance
+            const debouncedFilter = Utils.debounce(() => {
+                triggerFilteredDisplay();
+            }, 300);
+            
+            nameFilter.addEventListener('input', (e) => {
+                // Show/hide clear button
+                if (clearNameFilter) {
+                    clearNameFilter.style.display = e.target.value.length > 0 ? 'block' : 'none';
+                }
+                debouncedFilter();
+            });
+            
+            // Track search in analytics on blur
+            nameFilter.addEventListener('blur', () => {
+                if (nameFilter.value.trim() && typeof gtag !== 'undefined') {
+                    gtag('event', 'filter_by_name', {
+                        event_category: 'filtering',
+                        event_label: nameFilter.value.trim().substring(0, 50)
+                    });
+                }
+            });
+        }
+        
+        // Clear name filter button
+        if (clearNameFilter) {
+            clearNameFilter.addEventListener('click', () => {
+                if (nameFilter) {
+                    nameFilter.value = '';
+                    clearNameFilter.style.display = 'none';
+                    triggerFilteredDisplay();
+                }
+            });
+        }
+        
         // Reset filters button
         const resetFilters = Utils.getElement('resetFilters');
         if (resetFilters) {
@@ -215,6 +254,12 @@ const EventHandlers = {
                 Utils.setElementValue('sortBy', 'rating-desc');
                 Utils.setElementValue('minVotes', '0');
                 Utils.setElementValue('minRating', '0');
+                
+                // Reset name filter
+                if (nameFilter) {
+                    nameFilter.value = '';
+                    if (clearNameFilter) clearNameFilter.style.display = 'none';
+                }
                 
                 if (minVotesValue) minVotesValue.textContent = '0';
                 if (minRatingValue) minRatingValue.textContent = '0.0';

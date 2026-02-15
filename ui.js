@@ -188,8 +188,24 @@ function displayResults(cityFilter = '', neighborhoodFilter = '', sortBy = 'rati
         filteredRatings = filteredRatings.filter(r => r.neighborhood === neighborhoodFilter);
     }
     
+    // Apply name filter (text search)
+    const nameFilterValue = Utils.getElementValue('nameFilter')?.trim().toLowerCase();
+    if (nameFilterValue && nameFilterValue.length > 0) {
+        filteredRatings = filteredRatings.filter(r => {
+            const neighborhoodName = (r.neighborhood || '').toLowerCase();
+            return neighborhoodName.includes(nameFilterValue);
+        });
+    }
+    
     if (filteredRatings.length === 0) {
-        container.innerHTML = '<div class="empty-state">Все още няма добавени оценки</div>';
+        // Show appropriate message based on whether filter is applied
+        const emptyMessage = nameFilterValue 
+            ? `Няма резултати за "${Utils.getElementValue('nameFilter')?.trim()}"`
+            : 'Все още няма добавени оценки';
+        container.innerHTML = `<div class="empty-state">${emptyMessage}</div>`;
+        // Update results count
+        const resultsCount = Utils.getElement('resultsCount');
+        if (resultsCount) resultsCount.textContent = '0 резултата';
         return;
     }
     

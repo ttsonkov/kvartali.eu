@@ -123,6 +123,36 @@ const UIController = {
             searchInput.placeholder = searchPlaceholders[type] || 'Търси...';
         }
         
+        // Update name filter label and placeholder based on location type
+        const nameFilterLabel = Utils.getElement('nameFilterLabel');
+        const nameFilter = Utils.getElement('nameFilter');
+        if (nameFilterLabel) {
+            const filterLabels = {
+                'neighborhood': 'Търсене по квартал:',
+                'childcare': 'Търсене по детска градина:',
+                'schools': 'Търсене по училище:',
+                'doctors': 'Търсене по лекар:',
+                'services': 'Търсене по услуга:',
+                'shops': 'Търсене по магазин:'
+            };
+            nameFilterLabel.textContent = filterLabels[type] || 'Търсене:';
+        }
+        if (nameFilter) {
+            const filterPlaceholders = {
+                'neighborhood': 'Въведете име на квартал...',
+                'childcare': 'Въведете име на детска градина...',
+                'schools': 'Въведете име на училище...',
+                'doctors': 'Въведете име на лекар...',
+                'services': 'Въведете име на изпълнител...',
+                'shops': 'Въведете име на магазин...'
+            };
+            nameFilter.placeholder = filterPlaceholders[type] || 'Въведете име...';
+            // Clear the filter when switching types
+            nameFilter.value = '';
+            const clearBtn = Utils.getElement('clearNameFilter');
+            if (clearBtn) clearBtn.style.display = 'none';
+        }
+        
         // Update doctor name field label and placeholder based on type
         const doctorNameLabel = doctorNameGroup?.querySelector('label[for="doctorName"]');
         if (doctorNameLabel) {
