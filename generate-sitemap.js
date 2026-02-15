@@ -7,6 +7,15 @@ const cities = [
     "Хасково", "Шумен", "Ямбол"
 ];
 
+// Major cities that have dedicated static HTML pages for neighborhoods
+// These should NOT have ?city=X URLs in sitemap to avoid canonical issues
+const citiesWithStaticPages = {
+    'София': 'sofia.html',
+    'Пловдив': 'plovdiv.html',
+    'Варна': 'varna.html',
+    'Бургас': 'burgas.html'
+};
+
 const locationTypes = [
     { path: '', name: 'Квартали', priority: '1.0' },
     { path: 'type=childcare', name: 'Детски градини', priority: '0.9' },
@@ -27,6 +36,7 @@ function generateSitemap() {
     xml += '        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">\n';
     
     // Add homepage
+    xml += '  <!-- Main Pages -->\n';
     xml += '  <url>\n';
     xml += `    <loc>${baseURL}/</loc>\n`;
     xml += `    <lastmod>${today}</lastmod>\n`;
@@ -34,18 +44,74 @@ function generateSitemap() {
     xml += '    <priority>1.0</priority>\n';
     xml += '  </url>\n';
     
-    // Add all city + location type combinations
+    // Add static pages
+    xml += '  <url>\n';
+    xml += `    <loc>${baseURL}/about.html</loc>\n`;
+    xml += `    <lastmod>${today}</lastmod>\n`;
+    xml += '    <changefreq>monthly</changefreq>\n';
+    xml += '    <priority>0.8</priority>\n';
+    xml += '  </url>\n';
+    xml += '  <url>\n';
+    xml += `    <loc>${baseURL}/privacy.html</loc>\n`;
+    xml += `    <lastmod>${today}</lastmod>\n`;
+    xml += '    <changefreq>monthly</changefreq>\n';
+    xml += '    <priority>0.5</priority>\n';
+    xml += '  </url>\n';
+    xml += '  <url>\n';
+    xml += `    <loc>${baseURL}/terms.html</loc>\n`;
+    xml += `    <lastmod>${today}</lastmod>\n`;
+    xml += '    <changefreq>monthly</changefreq>\n';
+    xml += '    <priority>0.5</priority>\n';
+    xml += '  </url>\n';
+    xml += '  <url>\n';
+    xml += `    <loc>${baseURL}/blog.html</loc>\n`;
+    xml += `    <lastmod>${today}</lastmod>\n`;
+    xml += '    <changefreq>weekly</changefreq>\n';
+    xml += '    <priority>0.8</priority>\n';
+    xml += '  </url>\n';
+    
+    // Add static city landing pages (canonical for neighborhoods in major cities)
+    xml += '  <!-- Static City Landing Pages - Canonical for neighborhoods in major cities -->\n';
+    Object.entries(citiesWithStaticPages).forEach(([city, page]) => {
+        xml += '  <url>\n';
+        xml += `    <loc>${baseURL}/${page}</loc>\n`;
+        xml += `    <lastmod>${today}</lastmod>\n`;
+        xml += '    <changefreq>weekly</changefreq>\n';
+        xml += '    <priority>0.95</priority>\n';
+        xml += '  </url>\n';
+    });
+    
+    // Add category pages (type only, default Sofia)
+    xml += '  <!-- Category Pages (Default Sofia) -->\n';
+    locationTypes.forEach(type => {
+        if (type.path === '') return; // Skip neighborhoods (homepage)
+        xml += '  <url>\n';
+        xml += `    <loc>${baseURL}/?${type.path}</loc>\n`;
+        xml += `    <lastmod>${today}</lastmod>\n`;
+        xml += '    <changefreq>weekly</changefreq>\n';
+        xml += `    <priority>${type.priority}</priority>\n`;
+        xml += '  </url>\n';
+    });
+    
+    // Add city + type combinations
+    // Skip neighborhood type for major cities (use static HTML pages instead)
+    xml += '  <!-- City + Type Combinations -->\n';
     cities.forEach(city => {
+        const hasStaticPage = citiesWithStaticPages[city];
+        
         locationTypes.forEach(type => {
+            // Skip if this is Sofia (already covered by category pages above)
+            if (city === 'София') return;
+            
+            // Skip neighborhood type for cities with static pages
+            if (type.path === '' && hasStaticPage) return;
+            
             let url;
-            if (city === 'София' && type.path === '') {
-                // Homepage already added
-                return;
-            } else if (city === 'София') {
-                url = `${baseURL}/?${type.path}`;
-            } else if (type.path === '') {
+            if (type.path === '') {
+                // Neighborhood type for non-major cities
                 url = `${baseURL}/?city=${encodeURIComponent(city)}`;
             } else {
+                // Other types for all non-Sofia cities
                 url = `${baseURL}/?city=${encodeURIComponent(city)}&amp;${type.path}`;
             }
             

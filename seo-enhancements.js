@@ -225,6 +225,27 @@ const SEOEnhancements = {
         const locationType = AppState.getLocationType();
         
         const baseURL = 'https://kvartali.eu';
+        const currentPath = window.location.pathname;
+        const currentSearch = window.location.search;
+        
+        // Don't modify canonical on static HTML pages - they have correct canonical set in HTML
+        if (currentPath.endsWith('.html') && currentPath !== '/index.html') {
+            return; // Keep the canonical from the HTML file
+        }
+        
+        // Don't modify canonical on homepage without explicit query parameters
+        // This prevents the homepage from canonicalizing to sofia.html
+        if ((currentPath === '/' || currentPath === '/index.html') && !currentSearch) {
+            // Homepage should canonicalize to itself
+            let link = document.querySelector('link[rel="canonical"]');
+            if (!link) {
+                link = document.createElement('link');
+                link.setAttribute('rel', 'canonical');
+                document.head.appendChild(link);
+            }
+            link.setAttribute('href', `${baseURL}/`);
+            return;
+        }
         
         // Map major cities to their static pages (for neighborhood type only)
         const cityToStaticPage = {
@@ -236,8 +257,8 @@ const SEOEnhancements = {
         
         let canonicalURL;
         
-        // If viewing neighborhoods for a major city, use the static page as canonical
-        if (locationType === 'neighborhood' && cityToStaticPage[city]) {
+        // If viewing neighborhoods for a major city via query params, use the static page as canonical
+        if (locationType === 'neighborhood' && cityToStaticPage[city] && currentSearch) {
             canonicalURL = `${baseURL}${cityToStaticPage[city]}`;
         } else {
             // For other combinations, build URL with parameters
