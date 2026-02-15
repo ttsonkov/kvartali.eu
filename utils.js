@@ -23,7 +23,8 @@ const Utils = {
     // URL Management
     updateURL(city, neighborhood = '', type = 'neighborhood') {
         const params = new URLSearchParams();
-        if (city) params.set('city', city);
+        // Don't add city param for Sofia (it's the default)
+        if (city && city !== 'София') params.set('city', city);
         if (neighborhood) params.set('neighborhood', neighborhood);
         if (type && type !== 'neighborhood') params.set('type', type);
         

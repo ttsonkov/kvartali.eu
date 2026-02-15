@@ -219,23 +219,44 @@ const SEOEnhancements = {
     },
     
     // Update canonical URL based on current page
+    // Maps major cities to their static HTML pages to avoid duplicate content issues
     updateCanonicalURL() {
         const city = AppState.getCity();
         const locationType = AppState.getLocationType();
         
         const baseURL = 'https://kvartali.eu';
-        const params = new URLSearchParams();
         
-        if (city && city !== 'София') {
-            params.set('city', city);
+        // Map major cities to their static pages (for neighborhood type only)
+        const cityToStaticPage = {
+            'София': '/sofia.html',
+            'Пловдив': '/plovdiv.html',
+            'Варна': '/varna.html',
+            'Бургас': '/burgas.html'
+        };
+        
+        let canonicalURL;
+        
+        // If viewing neighborhoods for a major city, use the static page as canonical
+        if (locationType === 'neighborhood' && cityToStaticPage[city]) {
+            canonicalURL = `${baseURL}${cityToStaticPage[city]}`;
+        } else {
+            // For other combinations, build URL with parameters
+            // Parameter order: city first, then type (matches sitemap)
+            const params = new URLSearchParams();
+            
+            // Add city if not Sofia (default)
+            if (city && city !== 'София') {
+                params.set('city', city);
+            }
+            
+            // Add type if not neighborhood (default)
+            if (locationType && locationType !== 'neighborhood') {
+                params.set('type', locationType);
+            }
+            
+            const queryString = params.toString() ? `/?${params.toString()}` : '/';
+            canonicalURL = `${baseURL}${queryString}`;
         }
-        
-        if (locationType && locationType !== 'neighborhood') {
-            params.set('type', locationType);
-        }
-        
-        const queryString = params.toString() ? `?${params.toString()}` : '';
-        const canonicalURL = `${baseURL}${queryString}`;
         
         let link = document.querySelector('link[rel="canonical"]');
         if (!link) {
