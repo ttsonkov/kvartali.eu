@@ -419,6 +419,14 @@ function displayResults(cityFilter = '', neighborhoodFilter = '') {
     // Build HTML
     container.innerHTML = '';
     sortedEntries.forEach(({ neighborhood, city, neighborhoodRatings, avgRatings, totalAvg }) => {
+        // Escape user-generated content to prevent XSS
+        const escapeHTML = (str) => {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        };
+        
         const opinions = neighborhoodRatings.filter(r => r.opinion).map(r => r.opinion);
         const card = document.createElement('div');
         card.className = 'neighborhood-card';
@@ -428,14 +436,14 @@ function displayResults(cityFilter = '', neighborhoodFilter = '') {
                 <div class="opinions-section">
                     <h4>Мнения:</h4>
                     <ul class="opinions-list">
-                        ${opinions.map(op => `<li>"${op}"</li>`).join('')}
+                        ${opinions.map(op => `<li>"${escapeHTML(op)}"</li>`).join('')}
                     </ul>
                 </div>
             `;
         }
         
         card.innerHTML = `
-            <h3>${neighborhood} — ${city} (${neighborhoodRatings.length} ${neighborhoodRatings.length === 1 ? 'оценка' : 'оценки'})</h3>
+            <h3>${escapeHTML(neighborhood)} — ${escapeHTML(city)} (${neighborhoodRatings.length} ${neighborhoodRatings.length === 1 ? 'оценка' : 'оценки'})</h3>
             <div class="rating-grid">
                 ${Object.entries(criteria).map(([key, name]) => `
                     <div class="rating-item">

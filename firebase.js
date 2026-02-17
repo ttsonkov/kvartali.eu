@@ -164,7 +164,17 @@ async function handleFormSubmit(e) {
         }
     }
     
-    const opinion = Utils.getElementValue('opinion')?.trim() || '';
+    let opinion = Utils.getElementValue('opinion')?.trim() || '';
+    
+    // Input validation: sanitize and limit opinion length
+    const MAX_OPINION_LENGTH = CONFIG?.MAX_OPINION_LENGTH || 500;
+    if (opinion.length > MAX_OPINION_LENGTH) {
+        opinion = opinion.slice(0, MAX_OPINION_LENGTH);
+        Utils.showToast(`Мнението е съкратено до ${MAX_OPINION_LENGTH} символа`, 'warning');
+    }
+    
+    // Basic sanitization - remove potential script tags
+    opinion = opinion.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
 
     // Check if already voted for this neighborhood (server-ground truth)
     const voteKey = Utils.makeVoteKey(serviceCity, neighborhood, locationType);

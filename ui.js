@@ -327,6 +327,14 @@ function displayResults(cityFilter = '', neighborhoodFilter = '', sortBy = 'rati
 // Helper function to render a batch of results
 function renderResultBatch(entries, container) {
     entries.forEach(({ neighborhood, city, neighborhoodRatings, avgRatings, totalAvg, locationType }) => {
+        // Escape user-generated content to prevent XSS
+        const escapeHTML = (str) => {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        };
+        
         const opinions = neighborhoodRatings.filter(r => r.opinion).map(r => r.opinion);
         const card = document.createElement('div');
         card.className = 'neighborhood-card';
@@ -339,9 +347,9 @@ function renderResultBatch(entries, container) {
             if (uniqueNeighborhoods.length > 1) {
                 opinionFilterHTML = `
                     <div class="opinion-filter">
-                        <select class="neighborhood-opinion-filter" data-neighborhood="${neighborhood}">
+                        <select class="neighborhood-opinion-filter" data-neighborhood="${escapeHTML(neighborhood)}">
                             <option value="">Всички мнения</option>
-                            ${uniqueNeighborhoods.map(n => `<option value="${n}">${n}</option>`).join('')}
+                            ${uniqueNeighborhoods.map(n => `<option value="${escapeHTML(n)}">${escapeHTML(n)}</option>`).join('')}
                         </select>
                     </div>
                 `;
@@ -351,8 +359,8 @@ function renderResultBatch(entries, container) {
                 <div class="opinions-section">
                     <h4>Мнения:</h4>
                     ${opinionFilterHTML}
-                    <ul class="opinions-list" data-neighborhood="${neighborhood}">
-                        ${opinions.map((op, idx) => `<li data-neighborhood="${neighborhoodRatings[neighborhoodRatings.findIndex(r => r.opinion === op)]?.neighborhood}">"${op}"</li>`).join('')}
+                    <ul class="opinions-list" data-neighborhood="${escapeHTML(neighborhood)}">
+                        ${opinions.map((op, idx) => `<li data-neighborhood="${escapeHTML(neighborhoodRatings[neighborhoodRatings.findIndex(r => r.opinion === op)]?.neighborhood || '')}">"${escapeHTML(op)}"</li>`).join('')}
                     </ul>
                 </div>
             `;
@@ -379,7 +387,7 @@ function renderResultBatch(entries, container) {
         }
         
         card.innerHTML = `
-            <h3>${neighborhood} — ${city} (${neighborhoodRatings.length} ${neighborhoodRatings.length === 1 ? 'оценка' : 'оценки'})</h3>
+            <h3>${escapeHTML(neighborhood)} — ${escapeHTML(city)} (${neighborhoodRatings.length} ${neighborhoodRatings.length === 1 ? 'оценка' : 'оценки'})</h3>
             <div class="rating-grid">
                 ${ratingGridHTML}
             </div>

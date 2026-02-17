@@ -274,7 +274,9 @@ const Search = {
         container.innerHTML = '';
 
         if (displayedEntries.length === 0) {
-            container.innerHTML = '<div class="empty-state">Няма резултати за "' + this.searchInput.value + '"</div>';
+            // Escape search input to prevent XSS
+            const escapedSearch = Utils.escapeHTML ? Utils.escapeHTML(this.searchInput.value) : this.searchInput.value.replace(/[<>&"']/g, '');
+            container.innerHTML = '<div class="empty-state">Няма резултати за "' + escapedSearch + '"</div>';
             return;
         }
 

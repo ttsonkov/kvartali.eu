@@ -106,6 +106,28 @@ const Utils = {
             this.showToast(errorMsg, 'error');
             return fallback;
         }
+    },
+    
+    // HTML escape to prevent XSS attacks
+    escapeHTML(str) {
+        if (!str) return '';
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    },
+    
+    // Validate and sanitize opinion text
+    sanitizeOpinion(opinion, maxLength = 500) {
+        if (!opinion) return '';
+        // Trim and limit length
+        let sanitized = String(opinion).trim().slice(0, maxLength);
+        return sanitized;
+    },
+    
+    // Validate rating value (1-5)
+    validateRating(rating) {
+        const num = parseInt(rating, 10);
+        return num >= 1 && num <= 5 ? num : 0;
     }
 };
 
