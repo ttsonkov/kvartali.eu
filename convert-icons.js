@@ -16,7 +16,7 @@ async function convertIcons() {
     const iconSvg = fs.readFileSync('icon.svg');
     const ogSvg = fs.readFileSync('og-image.svg');
 
-    const sizes = [72, 96, 128, 144, 192, 512];
+    const sizes = [16, 32, 72, 96, 128, 144, 192, 512];
 
     console.log('Generating PNG icons from icon.svg...');
     
