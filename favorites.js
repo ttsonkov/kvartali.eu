@@ -165,12 +165,30 @@ const Favorites = {
         // Don't add if already exists
         if (document.getElementById('favoritesFilterBtn')) return;
         
+        const counts = this.getCountsByCategory();
+        const categoryLabels = {
+            neighborhood: 'Квартали',
+            childcare: 'Градини',
+            schools: 'Училища',
+            doctors: 'Лекари',
+            services: 'Услуги',
+            shops: 'Магазини'
+        };
+        
+        const categoryTags = Object.keys(counts).map(type => {
+            const count = counts[type];
+            return `<span class="fav-cat fav-cat-${type}" style="display: ${count > 0 ? 'inline-block' : 'none'}">${categoryLabels[type]}: ${count}</span>`;
+        }).join('');
+        
         const btn = document.createElement('button');
         btn.id = 'favoritesFilterBtn';
         btn.className = 'favorites-filter-btn';
         btn.innerHTML = `
-            ❤️ Любими
-            <span class="favorites-count">${this.favorites.length}</span>
+            <span class="fav-main">
+                ❤️ Любими
+                <span class="favorites-count">${this.favorites.length}</span>
+            </span>
+            <span class="fav-categories">${categoryTags}</span>
         `;
         
         btn.addEventListener('click', () => {
@@ -191,6 +209,30 @@ const Favorites = {
     },
 
     /**
+     * Get counts of favorites by category
+     * @returns {Object} Object with category counts
+     */
+    getCountsByCategory() {
+        const counts = {
+            neighborhood: 0,
+            childcare: 0,
+            schools: 0,
+            doctors: 0,
+            services: 0,
+            shops: 0
+        };
+        
+        this.favorites.forEach(id => {
+            const type = id.split('::')[0];
+            if (counts.hasOwnProperty(type)) {
+                counts[type]++;
+            }
+        });
+        
+        return counts;
+    },
+
+    /**
      * Update the favorites filter button count
      */
     updateFilterButton() {
@@ -198,6 +240,31 @@ const Favorites = {
         if (countEl) {
             countEl.textContent = this.favorites.length;
         }
+        this.updateCategoryCounts();
+    },
+
+    /**
+     * Update the category counts display
+     */
+    updateCategoryCounts() {
+        const counts = this.getCountsByCategory();
+        const categoryLabels = {
+            neighborhood: 'Квартали',
+            childcare: 'Градини',
+            schools: 'Училища',
+            doctors: 'Лекари',
+            services: 'Услуги',
+            shops: 'Магазини'
+        };
+        
+        Object.keys(counts).forEach(type => {
+            const el = document.querySelector(`.fav-cat-${type}`);
+            if (el) {
+                const count = counts[type];
+                el.textContent = `${categoryLabels[type]}: ${count}`;
+                el.style.display = count > 0 ? 'inline-block' : 'none';
+            }
+        });
     },
 
     /**
