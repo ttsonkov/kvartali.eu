@@ -14,6 +14,7 @@ const Favorites = {
      */
     init() {
         this.loadFromStorage();
+        this.renderCategoryStatsButton();
         this.renderFavoritesFilter();
         this.setupEventListeners();
     },
@@ -151,6 +152,123 @@ const Favorites = {
         });
         
         card.appendChild(btn);
+    },
+
+    /**
+     * Get total counts of all items by category from allRatings
+     * @returns {Object} Object with category counts
+     */
+    getTotalCountsByCategory() {
+        const counts = {
+            neighborhood: 0,
+            childcare: 0,
+            schools: 0,
+            doctors: 0,
+            services: 0,
+            shops: 0
+        };
+        
+        if (typeof allRatings === 'undefined' || !Array.isArray(allRatings)) {
+            return counts;
+        }
+        
+        // Group by neighborhood+city+type to get unique entries
+        const uniqueEntries = new Set();
+        allRatings.forEach(r => {
+            const type = r.locationType || 'neighborhood';
+            const key = `${type}::${r.city || ''}::${r.neighborhood || ''}`;
+            uniqueEntries.add(key);
+        });
+        
+        uniqueEntries.forEach(key => {
+            const type = key.split('::')[0];
+            if (counts.hasOwnProperty(type)) {
+                counts[type]++;
+            }
+        });
+        
+        return counts;
+    },
+
+    /**
+     * Render the category stats button
+     */
+    renderCategoryStatsButton() {
+        const controlsContainer = document.querySelector('.controls-container') || 
+                                   document.querySelector('.filter-section');
+        
+        if (!controlsContainer) return;
+        
+        // Don't add if already exists
+        if (document.getElementById('categoryStatsBtn')) return;
+        
+        const categoryLabels = {
+            neighborhood: 'Квартали',
+            childcare: 'Градини',
+            schools: 'Училища',
+            doctors: 'Лекари',
+            services: 'Услуги',
+            shops: 'Магазини'
+        };
+        
+        const counts = this.getTotalCountsByCategory();
+        const total = Object.values(counts).reduce((a, b) => a + b, 0);
+        
+        const categoryTags = Object.keys(counts).map(type => {
+            const count = counts[type];
+            return `<span class="stat-cat stat-cat-${type}" style="display: ${count > 0 ? 'inline-block' : 'none'}">${categoryLabels[type]}: ${count}</span>`;
+        }).join('');
+        
+        const btn = document.createElement('div');
+        btn.id = 'categoryStatsBtn';
+        btn.className = 'category-stats-btn';
+        btn.innerHTML = `
+            <span class="stats-main">
+                📊 Всичко
+                <span class="stats-total-count">${total}</span>
+            </span>
+            <span class="stats-categories">${categoryTags}</span>
+        `;
+        
+        // Find a good place to insert
+        const sortControls = controlsContainer.querySelector('.sort-controls') ||
+                            controlsContainer.querySelector('.filter-controls');
+        
+        if (sortControls) {
+            sortControls.appendChild(btn);
+        } else {
+            controlsContainer.appendChild(btn);
+        }
+    },
+
+    /**
+     * Update the category stats display
+     */
+    updateCategoryStats() {
+        const counts = this.getTotalCountsByCategory();
+        const total = Object.values(counts).reduce((a, b) => a + b, 0);
+        const categoryLabels = {
+            neighborhood: 'Квартали',
+            childcare: 'Градини',
+            schools: 'Училища',
+            doctors: 'Лекари',
+            services: 'Услуги',
+            shops: 'Магазини'
+        };
+        
+        const totalEl = document.querySelector('.stats-total-count');
+        if (totalEl) {
+            totalEl.textContent = total;
+        }
+        
+        Object.keys(counts).forEach(type => {
+            const el = document.querySelector(`.stat-cat-${type}`);
+            if (el) {
+                const count = counts[type];
+                el.textContent = `${categoryLabels[type]}: ${count}`;
+                el.style.display = count > 0 ? 'inline-block' : 'none';
+            }
+        });
     },
 
     /**
@@ -324,6 +442,12 @@ const Favorites = {
         // Listen for card rendering events
         document.addEventListener('cardsRendered', () => {
             this.updateFilterButton();
+            this.updateCategoryStats();
+        });
+        
+        // Listen for data load events
+        document.addEventListener('ratingsLoaded', () => {
+            this.updateCategoryStats();
         });
     }
 };

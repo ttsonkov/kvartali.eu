@@ -2670,6 +2670,59 @@ body.dark-mode .rating-badge.poor {
 .fav-cat-services { border-left: 2px solid #fa709a; }
 .fav-cat-shops { border-left: 2px solid #fee140; }
 
+/* Category Stats Button (Total counts) */
+.category-stats-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 8px 16px;
+    background: var(--input-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.category-stats-btn .stats-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.stats-total-count {
+    background: var(--accent-color);
+    color: white;
+    border-radius: 10px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.category-stats-btn .stats-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 4px;
+    font-size: 11px;
+}
+
+.category-stats-btn .stat-cat {
+    background: var(--border-color);
+    color: var(--text-secondary);
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.stat-cat-neighborhood { border-left: 2px solid #667eea; }
+.stat-cat-childcare { border-left: 2px solid #f093fb; }
+.stat-cat-schools { border-left: 2px solid #4facfe; }
+.stat-cat-doctors { border-left: 2px solid #43e97b; }
+.stat-cat-services { border-left: 2px solid #fa709a; }
+.stat-cat-shops { border-left: 2px solid #fee140; }
+
 /* ========================================
    ENHANCED ACCESSIBILITY
    ======================================== */

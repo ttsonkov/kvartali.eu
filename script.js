@@ -579,6 +579,8 @@ function attachRatingsListener() {
             const filterNeighborhoodEl = document.getElementById('filterNeighborhood');
             const currentNeighborhoodFilter = filterNeighborhoodEl ? filterNeighborhoodEl.value : '';
             displayResults(currentCityFilter, currentNeighborhoodFilter);
+            // Dispatch event for category stats update
+            document.dispatchEvent(new CustomEvent('ratingsLoaded'));
         },
         (error) => {
             console.error('Snapshot error:', error);
