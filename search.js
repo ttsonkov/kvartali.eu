@@ -91,8 +91,8 @@ const Search = {
         // Get all current results based on filters
         const filters = getCurrentFilters();
         
-        // Search in all ratings
-        const searchResults = this.fuzzySearch(query, allRatings);
+        // Search in all ratings - use window.allRatings for consistent global access
+        const searchResults = this.fuzzySearch(query, window.allRatings || allRatings || []);
         
         // Track search in analytics
         if (typeof gtag !== 'undefined') {

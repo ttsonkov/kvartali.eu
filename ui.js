@@ -153,8 +153,8 @@ function displayResults(cityFilter = '', neighborhoodFilter = '', sortBy = 'rati
     // Show loading state
     container.innerHTML = '<div class="loading-state"><div class="spinner-large"></div><p>Зареждане на резултати...</p></div>';
     
-    // Filter ratings
-    let filteredRatings = allRatings;
+    // Filter ratings - use window.allRatings for consistent global access
+    let filteredRatings = window.allRatings || allRatings || [];
     
     // Filter by location type
     filteredRatings = filteredRatings.filter(r => (r.locationType || 'neighborhood') === AppState.getLocationType());

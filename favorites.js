@@ -168,13 +168,15 @@ const Favorites = {
             shops: 0
         };
         
-        if (typeof allRatings === 'undefined' || !Array.isArray(allRatings)) {
+        // Use window.allRatings for global access
+        const ratings = window.allRatings || (typeof allRatings !== 'undefined' ? allRatings : []);
+        if (!Array.isArray(ratings) || ratings.length === 0) {
             return counts;
         }
         
         // Group by neighborhood+city+type to get unique entries
         const uniqueEntries = new Set();
-        allRatings.forEach(r => {
+        ratings.forEach(r => {
             const type = r.locationType || 'neighborhood';
             const key = `${type}::${r.city || ''}::${r.neighborhood || ''}`;
             uniqueEntries.add(key);
@@ -212,7 +214,9 @@ const Favorites = {
         };
         
         const counts = this.getTotalCountsByCategory();
-        const total = Object.values(counts).reduce((a, b) => a + b, 0);
+        const currentType = (window.AppState && AppState.getLocationType) ? AppState.getLocationType() : 'neighborhood';
+        const currentCount = counts[currentType] || 0;
+        const currentLabel = categoryLabels[currentType] || 'Всичко';
         
         const categoryTags = Object.keys(counts).map(type => {
             const count = counts[type];
@@ -224,8 +228,8 @@ const Favorites = {
         btn.className = 'category-stats-btn';
         btn.innerHTML = `
             <span class="stats-main">
-                📊 Всичко
-                <span class="stats-total-count">${total}</span>
+                📊 <span class="stats-category-label">${currentLabel}</span>
+                <span class="stats-total-count">${currentCount}</span>
             </span>
             <span class="stats-categories">${categoryTags}</span>
         `;
@@ -246,7 +250,6 @@ const Favorites = {
      */
     updateCategoryStats() {
         const counts = this.getTotalCountsByCategory();
-        const total = Object.values(counts).reduce((a, b) => a + b, 0);
         const categoryLabels = {
             neighborhood: 'Квартали',
             childcare: 'Градини',
@@ -256,9 +259,18 @@ const Favorites = {
             shops: 'Магазини'
         };
         
+        const currentType = (window.AppState && AppState.getLocationType) ? AppState.getLocationType() : 'neighborhood';
+        const currentCount = counts[currentType] || 0;
+        const currentLabel = categoryLabels[currentType] || 'Всичко';
+        
         const totalEl = document.querySelector('.stats-total-count');
         if (totalEl) {
-            totalEl.textContent = total;
+            totalEl.textContent = currentCount;
+        }
+        
+        const labelEl = document.querySelector('.stats-category-label');
+        if (labelEl) {
+            labelEl.textContent = currentLabel;
         }
         
         Object.keys(counts).forEach(type => {

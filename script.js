@@ -6,6 +6,7 @@ let currentUser = null;
 
 // Cloud-backed data caches
 let allRatings = []; // all ratings from Firestore
+window.allRatings = allRatings; // Expose globally for other modules
 let userVotedNeighborhoods = []; // neighborhoods this user has voted
 
 // City → neighborhoods map
@@ -575,6 +576,7 @@ function attachRatingsListener() {
     db.collection('ratings').onSnapshot(
         (snapshot) => {
             allRatings = snapshot.docs.map(doc => doc.data());
+            window.allRatings = allRatings; // Update global reference
             const currentCityFilter = document.getElementById('filterCity').value || currentCity;
             const filterNeighborhoodEl = document.getElementById('filterNeighborhood');
             const currentNeighborhoodFilter = filterNeighborhoodEl ? filterNeighborhoodEl.value : '';
