@@ -606,9 +606,17 @@ const SEOEnhancements = {
             }))
         };
         
-        // Remove existing FAQ schema
-        const existing = document.querySelector('script[type="application/ld+json"]#faq-schema');
-        if (existing) existing.remove();
+        // Remove ALL existing FAQ schemas (including static ones in HTML) to prevent duplicates
+        document.querySelectorAll('script[type="application/ld+json"]').forEach(script => {
+            try {
+                const data = JSON.parse(script.textContent);
+                if (data['@type'] === 'FAQPage') {
+                    script.remove();
+                }
+            } catch (e) {
+                // Ignore parsing errors
+            }
+        });
         
         const script = document.createElement('script');
         script.type = 'application/ld+json';
