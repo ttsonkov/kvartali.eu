@@ -155,7 +155,7 @@ const Favorites = {
     },
 
     /**
-     * Get total counts of all items by category from allRatings
+     * Get total counts of all items by category from allRatings, filtered by current city
      * @returns {Object} Object with category counts
      */
     getTotalCountsByCategory() {
@@ -174,9 +174,12 @@ const Favorites = {
             return counts;
         }
         
-        // Group by neighborhood+city+type to get unique entries
+        const currentCity = (window.AppState && AppState.getCity) ? AppState.getCity() : 'София';
+        
+        // Group by neighborhood+city+type to get unique entries, filtered by current city
         const uniqueEntries = new Set();
         ratings.forEach(r => {
+            if ((r.city || '') !== currentCity) return;
             const type = r.locationType || 'neighborhood';
             const key = `${type}::${r.city || ''}::${r.neighborhood || ''}`;
             uniqueEntries.add(key);
@@ -216,12 +219,7 @@ const Favorites = {
         const counts = this.getTotalCountsByCategory();
         const currentType = (window.AppState && AppState.getLocationType) ? AppState.getLocationType() : 'neighborhood';
         const currentCount = counts[currentType] || 0;
-        const currentLabel = categoryLabels[currentType] || 'Всичко';
-        
-        const categoryTags = Object.keys(counts).map(type => {
-            const count = counts[type];
-            return `<span class="stat-cat stat-cat-${type}" style="display: ${count > 0 ? 'inline-block' : 'none'}">${categoryLabels[type]}: ${count}</span>`;
-        }).join('');
+        const currentLabel = categoryLabels[currentType] || 'Квартали';
         
         const btn = document.createElement('div');
         btn.id = 'categoryStatsBtn';
@@ -231,7 +229,6 @@ const Favorites = {
                 📊 <span class="stats-category-label">${currentLabel}</span>
                 <span class="stats-total-count">${currentCount}</span>
             </span>
-            <span class="stats-categories">${categoryTags}</span>
         `;
         
         // Find a good place to insert
@@ -261,7 +258,7 @@ const Favorites = {
         
         const currentType = (window.AppState && AppState.getLocationType) ? AppState.getLocationType() : 'neighborhood';
         const currentCount = counts[currentType] || 0;
-        const currentLabel = categoryLabels[currentType] || 'Всичко';
+        const currentLabel = categoryLabels[currentType] || 'Квартали';
         
         const totalEl = document.querySelector('.stats-total-count');
         if (totalEl) {
@@ -272,15 +269,6 @@ const Favorites = {
         if (labelEl) {
             labelEl.textContent = currentLabel;
         }
-        
-        Object.keys(counts).forEach(type => {
-            const el = document.querySelector(`.stat-cat-${type}`);
-            if (el) {
-                const count = counts[type];
-                el.textContent = `${categoryLabels[type]}: ${count}`;
-                el.style.display = count > 0 ? 'inline-block' : 'none';
-            }
-        });
     },
 
     /**
