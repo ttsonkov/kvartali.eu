@@ -17,6 +17,7 @@ function attachRatingsListener() {
         (snapshot) => {
             allRatings = snapshot.docs.map(doc => doc.data());
             window.allRatings = allRatings;
+            document.dispatchEvent(new CustomEvent('ratingsLoaded'));
             const currentCityFilter = Utils.getElementValue('filterCity') || AppState.getCity();
             const currentNeighborhoodFilter = Utils.getElementValue('filterNeighborhood') || '';
             displayResults(currentCityFilter, currentNeighborhoodFilter);

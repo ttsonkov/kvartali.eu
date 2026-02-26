@@ -322,6 +322,8 @@ function displayResults(cityFilter = '', neighborhoodFilter = '', sortBy = 'rati
             debouncedRefreshAds();
         }
     }
+    // Notify other modules that cards have been rendered
+    document.dispatchEvent(new CustomEvent('cardsRendered'));
 }
 
 // Helper function to render a batch of results
