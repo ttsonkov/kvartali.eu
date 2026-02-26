@@ -67,7 +67,6 @@
     
     <!-- Preload critical resources -->
     <link rel="preload" href="style.css?v=20260211a" as="style">
-    <link rel="preload" href="script.js?v=20260211a" as="script">
     
     <link rel="stylesheet" href="style.css?v=20260211a">
     <meta name="mobile-web-app-capable" content="yes">
@@ -354,7 +353,7 @@
                 <h1 id="pageTitle" style="margin: 0;">
                     <span>🏙️ KvartaliEU:</span>
                     <span style="position: relative; display: inline-block;">
-                        <a href="#citySelect" id="headerCityLink" aria-label="Избран град">София</a>
+                        <a href="#" id="headerCityLink" aria-label="Избран град">София</a>
                         <div id="headerCityMenu" class="city-menu hidden" role="menu" aria-label="Меню за избор на град"></div>
                     </span>
                 </h1>
@@ -840,18 +839,6 @@
     <script defer src="keyboard-shortcuts.js?v=20260211a"></script>
     <!-- Favorites / Bookmarks -->
     <script defer src="favorites.js?v=20260208"></script>
-    
-    <!-- SEO Schema for rating application -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "AggregateRating",
-        "ratingValue": "4.5",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "1000"
-    }
-    </script>
     
     <!-- Service Worker Registration for PWA -->
     <script>

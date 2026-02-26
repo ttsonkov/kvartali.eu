@@ -433,10 +433,10 @@ function renderResultBatch(entries, container) {
     });
     
     // Refresh AdSense ads after results are rendered, only if there is meaningful content
-    if (typeof AdSenseManager !== 'undefined') {
+    if (typeof AdSenseManager !== 'undefined' && typeof debouncedRefreshAds !== 'undefined') {
         const container = document.getElementById('resultsContainer');
         if (container && container.children.length > 0 && container.textContent.trim().length >= 50) {
-            AdSenseManager.refreshAds();
+            debouncedRefreshAds();
         } else {
             if (window.console) console.warn('Ads not refreshed: empty or low-value content.');
         }

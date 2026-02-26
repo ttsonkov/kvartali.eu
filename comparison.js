@@ -84,7 +84,7 @@ const Comparison = {
      * @returns {string} - CSS selector
      */
     getItemSelector(entry) {
-        return `input[data-city="${entry.city}"][data-neighborhood="${entry.neighborhood}"]`;
+        return `input[data-city="${CSS.escape(entry.city)}"][data-neighborhood="${CSS.escape(entry.neighborhood)}"]`;
     },
 
     /**
@@ -242,10 +242,12 @@ const Comparison = {
         // Headers
         html += '<div class="comparison-header comparison-criteria-label">Критерий</div>';
         items.forEach(item => {
+            const escNeighborhood = Utils.escapeHTML(item.neighborhood);
+            const escCity = Utils.escapeHTML(item.city);
             html += `
                 <div class="comparison-header comparison-item-header">
-                    <h3>${item.neighborhood}</h3>
-                    <p>${item.city}</p>
+                    <h3>${escNeighborhood}</h3>
+                    <p>${escCity}</p>
                     <div class="comparison-overall-score">${item.totalAvg.toFixed(1)} ★</div>
                 </div>
             `;
@@ -289,7 +291,7 @@ const Comparison = {
         items.forEach((item, index) => {
             html += `
                 <div class="comparison-chart-container">
-                    <h4>${item.neighborhood}</h4>
+                    <h4>${Utils.escapeHTML(item.neighborhood)}</h4>
                     <canvas id="comparisonRadar${index}" width="300" height="300"></canvas>
                 </div>
             `;

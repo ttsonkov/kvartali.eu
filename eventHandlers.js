@@ -88,7 +88,7 @@ const EventHandlers = {
         if (shopCategory) {
             shopCategory.addEventListener('change', (e) => {
                 const category = e.target.value;
-                currentShopCategory = category;
+                let currentShopCategory = category;
                 
                 // Update shop name dropdown based on category
                 const shopNameSelect = Utils.getElement('shopName');
@@ -114,7 +114,7 @@ const EventHandlers = {
         const shopName = Utils.getElement('shopName');
         if (shopName) {
             shopName.addEventListener('change', (e) => {
-                currentShopName = e.target.value;
+                let currentShopName = e.target.value;
             });
         }
         

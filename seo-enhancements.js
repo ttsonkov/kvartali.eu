@@ -93,8 +93,8 @@ const SEOEnhancements = {
         
         const content = heroContent[locationType] || heroContent['neighborhood'];
         
-        // Update title and description
-        heroTitle.innerHTML = content.title;
+        // Update title and description (use textContent for title, innerHTML only for trusted content)
+        heroTitle.textContent = content.title;
         heroDesc.innerHTML = content.description;
         
         // Update features
@@ -488,7 +488,7 @@ const SEOEnhancements = {
                 },
                 {
                     question: 'Как се изчислява рейтингът на кварталите?',
-                    answer: 'Рейтингът се изчислява като средна стойност от оценките на реални жители по 10 критерия: чистота, безопасност, инфраструктура, зелени площи, транспорт, шум, паркиране, съседи, цени и общо впечатление.'
+                    answer: 'Рейтингът се изчислява като средна стойност от оценките на реални жители по 10 критерия: локация, чистота, транспорт, сграден фонд, сигурност, инфраструктура, училища и ДГ, здравеопазване, магазини и забавления.'
                 },
                 {
                     question: 'Мога ли да добавя оценка за моя квартал?',
@@ -661,7 +661,6 @@ const SEOEnhancements = {
     addPerformanceHints() {
         // Preload critical resources
         const preloads = [
-            { href: 'style.css', as: 'style' },
             { href: 'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js', as: 'script' }
         ];
         
@@ -868,7 +867,7 @@ const SEOEnhancements = {
                 "bestRating": "5",
                 "worstRating": "1",
                 "ratingCount": item.neighborhoodRatings?.length || 1,
-                "reviewCount": item.neighborhoodRatings?.filter(r => r.comment)?.length || 0
+                "reviewCount": item.neighborhoodRatings?.filter(r => r.opinion)?.length || 0
             }
         };
         

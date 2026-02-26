@@ -46,8 +46,19 @@ const Utils = {
             type = 'doctors';
         }
         
+        // Validate city against known cities to prevent XSS via URL parameter
+        const validTypes = ['neighborhood', 'childcare', 'schools', 'doctors', 'services', 'shops', 'dentists'];
+        if (!validTypes.includes(type)) {
+            type = 'neighborhood';
+        }
+        
+        let city = params.get('city') || 'София';
+        if (typeof cityNeighborhoods !== 'undefined' && !cityNeighborhoods[city]) {
+            city = 'София';
+        }
+        
         return {
-            city: params.get('city') || 'София',
+            city: city,
             neighborhood: params.get('neighborhood') || '',
             type: type
         };

@@ -82,7 +82,7 @@ const UIController = {
         // Shop fields - only for shops mode
         if (shopCategoryGroup) shopCategoryGroup.style.display = isShops ? 'block' : 'none';
         if (shopCategoryField) shopCategoryField.required = isShops;
-        if (shopNameGroup) shopNameGroup.style.display = isShops ? 'none' : 'none'; // Initially hidden until category is selected
+        if (shopNameGroup) shopNameGroup.style.display = 'none'; // Hidden until shop category is selected
         if (shopNameField) shopNameField.required = isShops;
         
         // Service fields - only for services mode

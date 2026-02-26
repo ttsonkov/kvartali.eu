@@ -7,6 +7,7 @@ const STATIC_ASSETS = [
     '/',
     '/index.html',
     '/style.css',
+    '/config.js',
     '/utils.js',
     '/state.js',
     '/dataService.js',
@@ -23,7 +24,10 @@ const STATIC_ASSETS = [
     '/dark-mode.js',
     '/search.js',
     '/charts.js',
-    '/comparison.js'
+    '/comparison.js',
+    '/favorites.js',
+    '/keyboard-shortcuts.js',
+    '/adsense-manager.js'
 ];
 
 // Install event - cache static assets
