@@ -134,17 +134,49 @@ const SEOEnhancements = {
         const typeName = typeNames[locationType] || 'Квартали';
         const typeDesc = typeDescriptions[locationType] || 'квартали с рейтинги по 10 критерия';
         
-        // Update title with better keyword targeting
-        let title;
-        if (city === 'София') {
-            title = `${typeName} в София — KvartaliEU | Рейтинги и Отзиви 2026`;
-        } else {
-            title = `${typeName} в ${city} — KvartaliEU | Оценки от Реални Потребители`;
-        }
+        // Update title with better keyword targeting for long-tail SEO
+        const titleTemplates = {
+            'neighborhood': {
+                'София': 'Квартали в София — Рейтинг 2026 | Къде да живея? | KvartaliEU',
+                '_default': `Квартали в ${city} — Рейтинг 2026 | Оценки от Жители | KvartaliEU`
+            },
+            'childcare': {
+                'София': 'Детски градини в София — Рейтинг 2026 | Отзиви от Родители | KvartaliEU',
+                '_default': `Детски градини в ${city} — Рейтинг и Отзиви 2026 | KvartaliEU`
+            },
+            'schools': {
+                'София': 'Училища в София — Рейтинг 2026 | Най-Добрите Училища | KvartaliEU',
+                '_default': `Училища в ${city} — Рейтинг и Отзиви 2026 | KvartaliEU`
+            },
+            'doctors': {
+                'София': 'Лекари в София — Отзиви и Рейтинг 2026 | Намерете Специалист | KvartaliEU',
+                '_default': `Лекари в ${city} — Отзиви и Оценки 2026 | KvartaliEU`
+            },
+            'services': {
+                'София': 'Майстори и Услуги в София — Рейтинг 2026 | ВИК, Електричари | KvartaliEU',
+                '_default': `Услуги в ${city} — Майстори с Отзиви 2026 | KvartaliEU`
+            },
+            'shops': {
+                'София': 'Магазини в София — Рейтинг 2026 | Супермаркети и Вериги | KvartaliEU',
+                '_default': `Магазини в ${city} — Рейтинг и Отзиви 2026 | KvartaliEU`
+            }
+        };
+        
+        const templateGroup = titleTemplates[locationType] || titleTemplates['neighborhood'];
+        const title = templateGroup[city] || templateGroup['_default'];
         document.title = title;
         
-        // Update meta description with action-oriented text
-        const description = `Открийте най-добрите ${typeDesc} в ${city}. ✓ Рейтинги от реални жители ✓ Сравнение ✓ Подробни отзиви. Гласувайте и споделете мнението си!`;
+        // Update meta description with action-oriented text and long-tail keywords
+        const descriptionTemplates = {
+            'neighborhood': `Открийте най-добрите квартали в ${city} с рейтинги от реални жители по 10 критерия. ★ Сравнете квартали ★ Мнения за чистота, сигурност, транспорт ★ Безплатно!`,
+            'childcare': `Търсите детска градина в ${city}? Вижте рейтинги и отзиви от реални родители. ★ Качество на образованието ★ Условия ★ Персонал ★ Класация 2026`,
+            'schools': `Намерете най-доброто училище в ${city} — класация 2026 с оценки от родители и ученици. ★ Преподаватели ★ Материална база ★ Безопасност`,
+            'doctors': `Намерете добър лекар в ${city} с отзиви от реални пациенти. ★ Всички специалности ★ Рейтинги ★ Препоръки ★ Безплатно`,
+            'services': `Намерете проверени майстори и услуги в ${city} — електричари, ВИК, бояджии, адвокати. ★ Рейтинги от клиенти ★ Без риск`,
+            'shops': `Рейтинг на магазини в ${city} 2026 — супермаркети, аптеки, фитнес центрове. ★ Оценки от клиенти ★ Сравнение на вериги`
+        };
+        
+        const description = descriptionTemplates[locationType] || descriptionTemplates['neighborhood'];
         this.updateMetaTag('description', description);
         
         // Update OG tags for better social sharing
