@@ -15,7 +15,6 @@ const Favorites = {
     init() {
         this.loadFromStorage();
         this.renderCategoryStatsButton();
-        this.renderFavoritesFilter();
         this.setupEventListeners();
     },
 
