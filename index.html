@@ -30,6 +30,37 @@
     <meta name="twitter:site" content="@kvartali_eu">
     <meta name="twitter:creator" content="@kvartali_eu">
     <link rel="canonical" href="https://kvartali.eu/">
+    <!-- Inline canonical fix: set correct canonical BEFORE deferred scripts run, so Googlebot sees it immediately -->
+    <script>
+    (function() {
+        var base = 'https://kvartali.eu';
+        var path = location.pathname;
+        var search = location.search;
+        // Only adjust canonical on index/root pages with query parameters
+        if (path.endsWith('.html') && path !== '/index.html') return;
+        if ((path === '/' || path === '/index.html') && !search) return;
+        var sp = new URLSearchParams(search);
+        var city = sp.get('city') || 'София';
+        var type = sp.get('type') || 'neighborhood';
+        var staticPages = { 'София': '/sofia.html', 'Пловдив': '/plovdiv.html', 'Варна': '/varna.html', 'Бургас': '/burgas.html' };
+        var canonical;
+        if (type === 'neighborhood' && staticPages[city]) {
+            canonical = base + staticPages[city];
+        } else {
+            var p = new URLSearchParams();
+            if (city && city !== 'София') p.set('city', city);
+            if (type && type !== 'neighborhood') p.set('type', type);
+            canonical = p.toString() ? base + '/?' + p.toString() : base + '/';
+        }
+        var link = document.querySelector('link[rel="canonical"]');
+        if (link) link.setAttribute('href', canonical);
+        // Also update hreflang tags to match canonical
+        document.querySelectorAll('link[hreflang]').forEach(function(el) { el.setAttribute('href', canonical); });
+        // Update og:url to match
+        var ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) ogUrl.setAttribute('content', canonical);
+    })();
+    </script>
     <!-- Hreflang tags for international SEO -->
     <link rel="alternate" hreflang="bg" href="https://kvartali.eu/">
     <link rel="alternate" hreflang="x-default" href="https://kvartali.eu/">
